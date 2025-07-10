@@ -18,4 +18,6 @@
 - Biblioteka
 - Zajęcia pozalekcyjne
 - Stypendia
-# Footer.jsx
+### Rekrutacja
+### Dziennik elektroniczny
+### Panel nauczyciela
