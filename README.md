@@ -1,6 +1,6 @@
 # Navbar.jsx
-### Szkoła
-- Informacje ogólne
+## Szkoła
+### Informacje ogólne
 - O szkole
 - Historia szkoły
 - Patron
@@ -8,8 +8,20 @@
 - Akademia Zamojska
 - Kalendarium
 - Lokalizacja
-### Uczeń
-- Nauka i organizacja
+### Społeczność szkolna
+- Dyrekcja
+- Nauczyciele
+- Rada Rodziców
+- Laureaci
+### Dokumenty i organizacja
+- Statut
+- Program wychowawczo-profilaktyczny
+- RODO
+- Deklaracja dostępności
+- Standardy ochrony małoletnich
+- Procedury w I LO
+## Uczeń
+### Nauka i organizacja
 - Klasy
 - Plan lekcji
 - Harmonogram dostępności nauczycieli
