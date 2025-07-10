@@ -1,5 +1,5 @@
 # Navbar.jsx
-## Szkoła
+### Szkoła
 - Informacje ogólne
 - O szkole
 - Historia szkoły
