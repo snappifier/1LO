@@ -5,6 +5,7 @@
 - Historia szkoły
 - Patron
 - Hymn
+- osiągnięcia
 - Akademia Zamojska
 - Kalendarium
 - Lokalizacja
