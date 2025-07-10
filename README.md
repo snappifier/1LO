@@ -33,7 +33,6 @@
 ### Certyfikaty i osiągnięcia
 - Certyfikaty
 ### Działalność i rozwój
-- Projekty
 - Erasmus+
 - Wymiana z Freiburgiem
 ### Rekrutacja
