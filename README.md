@@ -8,4 +8,14 @@
 - Akademia Zamojska
 - Kalendarium
 - Lokalizacja
+### Uczeń
+- Nauka i organizacja
+- Klasy
+- Plan lekcji
+- Harmonogram dostępności nauczycieli
+- Dzwonki
+- Podręczniki 2024/2025
+- Biblioteka
+- Zajęcia pozalekcyjne
+- Stypendia
 # Footer.jsx
