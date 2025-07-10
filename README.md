@@ -19,5 +19,5 @@
 - Zajęcia pozalekcyjne
 - Stypendia
 ### Rekrutacja
-### Dziennik elektroniczny
+### Vulcan
 ### Panel nauczyciela
