@@ -30,6 +30,12 @@
 - Biblioteka
 - Zajęcia pozalekcyjne
 - Stypendia
+### Certyfikaty i osiągnięcia
+- Certyfikaty
+### Działalność i rozwój
+- Projekty
+- Erasmus+
+- Wymiana z Freiburgiem
 ### Rekrutacja
 ### Vulcan
 ### Panel nauczyciela
