@@ -3,6 +3,9 @@ import {motion, useAnimationFrame} from "motion/react"
 import agh_logo from "../assets/agh-logo.png";
 import sgh_logo from "../assets/sgh-logo.png";
 import umcs_logo from "../assets/umcs-logo.png";
+import logo1LO from "../assets/logo.png";
+import logoblack from "../assets/logoonlyblack.png";
+import logo from "../assets/logo.png";
 
 export default function Footer(){
     const images = [
@@ -12,7 +15,7 @@ export default function Footer(){
     ];
 
     return <>
-        <div className="text-white pl-6 pt-4 overflow-hidden whitespace-nowrap w-full h-[100vh] bg-[#3077BA]">
+        <footer className="relative z-40 font-[golos_text] font-regular text-white pl-6 pt-4 overflow-hidden whitespace-nowrap w-full h-full bg-[#3077BA]">
             <p className="mb-5">Nasze współprace</p>
             <motion.div
                 className="flex"
@@ -34,27 +37,43 @@ export default function Footer(){
 
                 ))}
             </motion.div>
+            <h1 className="text-xl font-medium mt-8 mb-1">Kontakt</h1>
+            <div className="w-9 h-0.5 bg-white mb-3"></div>
             <div className="flex flex-col">
-                <h1 className="text-lg mt-5 mb-3">Kontakt</h1>
-                <p className="text-md mb-1">+84 639 28 01</p>
-                <p className="text-md">sekretariat@1lo.zamosc.pl</p>
+                <p className="text-sm mb-1">+84 639 28 01</p>
+                <p className="text-sm">sekretariat@1lo.zamosc.pl</p>
             </div>
-            <h1 className="text-xl mt-5 mb-3">Menu</h1>
-            <div className="flex gap-8">
+            <h1 className="text-xl font-medium mt-5 mb-1">Menu</h1>
+            <div className="w-9 h-0.5 bg-white mb-3"></div>
+            <div className="flex gap-8 text-sm">
                 <div className="flex flex-col gap-3">
-                    <p className="text-md">Deklaracja dostępności strony</p>
-                    <p className="text-md">Polityka prywatności</p>
-                    <p className="text-md">RODO</p>
-                    <p className="text-md">BIP</p>
+                    <p>Deklaracja dostępności strony</p>
+                    <p>Polityka prywatności</p>
+                    <p>RODO</p>
+                    <p>BIP</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                    <p className="text-md">Plany lekcji</p>
-                    <p className="text-md">E-dziennik</p>
-                    <p className="text-md">Stypendia</p>
-                    <p className="text-md">Certyfikaty</p>
+                    <p>Plany lekcji</p>
+                    <p>E-dziennik</p>
+                    <p>Stypendia</p>
+                    <p>Certyfikaty</p>
                 </div>
             </div>
-            <span></span>
-        </div>
+            <div className="flex mt-8 mb-5 items-center">
+                <div>
+                    <motion.img
+                        src={logo1LO}
+                        className={`drop-shadow-md mr-3 h-12 rounded-full`}
+                        whileHover={{scale: 1.1}}
+                        whileTap={{scale: 1}}
+                    />
+                    <div className="font-medium text-xs">
+                        <p>I Liceum Ogólnokształcące</p>
+                        <p>im. Jana Zamoyskiego</p>
+                    </div>
+                </div>
+                <div className="flex gap-5"></div>
+            </div>
+        </footer>
     </>
 }

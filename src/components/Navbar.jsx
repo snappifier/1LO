@@ -81,7 +81,7 @@ export const Navbar = () => {
             </motion.nav>
         )};
         </AnimatePresence>
-        <div className="absolute top-0 z-0 h-[2000px] w-full bg-zinc-900"></div>
+
     </>)
 }
 

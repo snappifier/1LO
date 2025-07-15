@@ -4,7 +4,7 @@ import Footer from "./Footer.jsx";
 export default function Home(){
     return <>
         <Navbar />
-        <p>123</p>
+        <div className="relative bg-yellow-200 w-full h-[300vh]">123</div>
         <Footer />
     </>
 }
