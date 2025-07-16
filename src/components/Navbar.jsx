@@ -1,6 +1,7 @@
 import logo from "../assets/logo.png";
 import logoblack from "../assets/logoonlyblack.png";
 import {ExitIcon} from "./animations/ExitIcon";
+import {DropArrow} from "./animations/DropArrow";
 
 import {useState, useEffect} from "react";
 import {motion, AnimatePresence} from "motion/react";
@@ -11,6 +12,8 @@ export const Navbar = () => {
     const [scrollY, setScrollY] = useState(0);
     const [scrolled, setScrolled] = useState(false);
     const [navOpen, setNavOpen] = useState(false);
+    const [openSzkola, setOpenSzkola] = useState(false);
+    const [openUczen, setOpenUczen] = useState(false);
 
 
     const navLinks = [
@@ -26,11 +29,11 @@ export const Navbar = () => {
     ]
 
     const mobileNavLinks = [
-        {name: 'Szkoła', function: ''},
-        {name: 'Uczeń', function: ''},
-        {name: 'Rekrutacja', function: ''},
-        {name: 'E-Dziennik', function: ''},
-        {name: 'Panel nauczyciela', function: ''},
+        {name: 'Szkoła', onClick: () => setOpenSzkola(prev => !prev), isOpen: openSzkola, isDropdown: true},
+        {name: 'Uczeń', onClick: () => setOpenUczen(prev => !prev), isOpen: openUczen, isDropdown: true},
+        {name: 'Rekrutacja', onClick: () => setNavOpen(false)},
+        {name: 'E-Dziennik', onClick: () => setNavOpen(false)},
+        {name: 'Panel nauczyciela', onClick: () => setNavOpen(false)},
     ]
 
     //wysokosc zmiany navbarow
@@ -67,7 +70,7 @@ export const Navbar = () => {
 
     return (<>
             <header className={`top-0 w-full z-50 flex justify-between items-center ${scrolled
-                ? "h-20 fixed bg-blue-900 shadow-md"
+                ? "h-20 fixed bg-[#3077BA] shadow-md"
                 : "h-30 absolute bg-gradient-to-b from-black/80  to-transparent "}`}
             >
 
@@ -114,35 +117,16 @@ export const Navbar = () => {
             >
                 <ExitIcon isOpen={navOpen}/></motion.button>
 
-
-            {/*nav z hamburgera*/}
-            {/*<AnimatePresence>*/}
-            {/*    {navOpen && (*/}
-            {/*        <motion.nav*/}
-            {/*            key="mobile-nav"*/}
-            {/*            initial={{y: -800, opacity: 0}}*/}
-            {/*            animate={{y: 0, opacity: 1}}*/}
-            {/*            exit={{y: -800, opacity: 0}}*/}
-            {/*            transition={{duration: 0.4}}*/}
-            {/*            className="fixed top-0 left-0 w-full h-full bg-blue-900 z-60 overflow-hidden"*/}
-
-            {/*        >*/}
-            {/*            {navLinks.map((link) => (*/}
-            {/*                <Link key={link.name} to={link.path} onClick={() => setNavOpen(false)}>{link.name}</Link>*/}
-            {/*            ))}*/}
-            {/*        </motion.nav>*/}
-            {/*    )};*/}
-            {/*</AnimatePresence>*/}
             <AnimatePresence>
                 {navOpen && (
                     <>
-                        <motion.div className="fixed top-0 left-0 w-full h-full bg-blue-900 z-60"
+                        <motion.div className="fixed top-0 left-0 w-full h-full bg-[#3077BA] z-60"
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
                                     exit={{opacity: 0}}
                                     transition={{duration: 0.5}}
                         >
-                            <motion.div className=" top-0 left-0 w-full h-45 bg-blue-900 z-60 flex items-center justify-start text-white font-[golos_text] leading-none text-sm"
+                            <motion.div className=" top-0 left-0 w-full h-45 bg-[#3077BA] z-60 flex items-center justify-start text-white font-[golos_text] leading-none text-sm"
                                         initial={{opacity: 0}}
                                         animate={{opacity: 1}}
                                         exit={{opacity: 0}}
@@ -162,13 +146,13 @@ export const Navbar = () => {
                                     const exitDelay = (mobileNavLinks.length - i - 1) * 0.07;
                                     return (
                                         <motion.div key={link.name}
-                                                    className="w-full h-20 flex items-center justify-start pl-20 bg-blue-900 text-white text-xl font-[golos_text] border-b-1 border-white"
+                                                    className="cursor-pointer w-full h-20 flex items-center justify-start pl-20 bg-[#3077BA] text-white text-xl font-[golos_text] border-b-1 border-white"
                                                     initial={{opacity: 0, y: -10}}
                                                     animate={{opacity: 1, y: 0}}
                                                     exit={{opacity: 0,y: -10, transition: {delay: exitDelay}}}
                                                     transition={{duration: 0.1, delay: enterDelay}}
                                         >
-                                            <button key={link.name} onClick={link.function} className="">{link.name} ></button>
+                                            <button className="cursor-pointer flex items-center " onClick={link.onClick}>{link.name} {link.isDropdown && <DropArrow isOpen={link.isOpen} className="block"/>}</button>
                                         </motion.div>)
                                 })}
                             </motion.nav>
