@@ -4,8 +4,6 @@ import agh_logo from "../assets/agh-logo.png";
 import sgh_logo from "../assets/sgh-logo.png";
 import umcs_logo from "../assets/umcs-logo.png";
 import logo1LO from "../assets/logo.png";
-import logoblack from "../assets/logoonlyblack.png";
-import logo from "../assets/logo.png";
 
 export default function Footer(){
     const images = [
