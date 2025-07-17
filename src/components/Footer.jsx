@@ -1,47 +1,30 @@
 import {useRef, useState, useEffect} from "react";
 import {motion} from "motion/react"
+import Ticker from 'framer-motion-ticker';
 import agh_logo from "../assets/agh-logo.png";
 import sgh_logo from "../assets/sgh-logo.png";
 import umcs_logo from "../assets/umcs-logo.png";
 import logo1LO from "../assets/logo.png";
+import kul_logo from "../assets/kul_logo.png";
+import Marquee from "./footer/marquee.jsx";
 
 export default function Footer(){
-
-    const ref = useRef(null);
-    const [width, setWidth] = useState(0);
-    const images = [
-        sgh_logo,
-        umcs_logo,
-        agh_logo
-    ];
-
-    useEffect(() => {
-        const observer = new ResizeObserver(entries => {
-            for (let entry of entries) {
-                setWidth(entry.contentRect.width);
-            }
-        });
-
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
-
-
-
+    const images = [sgh_logo, umcs_logo, agh_logo, kul_logo];
     return <>
         <footer className="flex flex-col md:items-center z-40 font-[golos_text] font-regular text-white pt-4 overflow-hidden whitespace-nowrap w-full h-full bg-[#3077BA]">
             {/* Slider współpracy */}
             <div className="w-full flex flex-col items-center font-medium">
                 <p className="mb-8">Nasze współprace</p>
-                <motion.div
-                    className="flex w-max justify-center"
-                    ref={ref}
-                >
-
-                </motion.div>
+                <Ticker duration={15}>
+                    {images.map((src, i) => (
+                        <img
+                            key={i}
+                            src={src}
+                            alt={`img-${i}`}
+                            className="h-20 w-auto object-cover mx-10"
+                        />
+                    ))}
+                </Ticker>
             </div>
 
             {/* Ułożenie menu footer'a */}
