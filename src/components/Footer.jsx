@@ -1,42 +1,51 @@
-import {Component, useRef} from "react";
-import {motion, useAnimationFrame} from "motion/react"
+import {useRef, useState, useEffect} from "react";
+import {motion} from "motion/react"
 import agh_logo from "../assets/agh-logo.png";
 import sgh_logo from "../assets/sgh-logo.png";
 import umcs_logo from "../assets/umcs-logo.png";
 import logo1LO from "../assets/logo.png";
+import {getWindowDimensions, useWindowDimensions} from "./tools/window-dim.jsx";
 
 export default function Footer(){
+
+    const ref = useRef(null);
+    const [width, setWidth] = useState(0);
     const images = [
         sgh_logo,
-        agh_logo,
-        umcs_logo
+        umcs_logo,
+        agh_logo
     ];
 
+    useEffect(() => {
+        const observer = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                setWidth(entry.contentRect.width);
+            }
+        });
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+
+
     return <>
-        <footer className="flex flex-col md:items-center z-40 font-[golos_text] font-regular text-white pl-6 pt-4 overflow-hidden whitespace-nowrap w-full h-full bg-[#3077BA]">
-            <div className="flex flex-col items-center font-medium">
+        <footer className="flex flex-col md:items-center z-40 font-[golos_text] font-regular text-white pt-4 overflow-hidden whitespace-nowrap w-full h-full bg-[#3077BA]">
+            {/* Slider współpracy */}
+            <div className="w-full flex flex-col items-center font-medium">
                 <p className="mb-8">Nasze współprace</p>
                 <motion.div
-                    className="flex"
-                    animate={{ x: "-122%" }} // tylko %, bez calc
-                    transition={{
-                        duration: 10,
-                        ease: "linear",
-                        repeat: Infinity,
-                    }}
+                    className="flex w-max justify-center"
+                    ref={ref}
                 >
-                    {[...images, ...images].map((src, i) => (
-                        <><img
-                            key={i}
-                            src={src}
-                            alt={`img-${i}`}
-                            className="h-20 w-auto object-cover mx-4"
-                        />
-                            <div className="border-l-2 border-gray-300 h-10 translate-y-5"></div></>
 
-                    ))}
                 </motion.div>
             </div>
+
+            {/* Ułożenie menu footer'a */}
             <div className="w-max ml-3 pt-8 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-x-30 md:items-center md:p-10">
                 <div className="md:col-start-1 md:row-start-2">
                     <h1 className="text-xl font-medium mt-2 mb-1">Kontakt</h1>

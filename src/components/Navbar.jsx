@@ -160,11 +160,7 @@ export const Navbar = () => {
                     </>
                 )}
             </AnimatePresence>
-
-
-
-            {/*tło(niepotrzebne)*/}
-            <div className="absolute top-0 z-0 h-[2000px] w-full bg-zinc-900"></div>
+            
         </>
     )
 }
