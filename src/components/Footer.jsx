@@ -4,7 +4,6 @@ import agh_logo from "../assets/agh-logo.png";
 import sgh_logo from "../assets/sgh-logo.png";
 import umcs_logo from "../assets/umcs-logo.png";
 import logo1LO from "../assets/logo.png";
-import {getWindowDimensions, useWindowDimensions} from "./tools/window-dim.jsx";
 
 export default function Footer(){
 

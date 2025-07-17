@@ -1,5 +1,4 @@
 import logo from "../assets/logo.png";
-import logoblack from "../assets/logoonlyblack.png";
 import {ExitIcon} from "./animations/ExitIcon";
 import {DropArrow} from "./animations/DropArrow";
 
@@ -17,15 +16,10 @@ export const Navbar = () => {
 
 
     const navLinks = [
-        {name: 'rekrutacja', path: '/rekrutacja'},
-        {name: 'kontakt', path: '/kontakt'},
-        {name: 'kontakt', path: '/kontakt'},
-        {name: 'kontakt', path: '/kontakt'},
-    ]
-
-    const navButtons = [
-        {name: 'szkoła'},
-        {name: 'uczeń'}
+        {name: 'Szkoła', path: '/szkola'},
+        {name: 'Uczeń', path: '/uczen'},
+        {name: 'Rekrutacja', path: '/rekrutacja'},
+        {name: 'Kontakt', path: '/kontakt'},
     ]
 
     const mobileNavLinks = [
@@ -94,7 +88,7 @@ export const Navbar = () => {
                 </Link>
 
                 {/*nav md*/}
-                <nav className={`hidden md:flex items-end font-[golos_text] ${scrolled ? "text-black" : "text-white flex-col mx-5"}  `}>
+                <nav className={`hidden md:flex items-end font-[golos_text] text-white flex-col mx-5`}>
                     <div className="flex flex-col items-end">
                         <div className="text-[14px] font-regular">&#128222;+84 639 28 01</div>
                         <div className="text-[14px] font-regular mb-2">&#9993;sekretariat@1lo.zamosc.pl</div>
@@ -117,29 +111,35 @@ export const Navbar = () => {
             >
                 <ExitIcon isOpen={navOpen}/></motion.button>
 
+            {/*otwierana logo na mobile*/}
             <AnimatePresence>
                 {navOpen && (
                     <>
+                        {/*logo*/}
                         <motion.div className="fixed top-0 left-0 w-full h-full bg-[#3077BA] z-60"
                                     initial={{opacity: 0}}
                                     animate={{opacity: 1}}
                                     exit={{opacity: 0}}
                                     transition={{duration: 0.5}}
                         >
-                            <motion.div className=" top-0 left-0 w-full h-45 bg-[#3077BA] z-60 flex items-center justify-start text-white font-[golos_text] leading-none text-sm"
-                                        initial={{opacity: 0}}
-                                        animate={{opacity: 1}}
-                                        exit={{opacity: 0}}
-                                        transition={{duration: 0.1}}
+                            <motion.div
+                                className=" top-0 left-0 w-full h-45 bg-[#3077BA] z-60 flex items-center justify-start text-white font-[golos_text] leading-none text-sm"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                transition={{duration: 0.1}}
                             >
-                                <motion.img src={logo} className="m-5 mb-15 h-24" />
+                                <motion.img src={logo} className="m-5 mb-15 h-24"/>
                                 <div className="mb-10">
                                     <p>I Liceum</p>
                                     <p>Ogólnokształcące im.</p>
                                     <p>Jana Zamoyskiego</p>
                                 </div>
                             </motion.div>
-                            <motion.nav className="relative top-0 left-0 w-full h-full flex flex-col items-start justify-start z-60"
+
+                            {/*dropdowny i linki*/}
+                            <motion.nav
+                                className="relative top-0 left-0 w-full h-full flex flex-col items-start justify-start z-60"
                             >
                                 {mobileNavLinks.map((link, i) => {
                                     const enterDelay = i * 0.07;
@@ -149,18 +149,27 @@ export const Navbar = () => {
                                                     className="cursor-pointer w-full h-20 flex items-center justify-start pl-20 bg-[#3077BA] text-white text-xl font-[golos_text] border-b-1 border-white"
                                                     initial={{opacity: 0, y: -10}}
                                                     animate={{opacity: 1, y: 0}}
-                                                    exit={{opacity: 0,y: -10, transition: {delay: exitDelay}}}
+                                                    exit={{opacity: 0, y: -10, transition: {delay: exitDelay}}}
                                                     transition={{duration: 0.1, delay: enterDelay}}
                                         >
-                                            <button className="cursor-pointer flex items-center " onClick={link.onClick}>{link.name} {link.isDropdown && <DropArrow isOpen={link.isOpen} className="block"/>}</button>
+                                            <button className="cursor-pointer flex items-center "
+                                                    onClick={link.onClick}>{link.name} {link.isDropdown &&
+                                                <DropArrow isOpen={link.isOpen} className="block"/>}</button>
                                         </motion.div>)
                                 })}
+                                <motion.div
+                                    className="absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-[meow_script] text-white"
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    transition={{duration: 0.2, delay: 0.3}}
+
+                                ><p>Miłego dnia!</p></motion.div>
                             </motion.nav>
+
                         </motion.div>
                     </>
                 )}
             </AnimatePresence>
-            
         </>
     )
 }
