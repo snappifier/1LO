@@ -101,7 +101,7 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
         <AnimatePresence>
             {isOpen &&
                 <motion.div
-                    className=" absolute w-full h-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 overflow-y-auto"
+                    className=" w-full h-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 overflow-y-auto"
                     style={{ maxHeight: '100vh' }}
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}

@@ -32,7 +32,7 @@ export const BannerTransparent = () => {
 
     return (
         <>
-                <header className={`top-0 w-full z-60  ${navOpen ? "h-full bg-[#3077BA]" : "h-40  lg:px-25 flex justify-between items-center absolute bg-gradient-to-b from-black/80 to-transparent"}`}>
+                <header className={`top-0 w-full z-60  ${navOpen ? "absolute h-full bg-[#3077BA] flex flex-col justify-between items-center" : "h-40  lg:px-25 flex justify-between items-center absolute bg-gradient-to-b from-black/80 to-transparent"}`}>
 
                     {/*<motion.div*/}
                     {/*    className="top-0 w-full h-40 bg-[#3077BA] z-60 flex items-center justify-start text-white font-[Montserrat] leading-none text-sm"*/}
