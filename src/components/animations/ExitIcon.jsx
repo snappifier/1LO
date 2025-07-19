@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 
 export const ExitIcon = ({ isOpen }) => (
     <motion.svg
-        width="24"
-        height="24"
+        width="30"
+        height="30"
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth="2"

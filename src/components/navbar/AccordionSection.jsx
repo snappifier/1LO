@@ -5,33 +5,23 @@ import { Link } from 'react-router-dom'
 
 const MotionContent = motion(Accordion.Content)
 
-export function AccordionSection({
-                                     value,
-                                     activeValue,
-                                     onToggle,
-                                     title,
-                                     sections,
-                                     onLinkClick,
-                                     isNested = false,
-                                     children
-                                 }) {
+export function AccordionSection({value, activeValue, onToggle, title, sections, onLinkClick, isNested = false, children}) {
     const isOpen = activeValue === value;
 
-    // Zoptymalizowane warianty animacji
     const variants = {
         open: {
             height: 'auto',
             opacity: 1,
             transition: {
-                duration: 0.5, // Zwiększony czas trwania
-                ease: "easeInOut" // Płynniejsza krzywa
+                duration: 0.5,
+                ease: "easeInOut"
             }
         },
         collapsed: {
             height: 0,
             opacity: 0,
             transition: {
-                duration: 0.5, // Krótszy czas dla zamykania
+                duration: 0.5,
                 ease: "easeInOut"
             }
         },
@@ -48,7 +38,7 @@ export function AccordionSection({
                 <Accordion.Header>
                     <Accordion.Trigger
                         onClick={() => onToggle(value)}
-                        className={`group w-full flex items-center justify-between px-6 py-4 text-left font-[golos_text] text-white ${
+                        className={`group w-full flex items-center justify-between px-6 py-4 text-left font-[Montserrat] text-white ${
                             isNested ? 'pl-12 text-lg' : 'pl-10 text-xl'
                         }`}
                     >

@@ -5,8 +5,8 @@ import {AccordionSection} from "./AccordionSection.jsx";
 import {Link} from "react-router-dom";
 
 export const DropdownMobile = ({isOpen, setNavOpen}) => {
-    const [activeTopLevel, setActiveTopLevel] = useState(null); // Stan dla głównego poziomu
-    const [activeNested, setActiveNested] = useState(null); // Stan dla zagnieżdżonego poziomu
+    const [activeTopLevel, setActiveTopLevel] = useState(null);
+    const [activeNested, setActiveNested] = useState(null);
 
     const szkolaSections = [
         {
@@ -115,11 +115,19 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                         exit={{opacity: 0}}
                         transition={{duration: 0.1}}
                     >
-                        <motion.img src={logo} alt="Logo szkoły" className="m-5 h-24" />
-                        <div className="">
-                            <p>I Liceum</p>
-                            <p>Ogólnokształcące im.</p>
-                            <p>Jana Zamoyskiego</p>
+                        {/*<motion.img src={logo} alt="Logo szkoły" className="m-5 h-24" />*/}
+                        {/*<div className="">*/}
+                        {/*    <p>I Liceum</p>*/}
+                        {/*    <p>Ogólnokształcące im.</p>*/}
+                        {/*    <p>Jana Zamoyskiego</p>*/}
+                        {/*</div>*/}
+                        <motion.img
+                            src={logo}
+                            alt="Logo"
+                            className="drop-shadow-md m-5 h-24"
+                        />
+                        <div className="w-2/5 md:w-1/2 text-wrap text-xs md:text-base">
+                            <p>I Liceum Ogólnokształcące im. Jana Zamoyskiego</p>
                         </div>
                     </motion.div>
 
