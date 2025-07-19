@@ -15,9 +15,8 @@ export default function Menu(){
                         whileHover={{scale: 1.1}}
                         whileTap={{scale: 1}}
                     />
-                    <div className="font-medium text-sm">
-                        <p>I Liceum Ogólnokształcące</p>
-                        <p>im. Jana Zamoyskiego</p>
+                    <div className="font-medium text-sm text-wrap">
+                        <p>I Liceum Ogólnokształcące im. Jana Zamoyskiego</p>
                     </div>
                 </div>
 

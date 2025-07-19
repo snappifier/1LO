@@ -24,14 +24,18 @@ export const Navbar = () => {
 
     return (
         <>
-            <motion.button
-                            onClick={() => setNavOpen(!navOpen)}
-                            className={`absolute cursor-pointer flex items-center justify-center z-90 lg:hidden text-white top-16 right-10 text-3xl `}
+            <header className="top-0 w-full h-40 z-50 lg:px-25 flex justify-between items-center absolute bg-gradient-to-b from-black/80 to-transparent">
+                <motion.button
+                    onClick={() => setNavOpen(!navOpen)}
+                    className={`absolute cursor-pointer flex items-center justify-center z-90 lg:hidden text-white top-16 right-10 text-3xl `}
 
-                        >
-                            <ExitIcon isOpen={navOpen} className=""/></motion.button>
-                       <DropdownMobile isOpen={navOpen} setNavOpen={setNavOpen} className="z-100"/>
-            <BannerTransparent></BannerTransparent>
+                >
+                    <ExitIcon isOpen={navOpen} className=""/>
+                </motion.button>
+
+                <DropdownMobile isOpen={navOpen} setNavOpen={setNavOpen} className="z-100"/>
+                <BannerTransparent />
+            </header>
         </>
     )
 

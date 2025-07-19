@@ -14,7 +14,6 @@ export const BannerTransparent = () => {
 
     return (
         <>
-        <header className="top-0 w-full h-40 z-50 p-[2vw] lg:px-25 flex justify-between items-center absolute bg-gradient-to-b from-black/80 to-transparent">
             <Link to={'/'} className="z-[60]">
                 <div
                     className={`flex items-center font-[Montserrat] leading-none drop-shadow-sm text-white gap-2`}>
@@ -30,7 +29,6 @@ export const BannerTransparent = () => {
                 </div>
             </Link>
             <DropdownPC />
-        </header>
 
             {/*<motion.button*/}
             {/*    onClick={setNavOpen(!navOpen)}*/}

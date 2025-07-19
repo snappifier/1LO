@@ -121,14 +121,7 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                         {/*    <p>Ogólnokształcące im.</p>*/}
                         {/*    <p>Jana Zamoyskiego</p>*/}
                         {/*</div>*/}
-                        <motion.img
-                            src={logo}
-                            alt="Logo"
-                            className="drop-shadow-md m-5 h-24"
-                        />
-                        <div className="w-2/5 md:w-1/2 text-wrap text-xs md:text-base">
-                            <p>I Liceum Ogólnokształcące im. Jana Zamoyskiego</p>
-                        </div>
+
                     </motion.div>
 
                     <motion.nav className="w-full flex flex-col items-start justify-start z-60">
