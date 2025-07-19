@@ -7,7 +7,11 @@ import kul_logo from "../../assets/coop logo/kul_logo.png";
 export default function Slider(){
     const images = [sgh_logo, umcs_logo, agh_logo, kul_logo];
     return <div className="w-full flex flex-col font-medium mt-5 items-center">
-        <p className="mb-12">Nasze współprace</p>
+        <div className="w-full px-10 flex items-center mb-10 gap-5">
+            <div className="w-full h-[1px] bg-white"></div>
+            <p className="">Nasze współprace</p>
+            <div className="w-full h-[1px] bg-white"></div>
+        </div>
         <Ticker duration={15}>
             {images.map((src, i) => (
                 <img
