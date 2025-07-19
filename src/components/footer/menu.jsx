@@ -48,16 +48,16 @@ export default function Menu(){
             </div>
             <div className="flex md:flex-col gap-8 md:gap-5">
                 <div className="flex flex-col gap-5">
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">Plany lekcji</button></Link>
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">E-dziennik</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Plany lekcji</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">E-dziennik</button></Link>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">Stypendia</button></Link>
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">Certyfikaty</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Stypendia</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Certyfikaty</button></Link>
                 </div>
                 <div className="md:hidden flex flex-col gap-5">
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">Nauczyciele</button></Link>
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">Erasmus+</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Nauczyciele</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Erasmus+</button></Link>
                 </div>
             </div>
         </div>
@@ -68,12 +68,12 @@ export default function Menu(){
             </div>
             <div className="flex md:flex-col gap-8 md:gap-5">
                 <div className="flex flex-col gap-5">
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">RODO</button></Link>
-                    <Link className="flex hover:underline hover:cursor-pointer"><button className="flex">BIP</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">RODO</button></Link>
+                    <Link to={"/ "}><button className="flex hover:underline cursor-pointer">BIP</button></Link>
                 </div>
                 <div className="flex flex-col gap-5">
-                    <Link className="flex hover:underline hover:cursor-pointer"><button>Deklaracja dostępności strony</button></Link>
-                    <Link className="flex hover:underline hover:cursor-pointer"><button>Polityka prywatności</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Deklaracja dostępności strony</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Polityka prywatności</button></Link>
                 </div>
             </div>
         </div>
