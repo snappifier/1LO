@@ -1,5 +1,5 @@
 import Home from "./Home.jsx";
-import baner1LO from "../../assets/zdj1.jpg";
+import baner1LO from "../../assets/Home/zdj1.jpg";
 
 export default function Banner(){
     return <>
