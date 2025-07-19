@@ -101,28 +101,29 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
         <AnimatePresence>
             {isOpen &&
                 <motion.div
-                    className="fixed top-0 w-full h-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 overflow-y-auto"
+                    className=" absolute w-full h-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 overflow-y-auto"
                     style={{ maxHeight: '100vh' }}
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     exit={{opacity: 0}}
                     transition={{duration: 0.5}}
                 >
-                    <motion.div
-                        className="top-0 left-0 w-full h-30 bg-[#3077BA] z-60 flex items-center justify-start text-white font-[golos_text] leading-none text-sm"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
-                        transition={{duration: 0.1}}
-                    >
-                        {/*<motion.img src={logo} alt="Logo szkoły" className="m-5 h-24" />*/}
-                        {/*<div className="">*/}
-                        {/*    <p>I Liceum</p>*/}
-                        {/*    <p>Ogólnokształcące im.</p>*/}
-                        {/*    <p>Jana Zamoyskiego</p>*/}
-                        {/*</div>*/}
-
-                    </motion.div>
+                    {/*<motion.div*/}
+                    {/*    className="top-0 w-full h-40 bg-[#3077BA] z-60 flex items-center justify-start text-white font-[Montserrat] leading-none text-sm"*/}
+                    {/*    initial={{opacity: 0}}*/}
+                    {/*    animate={{opacity: 1}}*/}
+                    {/*    exit={{opacity: 0}}*/}
+                    {/*    transition={{duration: 0.1}}*/}
+                    {/*>*/}
+                    {/*    <motion.img*/}
+                    {/*        src={logo}*/}
+                    {/*        alt="Logo"*/}
+                    {/*        className="drop-shadow-md m-5 h-20 md:h-25"*/}
+                    {/*    />*/}
+                    {/*    <div className="w-2/5 md:w-1/2 text-wrap text-xs md:text-base">*/}
+                    {/*        <p>I Liceum Ogólnokształcące<br/> im. Jana Zamoyskiego</p>*/}
+                    {/*    </div>*/}
+                    {/*</motion.div>*/}
 
                     <motion.nav className="w-full flex flex-col items-start justify-start z-60">
                         <motion.div

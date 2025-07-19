@@ -12,30 +12,14 @@ export const Navbar = () => {
 
     const [navOpen, setNavOpen] = useState(false);
 
-    useEffect(() => {
-        if (navOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    })
+
 
 
 
     return (
         <>
-            <header className="top-0 w-full h-40 z-50 lg:px-25 flex justify-between items-center absolute bg-gradient-to-b from-black/80 to-transparent">
-                <motion.button
-                    onClick={() => setNavOpen(!navOpen)}
-                    className={`absolute cursor-pointer flex items-center justify-center z-90 lg:hidden text-white top-16 right-10 text-3xl `}
 
-                >
-                    <ExitIcon isOpen={navOpen} className=""/>
-                </motion.button>
-
-                <DropdownMobile isOpen={navOpen} setNavOpen={setNavOpen} className="z-100"/>
-                <BannerTransparent />
-            </header>
+            <BannerTransparent></BannerTransparent>
         </>
     )
 
