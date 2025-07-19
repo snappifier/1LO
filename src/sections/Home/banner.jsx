@@ -3,10 +3,10 @@ import baner1LO from "../../assets/Home/zdj1.jpg";
 
 export default function Banner(){
     return <>
-        <div className="w-full h-[600px] relative">
+        <div className="w-full relative">
             <img
                 src={baner1LO}
-                className="w-full h-full object-cover object-bottom"
+                className="w-full brightness-75 object-cover object-bottom"
                 alt="baner"
             />
 
