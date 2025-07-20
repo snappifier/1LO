@@ -101,8 +101,7 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
         <AnimatePresence>
             {isOpen &&
                 <motion.div
-                    className=" w-full h-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 overflow-y-auto"
-                    style={{ maxHeight: '100vh' }}
+                    className="absolut top-0 w-full h-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8"
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     exit={{opacity: 0}}
@@ -208,7 +207,7 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                     </motion.nav>
 
                     <motion.div
-                        className="text-3xl font-[meow_script] text-white mt-15"
+                        className="pb-10 text-3xl font-[meow_script] text-white mt-15"
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}

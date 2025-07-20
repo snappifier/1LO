@@ -2,11 +2,12 @@ import {Routes, Route} from "react-router";
 import Home from "./sections/Home/Home.jsx";
 import {Navbar} from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import {NavbarNew} from "./components/Navbar-new.jsx";
 
 export const AppRoutes = () => {
     return (
         <Routes >
-            <Route path="/" element={<><Navbar/><Home /><Footer/></>} />
+            <Route path="/" element={<><NavbarNew/><Home /><Footer/></>} />
         </Routes>
     );
 }

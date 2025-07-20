@@ -8,18 +8,68 @@ import {useState, useEffect} from "react";
 import {motion, AnimatePresence} from "motion/react";
 import {Link} from "react-router-dom";
 
-export const Navbar = () => {
+export const NavbarNew = () => {
 
     const [navOpen, setNavOpen] = useState(false);
+    const [scrollY, setScrollY] = useState(0);
+    {/*Overflow Settings*/}
+    useEffect(() => {
+        if (navOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    })
+    {/*Changing Settings*/}
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1024) {
+                setNavOpen(false);
+            }
+        };
 
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
+    {/*Scroll Value*/}
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
 
+        window.addEventListener("scroll", handleScroll);
 
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    function setClass(){
+        let styles = "";
+        if(navOpen){
+            styles = `relative z-100 w-full h-[100vh] flex flex-col bg-[#3077BA] justify-between items-center overflow-y-auto`;
+        }
+        else{
+            styles = "w-full h-40 lg:px-25 flex justify-between items-center absolute bg-gradient-to-b from-black/80 to-transparent";
+        }
+        return styles;
+    }
+
+    function getHeaderStyle() {
+        if (navOpen) {
+            return {
+                top: `${scrollY}px`
+            };
+        }
+        return {};
+    }
 
     return (
         <>
-            <header className=""></header>
-            <BannerTransparent></BannerTransparent>
+            <header className={setClass()} style={getHeaderStyle()}>
+                <BannerTransparent setNavOpen={setNavOpen} navOpen={navOpen} />
+            </header>
         </>
     )
 
