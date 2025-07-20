@@ -3,18 +3,11 @@ import {useSuspenseQuery} from "@tanstack/react-query";
 import {AnimatePresence} from "motion/react";
 
 export default function Aktualnosci() {
-    const {data} = useSuspenseQuery({
-        queryKey: ["posts"],
-        queryFn: () => get("posts"),
-    });
-
     const PostContent = ({ content }) => (
         <div dangerouslySetInnerHTML={{ __html: content }} />
     );
 
     const classAktu = ["col-span-2 row-span-2", "col-start-3", "col-start-3 row-start-2", "col-start-4 row-start-1", "col-start-4 row-start-2", "row-start-3", "row-start-3", "row-start-3", "row-start-3"];
-
-    console.log(data);
 
     return <div className="font-[montserrat] flex flex-col w-full h-max gap-5 px-[12vw] pb-10 mt-20 md:gap-10 bg-white">
         <div className="w-full flex gap-3 md:gap-10">
@@ -26,10 +19,6 @@ export default function Aktualnosci() {
         </div>
         <AnimatePresence>
             <div className="w-full h-250 grid grid-cols-4 grid-rows-4 gap-4">
-                {data.map((item, index) => {
-                    console.log(item);
-                    return <div key={index} className={classAktu[index]}><PostContent content={item.content.rendered}/></div>
-                })}
             </div>
         </AnimatePresence>
     </div>
