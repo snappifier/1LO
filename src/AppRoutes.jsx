@@ -7,7 +7,7 @@ import {NavbarNew} from "./components/Navbar-new.jsx";
 export const AppRoutes = () => {
     return (
         <Routes >
-            <Route path="/" element={<><NavbarNew/><Home /><Footer/></>} />
+            <Route path="/" element={<><Navbar/><Home /><Footer/></>} />
         </Routes>
     );
 }

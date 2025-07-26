@@ -101,28 +101,13 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
         <AnimatePresence>
             {isOpen &&
                 <motion.div
-                    className="absolut top-0 w-full h-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8"
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
+                    key="dropdown"
+                    className="left-0 w-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8"
+                    initial={{opacity: 0, height: 0}}
+                    animate={{opacity: 1, height: "100vh"}}
+                    exit={{opacity: 0, height: 0, overflow: "hidden"}}
                     transition={{duration: 0.5}}
                 >
-                    {/*<motion.div*/}
-                    {/*    className="top-0 w-full h-40 bg-[#3077BA] z-60 flex items-center justify-start text-white font-[Montserrat] leading-none text-sm"*/}
-                    {/*    initial={{opacity: 0}}*/}
-                    {/*    animate={{opacity: 1}}*/}
-                    {/*    exit={{opacity: 0}}*/}
-                    {/*    transition={{duration: 0.1}}*/}
-                    {/*>*/}
-                    {/*    <motion.img*/}
-                    {/*        src={logo}*/}
-                    {/*        alt="Logo"*/}
-                    {/*        className="drop-shadow-md m-5 h-20 md:h-25"*/}
-                    {/*    />*/}
-                    {/*    <div className="w-2/5 md:w-1/2 text-wrap text-xs md:text-base">*/}
-                    {/*        <p>I Liceum Ogólnokształcące<br/> im. Jana Zamoyskiego</p>*/}
-                    {/*    </div>*/}
-                    {/*</motion.div>*/}
 
                     <motion.nav className="w-full flex flex-col items-start justify-start z-60">
                         <motion.div
@@ -197,7 +182,7 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                                     <Link
                                         to={link.path}
                                         onClick={() => setNavOpen(false)}
-                                        className="w-full flex items-center justify-between px-6 py-4 text-left text-xl font-[golos_text] text-white border-b border-white pl-10"
+                                        className="w-full flex items-center justify-between px-6 py-4 text-left text-xl font-[Montserrat] text-white border-b border-white pl-10"
                                     >
                                         {link.name}
                                     </Link>
@@ -207,7 +192,8 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                     </motion.nav>
 
                     <motion.div
-                        className="pb-10 text-3xl font-[meow_script] text-white mt-15"
+                        key="greeting"
+                        className="relative pb-10 text-3xl font-[meow_script] text-white mt-15"
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
                         exit={{opacity: 0}}

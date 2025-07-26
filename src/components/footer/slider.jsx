@@ -5,7 +5,7 @@ import agh_logo from "../../assets/coop logo/agh-logo.png";
 import kul_logo from "../../assets/coop logo/kul_logo.png";
 
 export default function Slider(){
-    const images = [sgh_logo, umcs_logo, agh_logo, kul_logo];
+    const images = [sgh_logo, umcs_logo, kul_logo, agh_logo];
     return <div className="w-full flex flex-col font-medium mt-5 items-center">
         <div className="w-full px-10 flex items-center mb-10 gap-5">
             <div className="w-full h-[1px] bg-white"></div>
