@@ -1,8 +1,7 @@
 import {Routes, Route} from "react-router";
 import Home from "./sections/Home/Home.jsx";
-import {Navbar} from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-import {NavbarNew} from "./components/Navbar-new.jsx";
+import {Navbar} from "./components/Navbar.jsx";
 
 export const AppRoutes = () => {
     return (

@@ -49,13 +49,11 @@ export default function Menu(){
                 <div className="flex flex-col gap-5">
                     <Link to={"/"}><button className="flex hover:underline cursor-pointer">Plany lekcji</button></Link>
                     <Link to={"/"}><button className="flex hover:underline cursor-pointer">E-dziennik</button></Link>
+                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Nauczyciele</button></Link>
                 </div>
                 <div className="flex flex-col gap-5">
                     <Link to={"/"}><button className="flex hover:underline cursor-pointer">Stypendia</button></Link>
                     <Link to={"/"}><button className="flex hover:underline cursor-pointer">Certyfikaty</button></Link>
-                </div>
-                <div className="md:hidden flex flex-col gap-5">
-                    <Link to={"/"}><button className="flex hover:underline cursor-pointer">Nauczyciele</button></Link>
                     <Link to={"/"}><button className="flex hover:underline cursor-pointer">Erasmus+</button></Link>
                 </div>
             </div>
