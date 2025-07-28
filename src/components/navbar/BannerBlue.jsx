@@ -11,7 +11,7 @@ export const BannerBlue = ({navOpen, setNavOpen}) => {
 
     return (
         <>
-        <div className="fixed bg-[#3077BA] w-full flex flex-col items-center justify-start overflow-y-auto z-60 ">
+        <div className="fixed bg-[#3077BA] w-full flex flex-col items-center justify-start overflow-y-auto z-60 shadow-md ">
            <div className="w-full flex items-center justify-between">
             <Link to={'/'} className="z-[60]">
                 <LogoLetters />
