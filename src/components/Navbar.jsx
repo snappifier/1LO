@@ -38,11 +38,13 @@ export const Navbar = () => {
     return (
         <>
 
+<header className="lg:hidden">
+                <BannerBlue setNavOpen={setNavOpen} navOpen={navOpen} />
+</header>
 
-                <BannerBlue setNavOpen={setNavOpen} navOpen={navOpen} className="hidden" />
 
+                    <BannerTransparent />
 
-                {/*<BannerTransparent className="hidden" />*/}
 
 
         </>

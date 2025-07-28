@@ -12,14 +12,15 @@ export const BannerTransparent = () => {
 
     return (
         <>
-            <div className="absolute w-full flex items-center justify-between">
+            <header className="absolute top-0 w-full h-40 items-center justify-around  bg-gradient-to-b from-black/90 to-transparent hidden lg:flex z-60">
                 <Link to={'/'} className="z-[60]">
                     <LogoLetters />
                 </Link>
 
-            </div>
+                <DropdownPC />
+            </header>
 
-            <DropdownPC className="" />
+
 
         </>
     );

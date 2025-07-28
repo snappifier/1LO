@@ -102,9 +102,9 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
             {isOpen &&
                 <motion.div
                     key="dropdown"
-                    className="left-0 w-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8"
+                    className="left-0 w-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 h-screen"
                     initial={{opacity: 0, height: 0}}
-                    animate={{opacity: 1, height: "100vh"}}
+                    animate={{opacity: 1, height: "85vh"}}
                     exit={{opacity: 0, height: 0, overflow: "hidden"}}
                     transition={{duration: 0.5}}
                 >
@@ -194,9 +194,9 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                     <motion.div
                         key="greeting"
                         className="relative pb-10 text-3xl font-[meow_script] text-white mt-15"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
+                        initial={{opacity: 0, y: -20}}
+                        animate={{opacity: 1, y: 0}}
+                        exit={{opacity: 0, y: -20}}
                         transition={{duration: 0.4, delay: 0.3}}
                     >
                         <p>Miłego dnia!</p>
