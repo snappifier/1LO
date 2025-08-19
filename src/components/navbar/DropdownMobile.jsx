@@ -1,6 +1,5 @@
 import {AnimatePresence, motion} from "motion/react"
 import {useState, useEffect} from "react";
-import logo from "../../assets/logo.png";
 import {AccordionSection} from "./AccordionSection.jsx";
 import {Link} from "react-router-dom";
 
@@ -191,16 +190,16 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                         </motion.div>
                     </motion.nav>
 
-                    <motion.div
-                        key="greeting"
-                        className="relative pb-10 text-3xl font-[meow_script] text-white mt-15"
-                        initial={{opacity: 0, y: -20}}
-                        animate={{opacity: 1, y: 0}}
-                        exit={{opacity: 0, y: -20}}
-                        transition={{duration: 0.4, delay: 0.3}}
-                    >
-                        <p>Miłego dnia!</p>
-                    </motion.div>
+                    {/*<motion.div*/}
+                    {/*    key="greeting"*/}
+                    {/*    className="relative pb-10 text-3xl font-[meow_script] text-white mt-15"*/}
+                    {/*    initial={{opacity: 0, y: -20}}*/}
+                    {/*    animate={{opacity: 1, y: 0}}*/}
+                    {/*    exit={{opacity: 0, y: -20}}*/}
+                    {/*    transition={{duration: 0.4, delay: 0.3}}*/}
+                    {/*>*/}
+                    {/*    <p>Miłego dnia!</p>*/}
+                    {/*</motion.div>*/}
                 </motion.div>
             }
         </AnimatePresence>
