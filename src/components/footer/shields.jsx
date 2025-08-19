@@ -51,6 +51,7 @@ export default function Shields() {
                             stiffness: 300,
                             damping: 20
                         }}
+                        whileHover={{ scale: 1.25 }}
                         className="w-[calc(100vw/7-1rem)] lg:h-max max-w-[80px] lg:max-w-[120px] h-auto object-contain"
                     />
                 ))}

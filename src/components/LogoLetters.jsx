@@ -1,12 +1,12 @@
 import {motion} from "motion/react";
 import logo from "../assets/logo.png";
 
-export const LogoLetters = () => {
+export const LogoLetters = ({scrolled}) => {
     return (<div
-        className={`flex items-center font-[Montserrat] leading-none drop-shadow-sm text-white gap-2 h-30`}>
+        className={`flex items-center font-[Montserrat] leading-none drop-shadow-sm text-white gap-2`}>
         <motion.img
             src={logo}
-            className="drop-shadow-md m-3 h-20 md:h-25"
+            className={`drop-shadow-md m-3 h-20 ${scrolled ? "md:h-20" : "md:h-25"}`}
             whileHover={{scale: 1.1}}
             whileTap={{scale: 1}}
         />
