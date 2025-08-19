@@ -21,8 +21,8 @@ export default function Menu(){
                 </div>
 
             </div>
-            <div className="flex mt-5">
-                <p className="text-sm text-wrap">To prestiżowe liceum o bogatej tradycji, funkcjonujące od 1916 roku w zabytkowym gmachu dawnej Akademii Zamojskiej, założonej pierwotnie w 1594 r. przez Hetmana Jana Zamoyskiego.</p>
+            <div className="flex mt-5 w-5/6">
+                <p className="text-sm w-full text-wrap">To prestiżowe liceum o bogatej tradycji, funkcjonujące od 1916 roku w zabytkowym gmachu dawnej Akademii Zamojskiej, założonej pierwotnie w 1594 r. przez Hetmana Jana Zamoyskiego.</p>
             </div>
             <div className="w-max h-8 flex gap-2 mt-5">
                 <img alt="Facebook Logo" src={facebookLogo} />
