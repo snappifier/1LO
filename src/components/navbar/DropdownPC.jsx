@@ -4,16 +4,13 @@ import { AccordionSection } from "./AccordionSection.jsx";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 
-export const DropdownPC = ({ compact = false }) => {
-    const [openMenu, setOpenMenu] = useState(null); // 'szkola' | 'uczen' | null
+export const DropdownPC = () => {
+    const [openMenu, setOpenMenu] = useState(null);
     const [activeNested, setActiveNested] = useState(null);
     const closeTimeoutRef = useRef(null);
-
-    // ms opóźnienia przy zamykaniu (dostosuj wg preferencji)
     const closeDelay = 250;
 
     useEffect(() => {
-        // gdy dropdown zamknięty, resetujemy otwarte sekcje
         if (!openMenu) setActiveNested(null);
     }, [openMenu]);
 
@@ -27,9 +24,6 @@ export const DropdownPC = ({ compact = false }) => {
         setActiveNested((prev) => (prev === value ? null : value));
     };
 
-    // -------------------------
-    // Sekcje (kopiowane z mobile)
-    // -------------------------
     const szkolaSections = [
         {
             title: "Informacje ogólne",
@@ -100,7 +94,6 @@ export const DropdownPC = ({ compact = false }) => {
         { title: "Kontakt", key: "kontakt", path: "/kontakt" },
     ];
 
-    // wejście do wrappera: anuluj timeout i otwórz
     const handleEnter = (key) => {
         if (closeTimeoutRef.current) {
             clearTimeout(closeTimeoutRef.current);
@@ -109,7 +102,6 @@ export const DropdownPC = ({ compact = false }) => {
         setOpenMenu(key);
     };
 
-    // opuszczenie wrappera: ustaw timeout zamknięcia
     const handleLeave = () => {
         if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
         closeTimeoutRef.current = setTimeout(() => {
@@ -119,21 +111,12 @@ export const DropdownPC = ({ compact = false }) => {
     };
 
     return (
-        <nav className="flex flex-col justify-center items-end gap-2 text-white font-[Montserrat] z-[70] pr-2 relative">
-            {/* jeśli compact === false (domyślnie) pokaż kontakt + linię,
-          jeśli compact === true (np. w niebieskim navie) — ukryj je */}
-            {!compact && (
-                <>
-                    <div className="flex flex-col items-end text-xs py-1">
-                        <p>+48 84 639 28 01</p>
-                        <p>sekretariat@1lo.zamosc.pl</p>
-                    </div>
+        <nav className="text-white font-[Montserrat] z-[70]">
+            {/* tło – sięga od miejsca startu aż po prawą krawędź */}
+            <div className="absolute top-1/4 right-0 w-165 h-20 bg-[#3077BA] rounded-l-3xl" />
 
-                    <div className="w-full h-[1px] bg-white" />
-                </>
-            )}
-
-            <div className="text-lg flex justify-between items-center gap-12 relative">
+            {/* zawartość */}
+            <div className="relative flex justify-end items-center gap-8 px-6 py-3 text-lg">
                 {menuItems.map((item) => {
                     const isDropdown = !!item.sections;
                     const isOpen = openMenu === item.key;
@@ -141,8 +124,7 @@ export const DropdownPC = ({ compact = false }) => {
                     return (
                         <div
                             key={item.key}
-                            // powiększona strefa hover bez przesuwania layoutu (-mx kompensuje px)
-                            className="relative -mx-3 px-3 py-2 group"
+                            className="relative group"
                             onMouseEnter={isDropdown ? () => handleEnter(item.key) : undefined}
                             onMouseLeave={isDropdown ? handleLeave : undefined}
                         >
@@ -153,19 +135,13 @@ export const DropdownPC = ({ compact = false }) => {
                                     className="flex items-center gap-1 hover:underline focus:outline-none"
                                 >
                                     <span>{item.title}</span>
-
-                                    {/* strzałka bliżej napisu (gap-1). obraca się na hover i gdy otwarte */}
                                     <ChevronDown
                                         size={16}
-                                        className={
-                                            "transition-transform duration-200 " +
-                                            (isOpen ? "rotate-180" : "group-hover:rotate-90")
-                                        }
+                                        className={`transition-transform duration-200 ${isOpen ? "rotate-180" : "group-hover:rotate-90"}`}
                                         aria-hidden
                                     />
                                 </button>
                             ) : (
-                                // Rekrutacja / Kontakt jako zwykłe linki
                                 <Link to={item.path} className="hover:underline">
                                     {item.title}
                                 </Link>
@@ -179,7 +155,6 @@ export const DropdownPC = ({ compact = false }) => {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -8 }}
                                         transition={{ duration: 0.18 }}
-                                        // top-full zapewnia że dropdown zaczyna się tuż pod wrapperem; wysoki z-index by nie był pod niczym
                                         className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-[#3077BA] rounded-xl shadow-lg p-3 text-sm w-80 z-[120]"
                                     >
                                         <div className="flex flex-col">
@@ -205,4 +180,5 @@ export const DropdownPC = ({ compact = false }) => {
             </div>
         </nav>
     );
+
 };
