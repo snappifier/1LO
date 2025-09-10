@@ -11,7 +11,7 @@ export default function Home(){
         <div className="w-full h-max flex flex-col items-center">
             <Banner />
             <Rekrutacja />
-            <Aktualnosci />
+            <Aktualnosci2 />
         </div>
 
     </>

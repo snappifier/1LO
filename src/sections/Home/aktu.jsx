@@ -31,7 +31,7 @@ export default function Aktualnosci() {
                     {imageList.map((image, index) => (
                         <div
                             key={index}
-                            className={`flex flex-col gap-2 w-full h-full hover:bg-zinc-400 ${gridList[index] || ""} bg-zinc-300 p-3 rounded-md`}
+                            className={`flex flex-col gap-2 w-full h-full hover:bg-zinc-400 transition-colors ${gridList[index] || ""} bg-zinc-300 p-3 rounded-md`}
                         >
                             <div className="h-3/4 w-full">
                                 <img
