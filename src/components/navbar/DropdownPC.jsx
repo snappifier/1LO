@@ -112,11 +112,11 @@ export const DropdownPC = () => {
 
     return (
         <nav className="text-white font-[Montserrat] z-[70]">
-            {/* tło – sięga od miejsca startu aż po prawą krawędź */}
-            <div className="absolute top-1/4 right-0 w-165 h-20 bg-[#3077BA] rounded-l-3xl" />
+            {/*/!* tło – sięga od miejsca startu aż po prawą krawędź *!/*/}
+            {/*<div className="absolute top-1/4 right-0 w-165 h-20 bg-[#3077BA] rounded-l-3xl" />*/}
 
             {/* zawartość */}
-            <div className="relative flex justify-end items-center gap-8 px-6 py-3 text-lg">
+            <div className="relative flex justify-end items-center gap-8 px-6 py-3 text-lg w-full z-[100]">
                 {menuItems.map((item) => {
                     const isDropdown = !!item.sections;
                     const isOpen = openMenu === item.key;

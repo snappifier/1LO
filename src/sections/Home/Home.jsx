@@ -3,7 +3,8 @@ import Footer from "../../components/Footer.jsx";
 import Banner from "./banner.jsx";
 import baner1LO from "../../assets/Home/zdj1.jpg";
 import Rekrutacja from "./rekrutacja.jsx";
-import Aktualnosci from "./aktu.jsx";
+import {Aktualnosci2} from "./aktualnosci2.jsx";
+import Aktualnosci from "./aktu.jsx"
 
 export default function Home(){
     return <>
