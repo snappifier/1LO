@@ -28,6 +28,7 @@ export const DropdownPC = () => {
         {
             title: "Informacje ogólne",
             links: [
+                { name: "Aktualności", path: "/aktualnosci" },
                 { name: "O szkole", path: "/o-szkole" },
                 { name: "Historia szkoły", path: "/historia-szkoly" },
                 { name: "Patron", path: "/patron" },

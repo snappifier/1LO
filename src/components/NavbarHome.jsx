@@ -4,9 +4,9 @@ import { BannerBluePC } from "./navbar/BannerBluePC";
 
 import { useState, useEffect } from "react";
 
-export const Navbar = () => {
+export const NavbarHome = () => {
     const [navOpen, setNavOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(true);
+    const [scrolled, setScrolled] = useState(false);
 
     // Overflow settings (blokowanie przewijania przy otwartym mobile menu)
     useEffect(() => {
@@ -29,10 +29,28 @@ export const Navbar = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    return (<>
-        <header className="lg:hidden">
-            <BannerBlue setNavOpen={setNavOpen} navOpen={navOpen} />
-        </header>
-        <BannerBluePC navOpen={navOpen} setNavOpen={setNavOpen} scrolled={scrolled} />
-    </>)
-}
+    // Zmiana bannera przy scrollu
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 150);
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    return (
+        <>
+            <header className="lg:hidden">
+                <BannerBlue setNavOpen={setNavOpen} navOpen={navOpen} />
+            </header>
+
+
+            {scrolled ? (
+                <BannerBluePC navOpen={navOpen} setNavOpen={setNavOpen} scrolled={scrolled} />
+            ) : (
+                <BannerTransparent />
+            )}
+        </>
+    );
+};

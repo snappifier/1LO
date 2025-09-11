@@ -8,7 +8,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Suspense fallback={<Animation/>}>
+    <Suspense fallback={<Loader/>}>
       <AppRoutes/>
     </Suspense>
     </BrowserRouter>

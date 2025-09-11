@@ -11,6 +11,7 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
         {
             title: "Informacje ogólne",
             links: [
+                { name: "Aktualności", path: "/aktualnosci" },
                 { name: "O szkole", path: "/o-szkole" },
                 { name: "Historia szkoły", path: "/historia-szkoly" },
                 { name: "Patron", path: "/patron" },
@@ -103,7 +104,7 @@ export const DropdownMobile = ({isOpen, setNavOpen}) => {
                     key="dropdown"
                     className="left-0 w-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 h-screen"
                     initial={{opacity: 0, height: 0}}
-                    animate={{opacity: 1, height: "85vh"}}
+                    animate={{opacity: 1, height: "100vh"}}
                     exit={{opacity: 0, height: 0, overflow: "hidden"}}
                     transition={{duration: 0.5}}
                 >

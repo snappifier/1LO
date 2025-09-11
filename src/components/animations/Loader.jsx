@@ -3,10 +3,6 @@ import {motion} from "motion/react";
 export const Loader = () => {
     return (<>
         <motion.div className="fixed w-full h-full z-100 flex justify-center items-center bg-zinc-900"
-        initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    transition={{duration: 0.4}}
-        exit={{opacity: 0}}
         >
 
             {[1,2,3].map((i) => (

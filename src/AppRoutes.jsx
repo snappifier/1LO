@@ -1,15 +1,17 @@
 import {Routes, Route} from "react-router";
 import Home from "./sections/Home/Home.jsx";
 import Footer from "./components/Footer.jsx";
+import {NavbarHome} from "./components/NavbarHome.jsx";
 import {Navbar} from "./components/Navbar.jsx";
 import {Loader} from "./components/animations/Loader.jsx";
 import {Maintenance} from "./components/Maintenance.jsx";
+import {Aktualnosci} from "./sections/Informacje/Aktualnosci.jsx";
 
 export const AppRoutes = () => {
     return (
         <Routes >
-            <Route path="/" element={<><Navbar/><Home /><Footer/></>} />
-            <Route path="/aktualnosci" element={<Maintenance/>} />
+            <Route path="/" element={<><NavbarHome/><Home /><Footer/></>} />
+            <Route path="/aktualnosci" element={<><Navbar/><Aktualnosci /><Footer/></>} />
             <Route path="/rekrutacja" element={<Maintenance/>} />
             <Route path="/kontakt" element={<Maintenance/>} />
             <Route path="/certyfikaty" element={<Maintenance/>} />

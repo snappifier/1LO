@@ -1,4 +1,4 @@
-import {Navbar} from '../../components/Navbar.jsx';
+import {NavbarHome} from '../../components/NavbarHome.jsx';
 import Footer from "../../components/Footer.jsx";
 import Banner from "./banner.jsx";
 import baner1LO from "../../assets/Home/zdj1.jpg";
