@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 export default function Rekrutacja() {
     return <div className="font-[montserrat] flex flex-col w-full h-max gap-5 px-[12vw] mt-30 md:gap-10 bg-white">
         <div className="w-full flex gap-3 md:gap-10">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 text-[#3077BA]">
                 <p className="text-xl font-semibold w-max">REKRUTACJA 2025/2026</p>
                 <p className="text-md w-max">Dołącz do naszej szkoły już dziś!</p>
             </div>
-            <div className="flex mt-3 w-full h-0.5 rounded-md bg-black"></div>
+            <div className="flex mt-3 w-full h-0.5 rounded-md bg-[#3077BA]"></div>
         </div>
         <div className="flex flex-col gap-10 lg:flex-row md:gap-15 lg:justify-center">
             <img className="w-full md:w-3/4 lg:w-1/2"  src={rekrutacjaBaner} />
