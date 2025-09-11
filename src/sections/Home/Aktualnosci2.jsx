@@ -15,22 +15,22 @@ export const Aktualnosci2 = () => {
         <>
             <div className="font-[montserrat] flex flex-col w-full h-max gap-5 mt-20 md:gap-5">
                 <div className="w-full flex gap-5 md:gap-10 px-[12vw] pb-5">
-                    <div className="flex mt-3 w-full h-0.5 rounded-md bg-[#3077BA]"></div>
-                    <div className="flex flex-col gap-1 items-end text-[#3077BA]">
+                    <div className="flex mt-3 w-full h-0.5 rounded-md bg-black"></div>
+                    <div className="flex flex-col gap-1 items-end">
                         <p className="text-xl font-semibold w-max">AKTUALNOŚCI</p>
                         <p className="text-md w-max">Bądź na bieżąco!</p>
                     </div>
                 </div>
 
-                <div className="w-full flex flex-wrap gap-10 items-start justify-center px-[12vw] pt-15 pb-15 bg-[#3077BA]">
+                <div className="w-full flex flex-wrap gap-10 items-start justify-center px-[12vw] pt-10 pb-15 ">
                     {newsSection.map((news, index) => (
-                        <motion.div className="h-130 flex flex-col gap-2 md:w-2/7 rounded-lg shadow-xl/20 overflow-hidden bg-white"
+                        <motion.div className="h-130 flex flex-col gap-2 md:w-2/7 hover:cursor-pointer rounded-lg shadow-xl/20 overflow-hidden bg-white"
                         whileHover={{y: -10}}
                         >
                             <div className="w-full h-40 overflow-hidden">
                                 <img className="object-cover" src={news.image} alt="news" />
                             </div>
-                            <div className="w-full flex justify-center items-center pt-2">
+                            <div className="w-full flex justify-center items-center pt-4">
                                 <p className="text-sm w-5/6 font-[Montserrat] text-black">{news.post} | {news.author}</p>
                             </div>
                             <div className="w-full flex justify-center items-center">
