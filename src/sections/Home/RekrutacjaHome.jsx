@@ -1,7 +1,7 @@
 import rekrutacjaBaner from "../../assets/Home/baner-rekrutacja.jpg";
 import {Link} from "react-router-dom";
 
-export default function Rekrutacja() {
+export default function RekrutacjaHome() {
     return <div className="font-[montserrat] flex flex-col w-full h-max gap-5 px-[12vw] mt-30 md:gap-10 bg-white">
         <div className="w-full flex gap-3 md:gap-10">
             <div className="flex flex-col gap-1">
@@ -21,7 +21,7 @@ export default function Rekrutacja() {
                     Wystarczy, że wypełnisz podanie online i załączysz wymagane dokumenty za pośrednictwem systemu rekrutacyjnego PCSS. Cały proces jest prosty i intuicyjny, a w razie pytań służymy pomocą.
                 </p>
                 <p className="font-[montserrat] font-medium md:text-xl lg:text-xl text-wrap">Nie czekaj — dołącz do nas i zacznij nowy rozdział swojej edukacyjnej przygody!</p>
-                <Link to={"/"} ><button className="mt-5 px-10 py-4 w-max h-max bg-[#3077BA] font-medium text-white cursor-pointer hover:bg-[#4034BA]">Dowiedz sie wiecej</button></Link>
+                <Link to={"/"} ><button className="mt-5 px-10 py-4 w-max h-max bg-[#3077BA] font-medium text-white cursor-pointer hover:bg-[#4034BA] rounded-md shadow-md/20">Dowiedz sie wiecej</button></Link>
             </div>
         </div>
     </div>

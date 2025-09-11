@@ -36,6 +36,6 @@
 ### Działalność i rozwój
 - Erasmus+
 - Wymiana z Freiburgiem
-### Rekrutacja
+### RekrutacjaHome
 ### Vulcan
 ### Panel nauczyciela
