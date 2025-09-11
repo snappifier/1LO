@@ -116,7 +116,7 @@ export const DropdownPC = () => {
             {/*<div className="absolute top-1/4 right-0 w-165 h-20 bg-[#3077BA] rounded-l-3xl" />*/}
 
             {/* zawartość */}
-            <div className="relative flex justify-end items-center gap-8 px-6 py-3 text-lg w-full z-[100]">
+            <div className="relative flex justify-end items-center gap-15 px-6 py-3 text-lg w-full z-[100] ">
                 {menuItems.map((item) => {
                     const isDropdown = !!item.sections;
                     const isOpen = openMenu === item.key;
