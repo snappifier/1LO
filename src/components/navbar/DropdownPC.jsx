@@ -90,7 +90,7 @@ export const DropdownPC = () => {
     const menuItems = [
         { title: "Szkoła", key: "szkola", sections: szkolaSections },
         { title: "Uczeń", key: "uczen", sections: uczenSections },
-        { title: "RekrutacjaHome", key: "rekrutacja", path: "/rekrutacja" },
+        { title: "Rekrutacja", key: "rekrutacja", path: "/rekrutacja" },
         { title: "Kontakt", key: "kontakt", path: "/kontakt" },
     ];
 
