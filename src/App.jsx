@@ -2,16 +2,19 @@ import {BrowserRouter} from "react-router";
 import {AppRoutes} from "./AppRoutes";
 import {Suspense, lazy} from "react";
 import {Loader} from "./components/animations/Loader.jsx";
+import { Analytics } from "@vercel/analytics/react"
+
 
 function App() {
 
-  return (
+  return (<>
     <BrowserRouter>
       <Suspense fallback={<Loader/>}>
         <AppRoutes/>
       </Suspense>
     </BrowserRouter>
-  )
+    <Analytics />
+  </>)
 }
 
 export default App
