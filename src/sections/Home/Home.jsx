@@ -1,6 +1,6 @@
 import Banner from "./banner.jsx";
 import RekrutacjaHome from "./RekrutacjaHome.jsx";
-import {AktualnosciHome2} from "./AktualnosciHome2.jsx";
+import {AktualnosciHome} from "./AktualnosciHome.jsx";
 import Shields from "../../components/footer/shields.jsx"
 
 export default function Home(){
@@ -16,7 +16,7 @@ export default function Home(){
                     <RekrutacjaHome />
                 </div>
                 <div className="w-full bg-transparent">
-                    <AktualnosciHome2 />
+                    <AktualnosciHome />
                 </div>
                 <div className="w-full bg-transparent">
                     <Shields />
