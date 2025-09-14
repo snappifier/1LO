@@ -20,7 +20,7 @@ export const AktualnosciHome = () => {
 
     return (
         <div className="bg-white py-4 w-full mt-15">
-            <div className="w-full flex gap-5 md:gap-10 md:px-[12vw] ">
+            <div className="w-full flex gap-5 md:gap-10 md:px-[12vw] px-[5vw] ">
                 <div className="flex mt-3 w-full h-0.5 rounded-md bg-black"></div>
                 <div className="flex flex-col gap-1 items-end">
                     <p className="text-xl font-semibold w-max font-[montserrat]">AKTUALNOŚCI</p>
