@@ -15,7 +15,7 @@ export const AppRoutes = () => {
         <Navbar/>
         <Routes >
             <Route path="/aktualnosci" element={<Aktualnosci />} />
-            <Route path="/post" element={<Post />} />
+            <Route path="/post/:id" element={<Post />} />
             <Route path="/rekrutacja" element={<Maintenance/>} />
             <Route path="/kontakt" element={<Maintenance/>} />
             <Route path="/certyfikaty" element={<Maintenance/>} />
