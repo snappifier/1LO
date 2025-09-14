@@ -27,7 +27,7 @@ export const AktualnosciHome = () => {
                     <p className="text-md w-max font-[montserrat]">Bądź na bieżąco!</p>
                 </div>
             </div>
-            <div className="md:px-0 px-[10vw] max-w-6xl mx-auto">
+            <div className="md:px-0 md:py-7 px-[10vw] max-w-6xl mx-auto">
                 <div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 max-lg:max-w-3xl max-md:max-w-md mx-auto">
                     {posts.map((news) => (
