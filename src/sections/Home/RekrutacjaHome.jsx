@@ -11,8 +11,8 @@ export default function RekrutacjaHome() {
             <div className="flex mt-3 w-full h-0.5 rounded-md bg-black"></div>
         </div>
         <div className="flex flex-col gap-10 lg:flex-row md:gap-15 lg:justify-center">
-            <img className="w-full shadow-lg/20 md:w-3/4 lg:w-1/2"  src={rekrutacjaBaner} />
-            <div className="w-full md:w-4/5 h-max flex flex-col gap-5 lg:gap-10 justify-center pb-10">
+            <img className="h-full shadow-lg/20 md:w-3/4 lg:w-1/2"  src={rekrutacjaBaner} />
+            <div className="md:w-4/5 h-max flex flex-col gap-5 lg:gap-10 justify-center pb-10">
                 <p className="w-max font-[meow_script] hidden md:block md:text-5xl lg:text-6xl">Jestem w pierwszym</p>
                 <p className="font-[montserrat] font-medium w-full text-wrap md:text-xl lg:text-xl">Serdecznie zapraszamy wszystkich absolwentów szkół podstawowych do dołączenia do naszej wyjątkowej społeczności!</p>
                 <p className="font-[montserrat] font-regular w-full text-wrap md:text-xl lg:text-xl ">
