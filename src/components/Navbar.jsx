@@ -1,13 +1,10 @@
-import { BannerTransparent } from "./navbar/BannerTransparent";
 import { BannerBlue } from "./navbar/BannerBlue";
 import { BannerBluePC } from "./navbar/BannerBluePC";
-
 import { useState, useEffect } from "react";
 
 export const Navbar = () => {
     const [navOpen, setNavOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(true);
-
+    const scrolled = true;
     // Overflow settings (blokowanie przewijania przy otwartym mobile menu)
     useEffect(() => {
         if (navOpen) {
@@ -17,7 +14,6 @@ export const Navbar = () => {
         }
     }, [navOpen]);
 
-    // Jeśli okno >= 1024px, zamykamy mobile menu
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 1024) {

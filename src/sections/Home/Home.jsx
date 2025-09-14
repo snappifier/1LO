@@ -1,9 +1,5 @@
-import {NavbarHome} from '../../components/NavbarHome.jsx';
-import Footer from "../../components/Footer.jsx";
 import Banner from "./banner.jsx";
-import baner1LO from "../../assets/Home/zdj1.jpg";
 import RekrutacjaHome from "./RekrutacjaHome.jsx";
-import {AktualnosciHome} from "./AktualnosciHome.jsx";
 import {AktualnosciHome2} from "./AktualnosciHome2.jsx";
 
 export default function Home(){
