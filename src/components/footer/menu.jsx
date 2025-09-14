@@ -5,7 +5,7 @@ import facebookLogo from "../../assets/social/facebook.png";
 import instagramLogo from "../../assets/social/instagram.png";
 
 export default function Menu(){
-    return <div className="w-max h-max flex flex-col gap-15 mb-10 pl-10 mt-20 md:flex-row md:m-12 md:mx-8 md:mt-20 md:gap-28">
+    return <div className="w-max h-max flex flex-col gap-5 mb-10 pl-10 mt-20 md:flex-row md:m-12 md:mx-8 md:mt-20 md:gap-28">
         <div className="flex flex-col md:w-100 w-80 order-4 md:order-1">
             <div className="flex items-center">
                 <div className="flex items-center">
