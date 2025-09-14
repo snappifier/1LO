@@ -8,10 +8,13 @@ import {Maintenance} from "./components/Maintenance.jsx";
 import {Aktualnosci} from "./sections/Informacje/Aktualnosci.jsx";
 
 export const AppRoutes = () => {
-    return (
+    return (<>
+            <Routes>
+                <Route path="/" element={<><NavbarHome/><Home /><Footer/></>} />
+            </Routes>
+        <Navbar/>
         <Routes >
-            <Route path="/" element={<><NavbarHome/><Home /><Footer/></>} />
-            <Route path="/aktualnosci" element={<><Navbar/><Aktualnosci /><Footer/></>} />
+            <Route path="/aktualnosci" element={<Aktualnosci />} />
             <Route path="/rekrutacja" element={<Maintenance/>} />
             <Route path="/kontakt" element={<Maintenance/>} />
             <Route path="/certyfikaty" element={<Maintenance/>} />
@@ -44,5 +47,7 @@ export const AppRoutes = () => {
             <Route path="/nauczyciele" element={<Maintenance/>} />
             <Route path="/rada-rodzicow" element={<Maintenance/>} />
         </Routes>
+            <Footer/>
+        </>
     );
 }

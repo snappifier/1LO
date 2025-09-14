@@ -2,6 +2,7 @@ import aktu1 from "../../assets/aktu/aktu1.jpeg";
 import aktu2 from "../../assets/aktu/aktu2.jpg";
 import aktu3 from "../../assets/aktu/aktu3.jpg";
 import {motion} from "motion/react";
+import {Link} from "react-router-dom";
 
 export const AktualnosciHome2 = () => {
 
@@ -25,6 +26,7 @@ export const AktualnosciHome2 = () => {
                 <div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-lg:max-w-3xl max-md:max-w-md mx-auto">
                     {newsSection.map((news, index) => (
+                        <Link to={"/aktualnosci"}>
                     <motion.div
                         whileHover={{y: -10}}
 
@@ -42,6 +44,7 @@ export const AktualnosciHome2 = () => {
                                 lacus eu elit molestie, at gravida nibh pellentesque.</p>
                         </div>
                     </motion.div>
+                        </Link>
                         ))}
                 </div>
             </div>
