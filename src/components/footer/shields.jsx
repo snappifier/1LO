@@ -30,21 +30,21 @@ export default function Shields() {
     }, [shields_src.length]);
 
     return (
-        <div className="font-[montserrat] flex flex-col w-full py-6 mb-10 mt-5">
-            <div className="w-full flex gap-3 md:gap-10 mb-12 px-[12vw] ">
+        <div className="font-[montserrat] flex flex-col w-full py-6 mb-10 mt-5 bg-transparent z-10">
+            <div className="w-full flex gap-3 md:gap-10 mb-12 px-[12vw] bg-transparent">
                 <p className="text-xl font-semibold w-max">Osiągnięcia</p>
-                <div className="flex mt-3 w-full h-0.5 rounded-md bg-black"></div>
+                <div className="flex mt-3 w-full h-0.5 rounded-md bg-black/30"></div>
             </div>
-            <div className="flex flex-nowrap justify-between lg:justify-center lg:gap-15 items-center w-full px-4">
+            <div className="flex flex-nowrap justify-between lg:justify-center lg:gap-15 items-center w-full px-4 bg-transparent">
                 {shields_src.map((src, index) => (
                     <motion.img
                         key={index}
                         src={src}
-                        alt={`Tarcza ${index}`}
+                        alt={`Tarcza ${2019 + index}`}
                         initial={{ scale: 1, opacity: 0.6 }}
                         animate={{
                             scale: index === currentIndex ? 1.25 : 1,
-                            opacity: index === currentIndex ? 1 : 0.9
+                            opacity: index === currentIndex ? 1 : 0.7
                         }}
                         transition={{
                             type: "spring",
@@ -52,7 +52,7 @@ export default function Shields() {
                             damping: 20
                         }}
                         whileHover={{ scale: 1.25 }}
-                        className="w-[calc(100vw/7-1rem)] drop-shadow-md/20 lg:h-max max-w-[80px] lg:max-w-[120px] h-auto object-contain"
+                        className="w-[calc(100vw/7-1rem)] drop-shadow-lg lg:h-max max-w-[80px] lg:max-w-[120px] h-auto object-contain bg-transparent"
                     />
                 ))}
             </div>

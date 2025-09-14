@@ -3,6 +3,8 @@ import aktu2 from "../../assets/aktu/aktu2.jpg";
 import aktu3 from "../../assets/aktu/aktu3.jpg";
 import {motion} from "motion/react";
 import {Link} from "react-router-dom";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {get} from "../../features/fetcher.jsx";
 
 export const AktualnosciHome = () => {
 
@@ -11,6 +13,18 @@ export const AktualnosciHome = () => {
         {image: aktu2, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Michał Szyszło"},
         {image: aktu3, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "ktoś taminny"},
     ]
+
+    const usePosts = () => {
+        const { data } = useSuspenseQuery({
+            queryKey: ["posts"],
+            queryFn: () => get("posts"),
+        });
+        return data?.data || [];
+    };
+
+    const posts = usePosts();
+    console.log(posts[0]);
+
 
     return (
         <>

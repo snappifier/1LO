@@ -16,7 +16,7 @@ export default function Banner() {
             </div>
 
             {/* Niebieski prostokąt - nakładka na dół zdjęcia */}
-            <div className="absolute -bottom-[calc(-30vh+40px)] md:-bottom-[calc(-20vh+40px)] left-1/2 translate-x-[-50%] w-3/4 h-[80px] bg-[#3077BA] z-10"></div>
+            <div className="absolute -top-[calc(-70vh+40px)] md:-top-[calc(-80vh+40px)] left-1/2 translate-x-[-50%] w-3/4 h-[80px] bg-[#3077BA] z-10"></div>
         </>
     );
 }

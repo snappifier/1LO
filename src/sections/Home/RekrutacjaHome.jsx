@@ -2,7 +2,7 @@ import rekrutacjaBaner from "../../assets/Home/baner-rekrutacja.jpg";
 import {Link} from "react-router-dom";
 
 export default function RekrutacjaHome() {
-    return <div className="font-[montserrat] flex flex-col w-full h-max gap-5 px-[12vw] mt-30 md:gap-10 bg-white">
+    return <div className="font-[montserrat] flex flex-col w-full h-max gap-5 px-[12vw] mt-30 md:gap-10 bg-transparent">
         <div className="w-full flex gap-3 md:gap-10">
             <div className="flex flex-col gap-1">
                 <p className="text-xl font-semibold w-max">REKRUTACJA 2025/2026</p>
