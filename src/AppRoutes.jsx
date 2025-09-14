@@ -5,6 +5,7 @@ import {NavbarHome} from "./components/NavbarHome.jsx";
 import {Navbar} from "./components/Navbar.jsx";
 import {Maintenance} from "./components/Maintenance.jsx";
 import {Aktualnosci} from "./sections/Informacje/Aktualnosci.jsx";
+import {Post} from "./components/Post.jsx";
 
 export const AppRoutes = () => {
     return (<>
@@ -14,6 +15,7 @@ export const AppRoutes = () => {
         <Navbar/>
         <Routes >
             <Route path="/aktualnosci" element={<Aktualnosci />} />
+            <Route path="/post" element={<Post />} />
             <Route path="/rekrutacja" element={<Maintenance/>} />
             <Route path="/kontakt" element={<Maintenance/>} />
             <Route path="/certyfikaty" element={<Maintenance/>} />

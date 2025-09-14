@@ -5,7 +5,7 @@ import {motion} from "motion/react";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {get, getStrapiMedia} from "../../features/fetcher.jsx";
 
-export const AktualnosciHome2 = () => {
+export const AktualnosciHome = () => {
 
     const newsSection = [
         {image: aktu1, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Krystian Matwiej"},
