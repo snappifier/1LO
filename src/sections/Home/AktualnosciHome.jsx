@@ -2,6 +2,7 @@ import {motion} from "motion/react";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {get, getStrapiMedia} from "../../features/fetcher.jsx";
 import {useNavigate} from "react-router";
+import Zamoyski_jpg from "../../assets/Home/zamoyski.jpg";
 
 export const AktualnosciHome = () => {
     const navigate = useNavigate();
@@ -19,37 +20,40 @@ export const AktualnosciHome = () => {
 
 
     return (
-        <div className="bg-white py-4 w-full mt-15">
-            <div className="w-full flex gap-5 md:gap-10 md:px-[12vw] px-[10vw] ">
-                <div className="flex mt-3 w-full h-0.5 rounded-md bg-black"></div>
-                <div className="flex flex-col gap-1 items-end">
-                    <p className="text-xl font-semibold w-max font-[montserrat]">AKTUALNOŚCI</p>
-                    <p className="text-md w-max font-[montserrat]">Bądź na bieżąco!</p>
+        <div className="font-[poppins] flex w-full h-max gap-5 px-[15vw] mt-30 md:gap-20">
+            <div className="flex flex-col items-end w-full h-max">
+                <div className="flex flex-col w-max items-end">
+                    <p className="text-xl font-medium">AKTUALNOŚCI</p>
+                    <p className="text-lg font-light">BĄDŹ NA BIEŻĄCO</p>
                 </div>
-            </div>
-            <div className="md:px-0 md:py-7 px-[10vw] max-w-6xl mx-auto">
-                <div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 max-lg:max-w-3xl max-md:max-w-md mx-auto">
-                    {posts.map((news) => (
-                        <motion.div
-                            whileHover={{y: -10}}
-                            className="bg-white cursor-pointer rounded-md overflow-hidden [box-shadow:0_2px_10px_-3px_rgba(14,14,14,0.3)] relative top-0">
-                            <div className="bg-gray-50 aspect-[23/15]">
-                                <img
-                                    src={getStrapiMedia(news["ZdjecieProfile"].url)}
-                                    alt=""
-                                    className="w-full h-full object-cover object-top"/>
-                            </div>
-                            <div className="p-6  font-[poppins]">
+                <div className="w-full flex h-max items-center gap-2">
+                    <div className="md:px-0 md:py-5 px-[10vw] max-w-7xl mx-auto">
+                        <div
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 max-lg:max-w-3xl max-md:max-w-md mx-auto">
+                            {posts.map((news) => (
+                                <motion.div
+                                    whileHover={{y: -10}}
+                                    className="bg-white cursor-pointer rounded-md overflow-hidden [box-shadow:0_2px_10px_-3px_rgba(14,14,14,0.3)] relative top-0">
+                                    <div className="bg-gray-50 aspect-[23/15]">
+                                        <img
+                                            src={getStrapiMedia(news["ZdjecieProfile"].url)}
+                                            alt=""
+                                            className="w-full h-full object-cover object-top"/>
+                                    </div>
+                                    <div className="p-6  font-[poppins]">
                                 <span
                                     className="text-sm block text-slate-600 mb-2">{new Date(news["Data"]).toLocaleDateString('pl-PL')} | {news["Autor"]}</span>
-                                <h2 className="text-xl font-semibold text-slate-900">{news["Tytul"]}</h2>
-                                <hr className="my-4 border-black"/>
-                                <p className="text-slate-600 text-[15px] leading-relaxed">{news["Opis"].substring(0, 215) + "..."}</p>
-                            </div>
-                        </motion.div>
-                    ))}
+                                        <h2 className="text-xl font-semibold text-slate-900">{news["Tytul"]}</h2>
+                                        <hr className="my-4 border-black"/>
+                                        <p className="text-slate-600 text-[15px] leading-relaxed">{news["Opis"].substring(0, 215) + "..."}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>)
+            <div className="w-5 h-160 bg-[#3077BA] rounded-2xl"></div>
+        </div>
+    )
 }

@@ -30,10 +30,11 @@ export default function Shields() {
     }, [shields_src.length]);
 
     return (
-        <div className="bg-white font-[montserrat] flex flex-col w-full py-6 mb-10 mt-5 z-10">
+        <div className="bg-white font-[montserrat] flex flex-col w-full py-6 mb-10 mt-20 z-10">
             <div className="w-full flex gap-3 md:gap-10 mb-12 px-[12vw] bg-transparent">
-                <p className="text-xl font-semibold w-max">Osiągnięcia</p>
-                <div className="flex mt-3 w-full h-0.5 rounded-md bg-black"></div>
+                <div className="flex mt-3 w-full h-1 rounded-md bg-[#3077BA]"></div>
+                <p className="text-2xl font-semibold w-max">Osiągnięcia</p>
+                <div className="flex mt-3 w-full h-1 rounded-md bg-[#3077BA]"></div>
             </div>
             <div className="flex flex-nowrap justify-between lg:justify-center lg:gap-15 items-center w-full px-4 bg-transparent">
                 {shields_src.map((src, index) => (
