@@ -40,11 +40,11 @@ export const AktualnosciHome = () => {
                                     alt=""
                                     className="w-full h-full object-cover object-top"/>
                             </div>
-                            <div className="p-6">
+                            <div className="p-6  font-[poppins]">
                                 <span
                                     className="text-sm block text-slate-600 mb-2">{new Date(news["Data"]).toLocaleDateString('pl-PL')} | {news["Autor"]}</span>
                                 <h2 className="text-xl font-semibold text-slate-900">{news["Tytul"]}</h2>
-                                <hr className="my-4 border-gray-500"/>
+                                <hr className="my-4 border-black"/>
                                 <p className="text-slate-600 text-[15px] leading-relaxed">{news["Opis"].substring(0, 215) + "..."}</p>
                             </div>
                         </motion.div>

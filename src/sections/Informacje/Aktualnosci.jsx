@@ -45,7 +45,7 @@ export const Aktualnosci = () => {
                             <div className="p-6">
                                 <span className="text-sm block text-slate-600 mb-2">{news.post} | {news.author}</span>
                                 <h2 className="text-xl font-semibold text-slate-900">{news.title}</h2>
-                                <hr className="my-4 border-slate-300"/>
+                                <hr className="my-4 border-black"/>
                                 <p className="text-slate-600 text-[15px] leading-relaxed">Lorem ipsum dolor sit amet, consectetur
                                     adipiscing elit. Vestibulum vel odio ut sapien elementum cursus. Praesent blandit
                                     lacus eu elit molestie, at gravida nibh pellentesque.</p>
