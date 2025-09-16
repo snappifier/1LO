@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 export default function Wstep() {
     return <div className="font-[poppins] flex flex-col w-full h-max gap-5 md:px-[15vw] px-[10vw] mt-15 md:mt-30 md:gap-15">
-        <div className="flex w-full gap-2 items-center">
+        <div className="flex w-full md:gap-4 gap-2 items-center">
             <div className="w-3 h-10 bg-[#3077BA] rounded-2xl drop-shadow-md/20"></div>
             <p className="text-xl font-medium">KRÓTKO O SZKOLE </p>
         </div>
