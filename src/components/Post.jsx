@@ -1,22 +1,83 @@
-import aktu3 from "../assets/aktu/aktu3.jpg";
+import { getStrapiMedia } from "../features/fetcher.jsx";
+import Zamoyski_jpg from "../assets/Home/zamoyski.jpg";
+import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useRef } from "react";
 
-const Post = () => {
-    return (<>
-        <div className="relative pt-40 px-[45vh] w-full h-max flex flex-col items-start gap-10 pb-20">
-            <div className="w-full flex flex-col items-center justify-between ">
-            <p className="font-[poppins] font-semibold text-5xl text-black">MATURY ROK SZKOLNY 2025</p>
-            <p className="font-[montserrat] font-">Krystian Matwiej | 21.08.2025</p>
-            </div>
-            <img src={aktu3} alt="post1" className="w-full h-auto shadow-md" />
-            <p className="font-[poppins] text-justify text-balance">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque lorem non sem sodales convallis. Cras convallis quis ipsum et lobortis. Sed lacinia, urna non lobortis vehicula, dolor nisl rutrum libero, et facilisis mauris enim sit amet justo. Integer viverra quis ipsum tincidunt fermentum. Ut at tristique metus, vel fringilla dui. Donec et felis diam. Integer efficitur, arcu a vestibulum accumsan, sem ante rhoncus erat, a mollis risus odio in ligula. Aliquam non accumsan leo. Nulla sodales ex sem, vel pellentesque turpis vehicula eget. Aenean vel ligula sollicitudin, mattis ex non, bibendum odio.
+export function Post({ state: post, onClose }) {
+    const scrollPosition = useRef(0);
+    const stopPropagation = (e) => {
+        e.stopPropagation();
+    };
 
-                Cras at dui a nisl rhoncus varius eu ut elit. Donec blandit tempor nisl. Suspendisse sed arcu convallis, molestie augue at, efficitur augue. Proin ante dui, finibus vel interdum a, egestas sed justo. Praesent quis pharetra mi, sed fermentum est. Praesent vel tristique urna, nec tristique felis. Curabitur tristique varius risus sed tincidunt. Proin vehicula vel odio molestie gravida. Morbi ultrices felis massa, posuere porta odio consectetur id. Maecenas rutrum dui eu pellentesque ullamcorper. Fusce vulputate nisl nisl, non feugiat tellus fringilla nec.
+    useEffect(() => {
+        // Zapisz aktualną pozycję scrolla
+        scrollPosition.current = window.scrollY;
 
-                Maecenas eu ipsum ut lorem rhoncus posuere. Curabitur a velit neque. Nunc sit amet tortor sed massa ultrices vestibulum nec in leo. Nulla nec imperdiet sapien. Vivamus vel leo nec risus pharetra pulvinar. Donec semper nunc diam, nec gravida diam pulvinar a. Mauris eget lorem felis. Donec pretium euismod risus ut molestie. In fringilla ligula ac magna tristique, condimentum sollicitudin ipsum auctor. Praesent consectetur nibh eu dolor lobortis, sit amet sagittis libero sagittis. Proin volutpat metus id dui dictum convallis. Duis et nisi id risus hendrerit suscipit.
+        // Zablokuj scroll
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition.current}px`;
+        document.body.style.width = '100%';
 
-                Aliquam erat volutpat. Nam est sapien, luctus a ex in, ullamcorper eleifend elit. Morbi sollicitudin eget ante non suscipit. Aenean placerat bibendum leo ac hendrerit. Ut id venenatis tellus. Proin quis urna tristique, porta nisi at, dapibus neque. Duis a leo vestibulum, luctus nisl quis, blandit neque. Duis semper vel magna sed laoreet. Integer ac odio vestibulum, sollicitudin augue bibendum, vestibulum justo. Duis malesuada, tellus eget rhoncus vehicula, magna metus sagittis nisi, vel commodo ex dolor at nisi.</p>
-        </div>
-    </>)
+        return () => {
+            // Przywróć scroll
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+
+            // Przywróć pozycję scrolla
+            window.scrollTo(0, scrollPosition.current);
+        };
+    }, []);
+
+    // Reszta kodu pozostaje bez zmian...
+    const imageUrl = post?.["ZdjecieProfile"]
+        ? getStrapiMedia(post["ZdjecieProfile"].url)
+        : Zamoyski_jpg;
+
+    const postDate = new Date(post["Data"]).toLocaleDateString('pl-PL');
+
+    return (
+        <AnimatePresence mode="wait">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                onClick={onClose}
+                className="w-screen h-screen overflow-hidden fixed inset-0 z-[100] flex justify-center items-center bg-white/20"
+            >
+                <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.95, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    onClick={stopPropagation}
+                    className="flex flex-col gap-5 w-[32vw] h-3/4 bg-white drop-shadow-2xl px-12 py-12 rounded-xl overflow-auto"
+                >
+                    <div className="w-full flex flex-col justify-between">
+                        <p className="font-[poppins] text-wrap font-semibold text-2xl md:text-3xl text-black">
+                            {post["Tytul"]}
+                        </p>
+                        <p className="font-[montserrat] text-sm md:text-base mt-2">
+                            {post["Autor"]} | {postDate}
+                        </p>
+                    </div>
+
+                    <img
+                        src={imageUrl}
+                        alt={`Zdjęcie dla ${post["Tytul"]}`}
+                        className="w-full h-auto object-cover shadow-lg"
+                        loading="lazy"
+                        decoding="async"
+                    />
+
+                    <p className="font-[poppins] w-full text-justify text-balance text-sm md:text-base">
+                        {post["Opis"]}
+                    </p>
+                </motion.div>
+            </motion.div>
+        </AnimatePresence>
+    );
 }
-
-export default Post

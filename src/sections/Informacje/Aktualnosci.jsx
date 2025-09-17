@@ -2,23 +2,19 @@ import aktu1 from "../../assets/aktu/aktu1.jpeg";
 import aktu2 from "../../assets/aktu/aktu2.jpg";
 import aktu3 from "../../assets/aktu/aktu3.jpg";
 import {motion} from "motion/react";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {get} from "../../features/fetcher.jsx";
 
 const Aktualnosci = () => {
 
-    const newsSection = [
-        {image: aktu1, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Krystian Matwiej"},
-        {image: aktu2, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Michał Szyszło"},
-        {image: aktu3, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "ktoś taminny"},
-        {image: aktu2, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Krystian Matwiej"},
-        {image: aktu3, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Michał Szyszło"},
-        {image: aktu1, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "ktoś taminny"},
-        {image: aktu2, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Krystian Matwiej"},
-        {image: aktu1, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Michał Szyszło"},
-        {image: aktu3, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "ktoś taminny"},
-        {image: aktu1, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Krystian Matwiej"},
-        {image: aktu2, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Michał Szyszło"},
-        {image: aktu3, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "ktoś taminny"},
-    ]
+    const { data } = useSuspenseQuery({
+        queryKey: ["posts"],
+        queryFn: () =>
+            get(
+                "posts?populate=*&pagination[pageSize]=3&sort[0]=Data:desc"
+            ),
+    });
+    const posts = data?.data || [];
 
     return (
         <div className="bg-white p-4 w-full pt-40">
@@ -33,7 +29,7 @@ const Aktualnosci = () => {
 
                 <div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-lg:max-w-3xl max-md:max-w-md mx-auto">
-                    {newsSection.map((news, index) => (
+                    {posts.map((news, index) => (
                         <motion.div
                             whileHover={{y: -10}}
 

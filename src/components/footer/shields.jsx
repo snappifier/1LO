@@ -31,7 +31,7 @@ export default function Shields() {
 
     return (
         <div className="bg-white font-[montserrat] flex flex-col w-full py-6 mb-10 mt-20 z-10">
-            <div className="w-full flex gap-3 md:gap-10 mb-12 px-[12vw] bg-transparent">
+            <div className="w-full flex gap-3 md:gap-10 mb-12 px-[15vw] bg-transparent">
                 <div className="flex mt-3 w-full h-1 rounded-md bg-[#3077BA]"></div>
                 <p className="text-2xl font-semibold w-max">Osiągnięcia</p>
                 <div className="flex mt-3 w-full h-1 rounded-md bg-[#3077BA]"></div>
