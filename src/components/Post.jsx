@@ -2,38 +2,20 @@ import { getStrapiMedia } from "../features/fetcher.jsx";
 import Zamoyski_jpg from "../assets/Home/zamoyski.jpg";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useRef } from "react";
+import {useScrollBlock} from "../features/useScrollBlock.jsx";
 
 export function Post({ state: post, onClose }) {
     const scrollPosition = useRef(0);
     const stopPropagation = (e) => {
         e.stopPropagation();
     };
+    useScrollBlock();
 
-    useEffect(() => {
-        // Zapisz aktualną pozycję scrolla
-        scrollPosition.current = window.scrollY;
-
-        // Zablokuj scroll
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollPosition.current}px`;
-        document.body.style.width = '100%';
-
-        return () => {
-            // Przywróć scroll
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-
-            // Przywróć pozycję scrolla
-            window.scrollTo(0, scrollPosition.current);
-        };
-    }, []);
 
     // Reszta kodu pozostaje bez zmian...
     const imageUrl = post?.["ZdjecieProfile"]
-        ? getStrapiMedia(post["ZdjecieProfile"].url)
+        ? getStrapiMedia(post["ZdjecieProfile"].url) +
+        '?format=webp&width=800&height=600&quality=80'
         : Zamoyski_jpg;
 
     const postDate = new Date(post["Data"]).toLocaleDateString('pl-PL');
