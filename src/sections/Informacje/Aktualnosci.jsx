@@ -3,7 +3,7 @@ import aktu2 from "../../assets/aktu/aktu2.jpg";
 import aktu3 from "../../assets/aktu/aktu3.jpg";
 import {motion} from "motion/react";
 
-export const Aktualnosci = () => {
+const Aktualnosci = () => {
 
     const newsSection = [
         {image: aktu1, title: "Zakończenie roku szkolnego 2024/2025", post: "24.08.2025", author: "Krystian Matwiej"},
@@ -57,3 +57,5 @@ export const Aktualnosci = () => {
         </div>
     )
 }
+
+export default Aktualnosci

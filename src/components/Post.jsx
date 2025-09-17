@@ -1,6 +1,6 @@
 import aktu3 from "../assets/aktu/aktu3.jpg";
 
-export const Post = () => {
+const Post = () => {
     return (<>
         <div className="relative pt-40 px-[45vh] w-full h-max flex flex-col items-start gap-10 pb-20">
             <div className="w-full flex flex-col items-center justify-between ">
@@ -18,3 +18,5 @@ export const Post = () => {
         </div>
     </>)
 }
+
+export default Post

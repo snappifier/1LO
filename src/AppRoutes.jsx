@@ -1,14 +1,15 @@
-import {Routes, Route} from "react-router";
-import {useEffect} from "react";
-import {ScrollToTop} from "./features/ScrollToTop.jsx";
+import { Routes, Route } from "react-router";
+import { useEffect, lazy, Suspense } from "react";
+import { ScrollToTop } from "./features/ScrollToTop.jsx";
 import Home from "./sections/Home/Home.jsx";
 import Footer from "./components/Footer.jsx";
-import {BannerNew} from "./components/navbar/BannerNew.jsx";
+import { BannerNew } from "./components/navbar/BannerNew.jsx";
+import { Maintenance } from "./components/Maintenance.jsx";
+import { Navigate } from "react-router-dom";
+import { Loader } from "./components/animations/Loader.jsx";
 
-import {Maintenance} from "./components/Maintenance.jsx";
-import {Aktualnosci} from "./sections/Informacje/Aktualnosci.jsx";
-import {Post} from "./components/Post.jsx";
-import {Navigate} from "react-router-dom";
+const Aktualnosci = lazy(() => import("./sections/Informacje/Aktualnosci.jsx"));
+const Post = lazy(() => import("./components/Post.jsx"));
 
 const RedirectHome = () => {
     useEffect(() => {
@@ -18,17 +19,19 @@ const RedirectHome = () => {
 };
 
 export const AppRoutes = () => {
-    return (<>
-
-            <BannerNew/>
-            <ScrollToTop/>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/aktualnosci" element={<Aktualnosci/>}/>
-                <Route path="/post/:id" element={<Post/>}/>
-                <Route path="*" element={<Maintenance/>}/>
-            </Routes>
-            <Footer/>
+    return (
+        <>
+            <BannerNew />
+            <ScrollToTop />
+            <Suspense fallback={<Loader />}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/aktualnosci" element={<Aktualnosci />} />
+                    <Route path="/post/:id" element={<Post />} />
+                    <Route path="*" element={<Maintenance />} />
+                </Routes>
+            </Suspense>
+            <Footer />
         </>
     );
-}
+};

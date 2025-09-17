@@ -16,7 +16,6 @@ export const AktualnosciHome = () => {
     };
 
     const posts = usePosts();
-    console.log(posts[0]);
 
 
     return (
