@@ -1,4 +1,3 @@
-import { SpeedInsights } from "@vercel/speed-insights/react"
 import {BrowserRouter} from "react-router";
 import {AppRoutes} from "./AppRoutes";
 import {Suspense} from "react";
@@ -15,7 +14,6 @@ function App() {
       </Suspense>
     </BrowserRouter>
     <Analytics />
-      <SpeedInsights />
   </>)
 }
 
