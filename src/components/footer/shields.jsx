@@ -1,25 +1,18 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-
-import s_2019 from "../../assets/shields/2019.png";
-import s_2020 from "../../assets/shields/2020.png";
-import s_2021 from "../../assets/shields/2021.png";
-import s_2022 from "../../assets/shields/2022.png";
-import s_2023 from "../../assets/shields/2023.png";
-import s_2024 from "../../assets/shields/2024.png";
-import s_2025 from "../../assets/shields/2025.png";
+import strapiImages from '../../assets/photos.jsx';
 
 export default function Shields() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const shields_src = [
-        s_2019,
-        s_2020,
-        s_2021,
-        s_2022,
-        s_2023,
-        s_2024,
-        s_2025
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
     ];
 
     useEffect(() => {
@@ -40,7 +33,7 @@ export default function Shields() {
                 {shields_src.map((src, index) => (
                     <motion.img
                         key={index}
-                        src={src}
+                        src={strapiImages[src]}
                         alt={`Tarcza ${2019 + index}`}
                         initial={{ scale: 1, opacity: 0.6 }}
                         animate={{
