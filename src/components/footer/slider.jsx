@@ -13,7 +13,7 @@ export default function Slider(){
             {images.map((src, i) => (
                 <img
                     key={i}
-                    src={listImages[src]}
+                    src={src === "sgh-logo" ? listImages[src] : listImages[src+"_thumbnail"]}
                     alt={`img-${i}`}
                     className="h-12 w-max object-cover mx-10 "
                     style={{ maxInlineSize: '100%' }}
