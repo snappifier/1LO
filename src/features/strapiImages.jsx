@@ -6,7 +6,7 @@ export const images = {};
 // Funkcja do pobierania i organizowania zdjęć
 export const fetchAndOrganizeStrapiImages = async () => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/files`, );
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/files`);
 
         if (!response.ok) {
             throw new Error('Błąd podczas pobierania zdjęć');
@@ -16,18 +16,21 @@ export const fetchAndOrganizeStrapiImages = async () => {
 
         // Organizuj zdjęcia po nazwach
         files.forEach(file => {
-            const fileName = file.name.toLowerCase();
-            const url = getStrapiMedia(file.url);
+            const nameWithoutExtension = file.name.split('.').slice(0, -1).join('.').toLowerCase();
 
-            // Dodaj oryginalną nazwę
-            images[file.name] = url;
-
-            // Dodaj wersję bez rozszerzenia (dla łatwiejszego dostępu)
-            const nameWithoutExtension = file.name.split('.').slice(0, -1).join('.');
-            if (nameWithoutExtension && nameWithoutExtension !== file.name) {
-                images[nameWithoutExtension] = url;
+            // oryginał
+            if (file.url) {
+                images[nameWithoutExtension] = getStrapiMedia(file.url);
             }
 
+            // dodatkowe formaty
+            if (file.formats) {
+                Object.entries(file.formats).forEach(([formatName, formatData]) => {
+                    if (formatData?.url) {
+                        images[`${nameWithoutExtension}_${formatName}`] = getStrapiMedia(formatData.url);
+                    }
+                });
+            }
         });
 
         console.log('✅ Załadowano zdjęcia z Strapi:', Object.keys(images));

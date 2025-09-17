@@ -33,7 +33,7 @@ export default function Shields() {
                 {shields_src.map((src, index) => (
                     <motion.img
                         key={index}
-                        src={images[src]}
+                        src={images[src+"_thumbnail"]}
                         alt={`Tarcza ${2019 + index}`}
                         width={120}
                         height={120}

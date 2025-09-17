@@ -9,7 +9,7 @@ export default function Menu() {
                 <div className="flex items-center">
                     <div className="flex items-center">
                         <motion.img
-                            src={images["logo"]}
+                            src={images["logo_thumbnail"]}
                             className="drop-shadow-md mr-3 rounded-full h-16 w-16 block aspect-square"
                             width={64}
                             height={64}
