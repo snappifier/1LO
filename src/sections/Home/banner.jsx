@@ -11,6 +11,7 @@ export default function Banner() {
                     alt="Widok na budynek liceum"
                     fetchPriority="high"
                 />
+
                 <p className="w-max absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 z-20 font-[meow_script] text-5xl md:text-9xl text-white text-center">
                     “Myślę więc jestem...<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w Pierwszym”
                 </p>
