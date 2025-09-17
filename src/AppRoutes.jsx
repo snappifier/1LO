@@ -6,11 +6,10 @@ import Footer from "./components/Footer.jsx";
 import { BannerNew } from "./components/navbar/BannerNew.jsx";
 import { Maintenance } from "./components/Maintenance.jsx";
 import { Navigate } from "react-router-dom";
-import {Post} from "./components/Post.jsx";
 import { Loader } from "./components/animations/Loader.jsx";
 
 const Aktualnosci = lazy(() => import("./sections/Informacje/Aktualnosci.jsx"));
-// const Post = lazy(() => import("./components/Post.jsx"));
+const Post = lazy(() => import("./components/Post.jsx"));
 
 const RedirectHome = () => {
     useEffect(() => {
