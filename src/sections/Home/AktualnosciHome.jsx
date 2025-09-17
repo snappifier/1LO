@@ -4,6 +4,7 @@ import { get, getStrapiMedia } from "../../features/fetcher.jsx";
 import Zamoyski_jpg from "../../assets/Home/zamoyski.jpg";
 import { useState } from "react";
 import { Post } from "../../components/Post.jsx";
+import OptimizedImage from "../../features/OptimizedImage.jsx";
 
 export const AktualnosciHome = () => {
     const [selectedPost, setSelectedPost] = useState(null);
@@ -57,7 +58,7 @@ export const AktualnosciHome = () => {
                                         className="bg-white cursor-pointer rounded-md overflow-hidden [box-shadow:0_2px_10px_-3px_rgba(14,14,14,0.3)] relative top-0"
                                     >
                                         <div className="bg-gray-50 aspect-[23/15]">
-                                            <img
+                                            <OptimizedImage
                                                 src={
                                                     news?.["ZdjecieProfile"]
                                                         ? getStrapiMedia(news["ZdjecieProfile"].url)

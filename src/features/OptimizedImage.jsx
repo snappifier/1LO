@@ -1,43 +1,46 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
 const OptimizedImage = ({
                             src,
                             alt,
-                            width,
-                            height,
                             className = "",
                             loading = "lazy",
+                            onLoad,
+                            onError,
                             ...props
                         }) => {
-    const [loaded, setLoaded] = useState(false);
-    const [error, setError] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [hasError, setHasError] = useState(false);
+
+    const handleLoad = (e) => {
+        setIsLoaded(true);
+        onLoad && onLoad(e);
+    };
+
+    const handleError = (e) => {
+        setHasError(true);
+        onError && onError(e);
+    };
+
+    if (hasError) {
+        return (
+            <div className={`flex items-center justify-center bg-gray-100 text-gray-500 ${className}`}>
+                <span>Błąd ładowania obrazu</span>
+            </div>
+        );
+    }
 
     return (
-        <div className={`image-container ${className}`} style={{width, height}}>
-            <img
-                src={src}
-                alt={alt}
-                loading={loading}
-                decoding="async"
-                onLoad={() => setLoaded(true)}
-                onError={() => setError(true)}
-                style={{
-                    opacity: loaded ? 1 : 0,
-                    transition: 'opacity 0.3s ease-in-out'
-                }}
-                {...props}
-            />
-
-            {!loaded && !error && (
-                <div className="image-skeleton" style={{width, height}}/>
-            )}
-
-            {error && (
-                <div className="image-error" style={{width, height}}>
-                    <span>Błąd ładowania obrazu</span>
-                </div>
-            )}
-        </div>
+        <img
+            src={src}
+            alt={alt}
+            className={`${className} ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+            loading={loading}
+            decoding="async"
+            onLoad={handleLoad}
+            onError={handleError}
+            {...props}
+        />
     );
 };
 
