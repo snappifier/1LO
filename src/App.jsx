@@ -1,6 +1,7 @@
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import {BrowserRouter} from "react-router";
 import {AppRoutes} from "./AppRoutes";
-import {Suspense, lazy} from "react";
+import {Suspense} from "react";
 import {Loader} from "./components/animations/Loader.jsx";
 import { Analytics } from "@vercel/analytics/react"
 
@@ -14,6 +15,7 @@ function App() {
       </Suspense>
     </BrowserRouter>
     <Analytics />
+      <SpeedInsights />
   </>)
 }
 
