@@ -1,7 +1,6 @@
 import {images} from "../../features/strapiImages.jsx";
 
 export default function Banner() {
-    console.log(images)
     return (
         <div className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center drop-shadow-lg/60">
 

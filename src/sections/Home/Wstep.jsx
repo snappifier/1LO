@@ -1,5 +1,4 @@
 import Zamoyski_jpg from "../../assets/Home/zamoyski.jpg"
-import {Link} from "react-router-dom";
 
 export default function Wstep() {
     return <div className="font-[poppins] flex flex-col w-full h-max gap-5 md:px-[15vw] px-[10vw] mt-15 md:mt-30 md:gap-15">

@@ -33,11 +33,10 @@ export const fetchAndOrganizeStrapiImages = async () => {
             }
         });
 
-        console.log('✅ Załadowano zdjęcia z Strapi:', Object.keys(images));
         return images;
 
     } catch (error) {
-        console.error('❌ Błąd podczas ładowania zdjęć:', error);
+
         return {};
     }
 };
