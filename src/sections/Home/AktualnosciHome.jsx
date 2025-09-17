@@ -57,11 +57,10 @@ export const AktualnosciHome = () => {
                                         className="bg-white cursor-pointer rounded-md overflow-hidden [box-shadow:0_2px_10px_-3px_rgba(14,14,14,0.3)] relative top-0"
                                     >
                                         <div className="bg-gray-50 aspect-[23/15]">
-                                            <mg
+                                            <img
                                                 src={
                                                     news?.["ZdjecieProfile"]
-                                                        ? getStrapiMedia(post["ZdjecieProfile"].url) +
-                                                        '?format=webp&width=800&height=600&quality=80'
+                                                        ? (getStrapiMedia(news["ZdjecieProfile"].url) + '?format=webp&width=800&height=600&quality=80')
                                                         : Zamoyski_jpg
                                                 }
                                                 alt=""
