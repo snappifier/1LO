@@ -1,11 +1,8 @@
 import Ticker from "framer-motion-ticker";
-import sgh_logo from "../../assets/coop logo/sgh-logo.png";
-import umcs_logo from "../../assets/coop logo/umcs-logo.png";
-import agh_logo from "../../assets/coop logo/agh-logo.png";
-import kul_logo from "../../assets/coop logo/kul_logo.png";
+import strapiImages from '../../assets/photos.jsx';
 
 export default function Slider(){
-    const images = [sgh_logo, umcs_logo, kul_logo, agh_logo];
+    const images = ["sgh_logo", "umcs_logo", "kul_logo", "agh_logo"];
     return <div className="w-full flex flex-col font-[poppins] mt-5 items-center">
         <div className="w-full px-10 flex items-center mb-10 gap-5">
             <div className="w-full h-[1px] bg-white"></div>
@@ -16,7 +13,7 @@ export default function Slider(){
             {images.map((src, i) => (
                 <img
                     key={i}
-                    src={src}
+                    src={strapiImages[src]}
                     alt={`img-${i}`}
                     className="h-12 w-max object-cover mx-10 "
                     width={128}
