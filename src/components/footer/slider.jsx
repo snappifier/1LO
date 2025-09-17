@@ -18,7 +18,9 @@ export default function Slider(){
                     key={i}
                     src={src}
                     alt={`img-${i}`}
-                    className="h-12 w-auto object-cover mx-10"
+                    className="h-12 w-max object-cover mx-10 "
+                    width={128}
+                    height={48}
                 />
             ))}
         </Ticker>

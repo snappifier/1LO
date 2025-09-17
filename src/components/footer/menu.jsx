@@ -9,7 +9,9 @@ export default function Menu(){
                 <div className="flex items-center">
                     <motion.img
                         src={logo}
-                        className={`drop-shadow-md mr-3 h-16 rounded-full`}
+                        className="drop-shadow-md mr-3 h-16 w-16 rounded-full"
+                        width={64}
+                        height={64}
                         whileHover={{scale: 1.1}}
                         whileTap={{scale: 1}}
                     />
