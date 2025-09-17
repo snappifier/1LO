@@ -27,7 +27,7 @@ export function Post({ state: post, onClose }) {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 onClick={onClose}
-                className="w-screen h-screen overflow-hidden fixed inset-0 z-[100] flex justify-center items-center bg-white/20"
+                className="w-screen h-screen overflow-hidden fixed inset-0 z-[100] flex justify-center items-center bg-[#2f3332]/65 "
             >
                 <motion.div
                     initial={{ scale: 0.95, opacity: 0 }}
@@ -35,7 +35,7 @@ export function Post({ state: post, onClose }) {
                     exit={{ scale: 0.95, opacity: 0 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
                     onClick={stopPropagation}
-                    className="flex flex-col gap-5 w-[32vw] h-3/4 bg-white drop-shadow-2xl px-12 py-12 rounded-xl overflow-auto"
+                    className="flex flex-col gap-5 w-[35vw] h-3/4 bg-white drop-shadow-2xl px-12 py-12 rounded-xl overflow-auto"
                 >
                     <div className="w-full flex flex-col justify-between">
                         <p className="font-[poppins] text-wrap font-semibold text-2xl md:text-3xl text-black">
