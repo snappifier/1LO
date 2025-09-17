@@ -21,17 +21,19 @@ const RedirectHome = () => {
 export const AppRoutes = () => {
     return (
         <>
-            <BannerNew />
-            <ScrollToTop />
+
             <Suspense fallback={<Loader />}>
+                <BannerNew />
+                <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/aktualnosci" element={<Aktualnosci />} />
                     <Route path="/post/:id" element={<Post />} />
                     <Route path="*" element={<Maintenance />} />
                 </Routes>
+                <Footer />
             </Suspense>
-            <Footer />
+
         </>
     );
 };
