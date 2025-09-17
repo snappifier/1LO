@@ -51,7 +51,7 @@ export default function Banner() {
                 />
             </picture>
 
-            <p className="w-max absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 z-20 font-[meow_script] text-5xl md:text-9xl text-white text-center">
+            <p className="w-max h-max absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 z-20 font-[meow_script] text-5xl md:text-9xl text-white text-center">
                 “Myślę więc jestem...<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w Pierwszym”
             </p>
         </div>

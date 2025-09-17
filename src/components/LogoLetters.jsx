@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 
 export const LogoLetters = ({scrolled}) => {
     return (<div
-        className={`flex items-center font-[Montserrat] leading-none drop-shadow-sm text-white gap-2`}>
+        className={`flex items-center font-[poppins] leading-none drop-shadow-sm text-white gap-2`}>
         <motion.img
             src={logo}
             className={`drop-shadow-md m-3 h-20 ${scrolled ? "md:h-18" : "md:h-25"}`}
