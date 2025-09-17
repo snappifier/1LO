@@ -22,7 +22,7 @@ export default function Menu(){
 
             </div>
             <div className="flex mt-5 w-5/6">
-                <p className="text-sm w-full text-wrap">To prestiżowe liceum o bogatej tradycji, funkcjonujące od 1916 roku w zabytkowym gmachu dawnej Akademii Zamojskiej, założonej pierwotnie w 1594 r. przez Hetmana Jana Zamoyskiego.</p>
+                <p className="text-sm font-[poppins] w-full text-wrap">To prestiżowe liceum o bogatej tradycji, funkcjonujące od 1916 roku w zabytkowym gmachu dawnej Akademii Zamojskiej, założonej pierwotnie w 1594 r. przez Hetmana Jana Zamoyskiego.</p>
             </div>
         </div>
         <div className="flex flex-col order-3 md:order-2">

@@ -5,9 +5,7 @@ import { imagetools } from 'vite-imagetools'
 
 export default defineConfig({
     plugins: [
-        imagetools(
-            // {defaultDirectives: () => new URLSearchParams({ format: 'avif;webp', quality: '80' })}
-        ),
+
         react(),
         tailwindcss()
     ],
