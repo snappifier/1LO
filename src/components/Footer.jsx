@@ -1,7 +1,5 @@
 import Slider from "./footer/slider.jsx";
 import Menu from "./footer/menu.jsx";
-import Shields from "./footer/shields.jsx";
-import Banner from "../sections/Home/banner.jsx";
 
 export default function Footer(){
     return <>

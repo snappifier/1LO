@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import logo from "../../assets/logo.png";
 import facebookLogo from "../../assets/social/facebook.png";
 import instagramLogo from "../../assets/social/instagram.png";
+import OptimizedImage from "../../features/OptimizedImage.jsx";
 
 export default function Menu(){
     return <div className="w-max h-max flex flex-col gap-10 mb-10 pl-10 mt-20 md:flex-row md:m-12 md:mx-8 md:mt-20 md:gap-28">
@@ -25,8 +26,8 @@ export default function Menu(){
                 <p className="text-sm w-full text-wrap">To prestiżowe liceum o bogatej tradycji, funkcjonujące od 1916 roku w zabytkowym gmachu dawnej Akademii Zamojskiej, założonej pierwotnie w 1594 r. przez Hetmana Jana Zamoyskiego.</p>
             </div>
             <div className="w-8 h-8 flex gap-2 mt-5">
-                <img alt="Facebook" src={facebookLogo} />
-                <img alt="Instagram" src={instagramLogo} />
+                <OptimizedImage alt="Facebook" src={facebookLogo} />
+                <OptimizedImage alt="Instagram" src={instagramLogo} />
             </div>
         </div>
         <div className="flex flex-col order-3 md:order-2">
