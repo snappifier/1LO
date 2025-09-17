@@ -7,6 +7,7 @@ export default function Banner() {
 
             <img
                 src={images["zdj1"]}
+                fetchPriority="high"
                 alt="Widok na budynek liceum"
                 className="absolute inset-0 w-full h-full object-cover"
                 width={1600}
@@ -14,7 +15,7 @@ export default function Banner() {
                 style={{ maxInlineSize: '100%' }}
                 loading="eager"
                 decoding="async"
-                fetchPriority="high"
+
             />
 
 
