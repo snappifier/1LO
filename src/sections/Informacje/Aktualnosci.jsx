@@ -46,6 +46,7 @@ const Aktualnosci = () => {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 max-lg:max-w-3xl max-md:max-w-md mx-auto">
                     {posts.map((news) => (
                         <motion.div
+                            key={news.id}
                             whileHover={{y: -10}}
                             onClick={() => handleClick(news)}
                             className="bg-white cursor-pointer rounded-md overflow-hidden [box-shadow:0_2px_10px_-3px_rgba(14,14,14,0.3)] relative top-0">
