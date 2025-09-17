@@ -35,6 +35,8 @@ export default function Shields() {
                         key={index}
                         src={images[src]}
                         alt={`Tarcza ${2019 + index}`}
+                        width={120}
+                        height={120}
                         initial={{ scale: 1, opacity: 0.6 }}
                         animate={{
                             scale: index === currentIndex ? 1.25 : 1,
