@@ -15,7 +15,7 @@ export default function Menu(){
                         whileHover={{scale: 1.1}}
                         whileTap={{scale: 1}}
                     />
-                    <div className="font-medium font-[poppins] text-sm text-wrap">
+                    <div className="font-[poppins] text-sm text-wrap">
                         <p>I Liceum Ogólnokształcące im. Jana Zamoyskiego</p>
                     </div>
                 </div>
