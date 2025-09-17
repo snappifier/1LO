@@ -5,13 +5,13 @@ export default function Banner() {
         <div className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center drop-shadow-lg/60">
 
             <img
-                fetchPriority="high"
                 src={images["zdj1"]}
                 alt="Widok na budynek liceum"
                 className="absolute inset-0 w-full h-full object-cover"
                 width={1600}
                 height={900}
                 style={{ maxInlineSize: '100%' }}
+                fetchPriority="high"
                 loading="eager"
                 decoding="async"
 
