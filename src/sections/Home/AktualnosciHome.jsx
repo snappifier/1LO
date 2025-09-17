@@ -60,7 +60,8 @@ export const AktualnosciHome = () => {
                                             <mg
                                                 src={
                                                     news?.["ZdjecieProfile"]
-                                                        ? getStrapiMedia(news["ZdjecieProfile"].url)
+                                                        ? getStrapiMedia(post["ZdjecieProfile"].url) +
+                                                        '?format=webp&width=800&height=600&quality=80'
                                                         : Zamoyski_jpg
                                                 }
                                                 alt=""
