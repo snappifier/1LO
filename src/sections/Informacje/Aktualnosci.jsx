@@ -38,7 +38,7 @@ const Aktualnosci = () => {
         <div className="bg-white p-4 w-full pt-40 md:px-[15vw] px-[10vw]">
             <div className="flex w-full md:gap-4 gap-2 items-center">
                 <div className="w-3 h-10 bg-[#3077BA] rounded-2xl drop-shadow-md/20"></div>
-                <p className="text-xl font-medium">KRÓTKO O SZKOLE </p>
+                <p className="text-xl font-medium">AKTUALNOŚCI</p>
             </div>
             <div className="max-w-8xl mx-auto">
 
