@@ -1,6 +1,3 @@
-import aktu1 from "../../assets/aktu/aktu1.jpeg";
-import aktu2 from "../../assets/aktu/aktu2.jpg";
-import aktu3 from "../../assets/aktu/aktu3.jpg";
 import {motion} from "motion/react";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {get} from "../../features/fetcher.jsx";
