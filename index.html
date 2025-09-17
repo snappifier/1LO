@@ -19,5 +19,9 @@
   <body class="">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="./node_modules/@vercel/speed-insights/dist/index.js"></script>
   </body>
 </html>
