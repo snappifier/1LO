@@ -6,7 +6,7 @@ export default function Banner() {
 
             <img
                 src={images["zdj1"]}
-                fetchpriority="high"
+                fetchPriority="high"
                 alt="Widok na budynek liceum"
                 className="absolute inset-0 w-full h-full object-cover"
                 width={1600}
