@@ -5,10 +5,11 @@ import {Suspense} from "react";
 import {Loader} from "./components/animations/Loader.jsx";
 import { Analytics } from "@vercel/analytics/react"
 
+injectSpeedInsights();
 
 function App() {
 
-    injectSpeedInsights();
+
 
   return (<>
     <BrowserRouter>
