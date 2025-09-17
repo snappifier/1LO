@@ -2,7 +2,7 @@ import Ticker from "framer-motion-ticker";
 import strapiImages from '../../assets/photos.jsx';
 
 export default function Slider(){
-    const images = ["sgh_logo", "umcs_logo", "kul_logo", "agh_logo"];
+    const images = ["sgh-logo", "umcs-logo", "kul_logo", "agh-logo"];
     return <div className="w-full flex flex-col font-[poppins] mt-5 items-center">
         <div className="w-full px-10 flex items-center mb-10 gap-5">
             <div className="w-full h-[1px] bg-white"></div>
