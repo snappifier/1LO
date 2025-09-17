@@ -16,8 +16,7 @@ export default function Slider(){
                     src={listImages[src]}
                     alt={`img-${i}`}
                     className="h-12 w-max object-cover mx-10 "
-                    width={128}
-                    height={48}
+                    style={{ maxInlineSize: '100%' }}
                 />
             ))}
         </Ticker>

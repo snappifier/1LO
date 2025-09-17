@@ -9,8 +9,7 @@ export default function Banner() {
                 src={images["zdj1"]}
                 alt="Widok na budynek liceum"
                 className="absolute inset-0 w-full h-full object-cover"
-                width={1920}
-                height={1080}
+                style={{ maxInlineSize: '100%' }}
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
