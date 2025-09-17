@@ -14,8 +14,7 @@ export function Post({ state: post, onClose }) {
 
     // Reszta kodu pozostaje bez zmian...
     const imageUrl = post?.["ZdjecieProfile"]
-        ? getStrapiMedia(post["ZdjecieProfile"].url) +
-        '?format=webp&width=800&height=600&quality=80'
+        ? getStrapiMedia(post["ZdjecieProfile"].url)
         : Zamoyski_jpg;
 
     const postDate = new Date(post["Data"]).toLocaleDateString('pl-PL');
