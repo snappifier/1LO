@@ -1,5 +1,5 @@
 import Ticker from "framer-motion-ticker";
-import strapiImages from '../../assets/photos.jsx';
+import {images as listImages}  from "../../features/strapiImages.jsx";
 
 export default function Slider(){
     const images = ["sgh-logo", "umcs-logo", "kul_logo", "agh-logo"];
@@ -13,7 +13,7 @@ export default function Slider(){
             {images.map((src, i) => (
                 <img
                     key={i}
-                    src={strapiImages[src]}
+                    src={listImages[src]}
                     alt={`img-${i}`}
                     className="h-12 w-max object-cover mx-10 "
                     width={128}

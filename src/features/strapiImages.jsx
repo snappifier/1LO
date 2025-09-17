@@ -1,12 +1,12 @@
-import { getStrapiMedia } from './fetcher.jsx'
+import { getStrapiMedia } from './fetcher.jsx';
 
 // Obiekt który będzie przechowywał zdjęcia
-export const strapiImages = {};
+export const images = {};
 
 // Funkcja do pobierania i organizowania zdjęć
 export const fetchAndOrganizeStrapiImages = async () => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_STRAPI_API_URL}/api/upload/files`,);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/files`, );
 
         if (!response.ok) {
             throw new Error('Błąd podczas pobierania zdjęć');
@@ -20,17 +20,18 @@ export const fetchAndOrganizeStrapiImages = async () => {
             const url = getStrapiMedia(file.url);
 
             // Dodaj oryginalną nazwę
-            strapiImages[file.name] = url;
+            images[file.name] = url;
 
             // Dodaj wersję bez rozszerzenia (dla łatwiejszego dostępu)
             const nameWithoutExtension = file.name.split('.').slice(0, -1).join('.');
             if (nameWithoutExtension && nameWithoutExtension !== file.name) {
-                strapiImages[nameWithoutExtension] = url;
+                images[nameWithoutExtension] = url;
             }
+
         });
 
-        console.log('✅ Załadowano zdjęcia z Strapi:', Object.keys(strapiImages));
-        return strapiImages;
+        console.log('✅ Załadowano zdjęcia z Strapi:', Object.keys(images));
+        return images;
 
     } catch (error) {
         console.error('❌ Błąd podczas ładowania zdjęć:', error);
@@ -42,4 +43,4 @@ export const fetchAndOrganizeStrapiImages = async () => {
 fetchAndOrganizeStrapiImages();
 
 // Eksportuj obiekt zdjęć
-export default strapiImages;
+export default images;

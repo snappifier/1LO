@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import strapiImages from "../../assets/photos.jsx";
+import {images} from "../../features/strapiImages.jsx";
 
 export default function Menu() {
     return (
@@ -9,7 +9,7 @@ export default function Menu() {
                 <div className="flex items-center">
                     <div className="flex items-center">
                         <motion.img
-                            src={strapiImages["logo"]}
+                            src={images["logo"]}
                             className="drop-shadow-md mr-3 rounded-full h-16 w-16 block aspect-square"
                             width={64}
                             height={64}

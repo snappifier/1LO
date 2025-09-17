@@ -1,11 +1,12 @@
-import strapiImages from '../../assets/photos.jsx';
+import {images} from "../../features/strapiImages.jsx";
 
 export default function Banner() {
+    console.log(images)
     return (
         <div className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center drop-shadow-lg/60">
 
             <img
-                src={strapiImages["zdj1"]}
+                src={images["zdj1"]}
                 alt="Widok na budynek liceum"
                 className="absolute inset-0 w-full h-full object-cover"
                 width={1920}

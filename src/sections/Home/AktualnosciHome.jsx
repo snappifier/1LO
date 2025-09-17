@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { get, getStrapiMedia } from "../../features/fetcher.jsx";
-import strapiImages from '../../assets/photos.jsx';
+import {images} from "../../features/strapiImages.jsx";
 import { useState } from "react";
 import { Post } from "../../components/Post.jsx";
 
@@ -61,7 +61,7 @@ export const AktualnosciHome = () => {
                                                 src={
                                                     news?.["ZdjecieProfile"]
                                                         ? getStrapiMedia(news["ZdjecieProfile"].url)
-                                                        : strapiImages["zamoyski"]
+                                                        : images["zamoyski"]
                                                 }
                                                 alt=""
                                                 className="w-full h-full object-cover object-top"

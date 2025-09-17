@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import strapiImages from '../../assets/photos.jsx';
+import {images} from "../../features/strapiImages.jsx";
 
 export default function Shields() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,7 +33,7 @@ export default function Shields() {
                 {shields_src.map((src, index) => (
                     <motion.img
                         key={index}
-                        src={strapiImages[src]}
+                        src={images[src]}
                         alt={`Tarcza ${2019 + index}`}
                         initial={{ scale: 1, opacity: 0.6 }}
                         animate={{

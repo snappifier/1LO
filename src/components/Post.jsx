@@ -2,7 +2,7 @@ import { getStrapiMedia } from "../features/fetcher.jsx";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useRef } from "react";
 import {useScrollBlock} from "../features/useScrollBlock.jsx";
-import strapiImages from "../assets/photos.jsx";
+import {images} from "../features/strapiImages.jsx";
 
 export function Post({ state: post, onClose }) {
     const scrollPosition = useRef(0);
@@ -15,7 +15,7 @@ export function Post({ state: post, onClose }) {
     // Reszta kodu pozostaje bez zmian...
     const imageUrl = post?.["ZdjecieProfile"]
         ? getStrapiMedia(post["ZdjecieProfile"].url)
-        : strapiImages["zamoyski"]
+        : images["zamoyski"]
 
     const postDate = new Date(post["Data"]).toLocaleDateString('pl-PL');
 
