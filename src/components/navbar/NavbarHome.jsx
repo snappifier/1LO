@@ -1,6 +1,6 @@
-import { BannerTransparent } from "./navbar/BannerTransparent";
-import { BannerBlue } from "./navbar/BannerBlue";
-import { BannerBluePC } from "./navbar/BannerBluePC";
+import { BannerTransparent } from "./BannerTransparent.jsx";
+import { BannerBlue } from "./BannerBlue.jsx";
+import { BannerBluePC } from "./BannerBluePC.jsx";
 
 import { useState, useEffect } from "react";
 

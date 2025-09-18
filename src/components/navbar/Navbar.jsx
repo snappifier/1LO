@@ -1,5 +1,5 @@
-import { BannerBlue } from "./navbar/BannerBlue";
-import { BannerBluePC } from "./navbar/BannerBluePC";
+import { BannerBlue } from "./BannerBlue.jsx";
+import { BannerBluePC } from "./BannerBluePC.jsx";
 import { useState, useEffect } from "react";
 
 export const Navbar = () => {
