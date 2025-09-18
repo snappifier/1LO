@@ -27,9 +27,10 @@ export const AktualnosciHome = () => {
 
     return (
         <>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {selectedPost !== null && (
                     <Post
+                        key={selectedPost.id}
                         state={selectedPost}
                         onClose={closeModal}
                     />
