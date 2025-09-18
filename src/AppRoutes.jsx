@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router";
 import { useEffect, lazy, Suspense } from "react";
 import { ScrollToTop } from "./features/ScrollToTop.jsx";
 import Home from "./sections/Home/Home.jsx";
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/footer/Footer.jsx";
 import { BannerNew } from "./components/navbar/BannerNew.jsx";
 import { Maintenance } from "./components/Maintenance.jsx";
 import { Navigate } from "react-router-dom";

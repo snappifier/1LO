@@ -1,5 +1,5 @@
-import Slider from "./footer/slider.jsx";
-import Menu from "./footer/menu.jsx";
+import Slider from "./slider.jsx";
+import Menu from "./menu.jsx";
 
 export default function Footer(){
     return <>
