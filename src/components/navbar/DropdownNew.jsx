@@ -16,7 +16,7 @@ export default function DropdownNew() {
                     </NavigationMenu.Trigger>
 
                     <NavigationMenu.Content className={contentClassName}>
-                        <ul className="grid list-none grid-cols-2 gap-0 xs:grid-cols-[12rem_12rem]">
+                        <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {overviewLinks.map((item) => (
                                 <li key={item.href}>
                                     <Link href={item.href} className={linkCardClassName}>
@@ -194,15 +194,67 @@ const overviewLinks = [
             title: "Akademia Zamojska",
             description: "Sprawdź naszą współpracę z Akademią Zamojską i projekty edukacyjne.",
         },
-        {
-            href: "/kalendarium",
-            title: "Kalendarium",
-            description: "Przegląd najważniejszych dat i wydarzeń w roku szkolnym.",
-        },
-        {
-            href: "/lokalizacja",
-            title: "Lokalizacja",
-            description: "Znajdź naszą szkołę na mapie i sprawdź, jak dojechać.",
-        },
+        // {
+        //     href: "/kalendarium",
+        //     title: "Kalendarium",
+        //     description: "Przegląd najważniejszych dat i wydarzeń w roku szkolnym.",
+        // },
+        // {
+        //     href: "/lokalizacja",
+        //     title: "Lokalizacja",
+        //     description: "Znajdź naszą szkołę na mapie i sprawdź, jak dojechać.",
+        // },
+        // {
+        //     href: "/statut",
+        //     title: "Statut",
+        //     description: "Zapoznaj się z podstawowym dokumentem regulującym zasady funkcjonowania szkoły.",
+        // },
+        // {
+        //     href: "/program-wychowawczo-profilaktyczny",
+        //     title: "Program wychowawczo-profilaktyczny",
+        //     description: "Poznaj działania szkoły wspierające rozwój i bezpieczeństwo uczniów.",
+        // },
+        // {
+        //     href: "/rodo",
+        //     title: "RODO",
+        //     description: "Dowiedz się, jak chronimy dane osobowe w naszej szkole.",
+        // },
+        // {
+        //     href: "/deklaracja-dostepnosci",
+        //     title: "Deklaracja dostępności",
+        //     description: "Sprawdź nasze działania na rzecz dostępności strony i szkoły dla wszystkich.",
+        // },
+        // {
+        //     href: "/standardy-ochrony-maloletnich",
+        //     title: "Standardy ochrony małoletnich",
+        //     description: "Poznaj zasady i procedury chroniące prawa oraz dobro uczniów.",
+        // },
+        // {
+        //     href: "/procedury",
+        //     title: "Procedury w I LO",
+        //     description: "Informacje o najważniejszych procedurach obowiązujących w naszej szkole.",
+        // },
+        // {
+        //     href: "/dyrekcja",
+        //     title: "Dyrekcja",
+        //     description: "Poznaj osoby kierujące szkołą i ich zadania.",
+        // },
+        // {
+        //     href: "/nauczyciele",
+        //     title: "Nauczyciele",
+        //     description: "Zobacz kadrę pedagogiczną i ich specjalizacje.",
+        // },
+        // {
+        //     href: "/rada-rodzicow",
+        //     title: "Rada Rodziców",
+        //     description: "Dowiedz się, jak rodzice współtworzą życie szkoły.",
+        // },
+        // {
+        //     href: "/laureaci",
+        //     title: "Laureaci",
+        //     description: "Poznaj uczniów nagradzanych w konkursach i olimpiadach.",
+        // },
+
+
 
 ];

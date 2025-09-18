@@ -26,7 +26,7 @@ export function Post({ state: post, onClose }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             onClick={onClose}
-            className="w-screen h-screen overflow-hidden fixed inset-0 z-[100] flex justify-center items-center bg-[#2f3332]/65 "
+            className="w-screen h-screen overflow-hidden fixed inset-0 z-[100] flex justify-center items-center bg-black/70"
         >
             <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
