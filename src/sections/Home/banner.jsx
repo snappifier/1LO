@@ -9,8 +9,8 @@ export default function Banner() {
                 src={zdjecie}
                 alt="Widok na budynek liceum"
                 className="absolute inset-0 w-full h-full object-cover"
-                // width={1600}
-                // height={900}
+                width={1600}
+                height={900}
                 style={{ maxInlineSize: '100%' }}
                 fetchPriority="high"
                 loading="eager"
