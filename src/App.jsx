@@ -12,9 +12,9 @@ function App() {
 
   return (<>
     <BrowserRouter>
-      <Suspense fallback={<Loader/>}>
+      {/*<Suspense fallback={<Loader/>}>*/}
         <AppRoutes/>
-      </Suspense>
+      {/*</Suspense>*/}
     </BrowserRouter>
     <Analytics />
   </>)
