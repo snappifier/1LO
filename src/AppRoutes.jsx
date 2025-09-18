@@ -22,7 +22,7 @@ export const AppRoutes = () => {
     return (
         <>
 
-            <Suspense fallback={<Loader />}>
+            {/*<Suspense fallback={<Loader />}>*/}
                 <BannerNew />
                 <ScrollToTop />
                 <Routes>
@@ -32,7 +32,7 @@ export const AppRoutes = () => {
                     <Route path="*" element={<Maintenance />} />
                 </Routes>
                 <Footer />
-            </Suspense>
+            {/*</Suspense>*/}
 
         </>
     );
