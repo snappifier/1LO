@@ -17,7 +17,7 @@ export default function DropdownNew() {
 
                     <NavigationMenu.Content className={contentClassName}>
                         <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
-                            {overviewLinks.map((item) => (
+                            {oSzkoleLinks.map((item) => (
                                 <li key={item.href}>
                                     <Link href={item.href} className={linkCardClassName}>
                                         <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
@@ -38,8 +38,8 @@ export default function DropdownNew() {
                     </NavigationMenu.Trigger>
 
                     <NavigationMenu.Content className={contentClassName}>
-                        <ul className="grid list-none grid-cols-2 gap-0 xs:grid-cols-[12rem_12rem]">
-                            {overviewLinks.map((item) => (
+                        <ul className="grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]">
+                            {uczniowieLinks.map((item) => (
                                 <li key={item.href}>
                                     <Link href={item.href} className={linkCardClassName}>
                                         <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
@@ -51,20 +51,64 @@ export default function DropdownNew() {
                     </NavigationMenu.Content>
                 </NavigationMenu.Item>
                 <NavigationMenu.Item>
-                    <RouterLink className={triggerClassName} to="/kontakt">
-                        Kontakt
-                    </RouterLink>
+                    <NavigationMenu.Trigger className={triggerClassName}>
+                        Aktualności
+                        <NavigationMenu.Icon
+                            className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
+                            <ChevronDownIcon/>
+                        </NavigationMenu.Icon>
+                    </NavigationMenu.Trigger>
+
+                    <NavigationMenu.Content className={contentClassName}>
+                        <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
+                            {aktualnosciLinks.map((item) => (
+                                <li key={item.href}>
+                                    <Link href={item.href} className={linkCardClassName}>
+                                        <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
+                                        <p className="m-0 text-sm leading-5 text-gray-500">{item.description}</p>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </NavigationMenu.Content>
                 </NavigationMenu.Item>
                 <NavigationMenu.Item>
-                    <RouterLink className={triggerClassName} to="/rekrutacja">
-                        E-dziennik
-                    </RouterLink>
+                    <NavigationMenu.Trigger className={triggerClassName}>
+                        Dokumenty
+                        <NavigationMenu.Icon
+                            className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
+                            <ChevronDownIcon/>
+                        </NavigationMenu.Icon>
+                    </NavigationMenu.Trigger>
+
+                    <NavigationMenu.Content className={contentClassName}>
+                        <ul className="grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]">
+                            {dokumentyLinks.map((item) => (
+                                <li key={item.href}>
+                                    <Link href={item.href} className={linkCardClassName}>
+                                        <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
+                                        <p className="m-0 text-sm leading-5 text-gray-500">{item.description}</p>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </NavigationMenu.Content>
                 </NavigationMenu.Item>
-                <NavigationMenu.Item>
-                    <RouterLink className={triggerClassName} to="/rekrutacja">
-                        Panel
-                    </RouterLink>
-                </NavigationMenu.Item>
+                {/*<NavigationMenu.Item>*/}
+                {/*    <RouterLink className={triggerClassName} to="/kontakt">*/}
+                {/*        Kontakt*/}
+                {/*    </RouterLink>*/}
+                {/*</NavigationMenu.Item>*/}
+                {/*<NavigationMenu.Item>*/}
+                {/*    <RouterLink className={triggerClassName} to="/rekrutacja">*/}
+                {/*        E-dziennik*/}
+                {/*    </RouterLink>*/}
+                {/*</NavigationMenu.Item>*/}
+                {/*<NavigationMenu.Item>*/}
+                {/*    <RouterLink className={triggerClassName} to="/rekrutacja">*/}
+                {/*        Panel*/}
+                {/*    </RouterLink>*/}
+                {/*</NavigationMenu.Item>*/}
 
                 {/*<NavigationMenu.Item>*/}
                 {/*    <Link className={triggerClassName} href="https://github.com/mui/base-ui">*/}
@@ -157,104 +201,60 @@ const linkCardClassName =
     'hover:bg-gray-100 focus-visible:relative focus-visible:outline focus-visible:outline-2 ' +
     'focus-visible:-outline-offset-1 focus-visible:outline-blue-800';
 
-const overviewLinks = [
-
-        {
-            href: "/aktualnosci",
-            title: "Aktualności",
-            description: "Bądź na bieżąco z wydarzeniami i informacjami z życia szkoły.",
-        },
-        {
-            href: "/o-szkole",
-            title: "O szkole",
-            description: "Poznaj misję, wartości i codzienne życie naszej społeczności.",
-        },
-        {
-            href: "/historia-szkoly",
-            title: "Historia szkoły",
-            description: "Dowiedz się więcej o tradycjach i ważnych momentach w dziejach szkoły.",
-        },
-        {
-            href: "/patron",
-            title: "Patron",
-            description: "Poznaj sylwetkę patrona i jego znaczenie dla naszej szkoły.",
-        },
-        {
-            href: "/hymn",
-            title: "Hymn",
-            description: "Posłuchaj hymnu szkolnego i odkryj jego symbolikę.",
-        },
-        {
-            href: "/osiagniecia",
-            title: "Osiągnięcia",
-            description: "Zobacz sukcesy uczniów i nauczycieli w różnych dziedzinach.",
-        },
-        {
-            href: "/akademia-zamojska",
-            title: "Akademia Zamojska",
-            description: "Sprawdź naszą współpracę z Akademią Zamojską i projekty edukacyjne.",
-        },
-        // {
-        //     href: "/kalendarium",
-        //     title: "Kalendarium",
-        //     description: "Przegląd najważniejszych dat i wydarzeń w roku szkolnym.",
-        // },
-        // {
-        //     href: "/lokalizacja",
-        //     title: "Lokalizacja",
-        //     description: "Znajdź naszą szkołę na mapie i sprawdź, jak dojechać.",
-        // },
-        // {
-        //     href: "/statut",
-        //     title: "Statut",
-        //     description: "Zapoznaj się z podstawowym dokumentem regulującym zasady funkcjonowania szkoły.",
-        // },
-        // {
-        //     href: "/program-wychowawczo-profilaktyczny",
-        //     title: "Program wychowawczo-profilaktyczny",
-        //     description: "Poznaj działania szkoły wspierające rozwój i bezpieczeństwo uczniów.",
-        // },
-        // {
-        //     href: "/rodo",
-        //     title: "RODO",
-        //     description: "Dowiedz się, jak chronimy dane osobowe w naszej szkole.",
-        // },
-        // {
-        //     href: "/deklaracja-dostepnosci",
-        //     title: "Deklaracja dostępności",
-        //     description: "Sprawdź nasze działania na rzecz dostępności strony i szkoły dla wszystkich.",
-        // },
-        // {
-        //     href: "/standardy-ochrony-maloletnich",
-        //     title: "Standardy ochrony małoletnich",
-        //     description: "Poznaj zasady i procedury chroniące prawa oraz dobro uczniów.",
-        // },
-        // {
-        //     href: "/procedury",
-        //     title: "Procedury w I LO",
-        //     description: "Informacje o najważniejszych procedurach obowiązujących w naszej szkole.",
-        // },
-        // {
-        //     href: "/dyrekcja",
-        //     title: "Dyrekcja",
-        //     description: "Poznaj osoby kierujące szkołą i ich zadania.",
-        // },
-        // {
-        //     href: "/nauczyciele",
-        //     title: "Nauczyciele",
-        //     description: "Zobacz kadrę pedagogiczną i ich specjalizacje.",
-        // },
-        // {
-        //     href: "/rada-rodzicow",
-        //     title: "Rada Rodziców",
-        //     description: "Dowiedz się, jak rodzice współtworzą życie szkoły.",
-        // },
-        // {
-        //     href: "/laureaci",
-        //     title: "Laureaci",
-        //     description: "Poznaj uczniów nagradzanych w konkursach i olimpiadach.",
-        // },
-
-
-
+// Zakładka: O szkole
+const oSzkoleLinks = [
+    { href: "/o-szkole", title: "O szkole", description: "Poznaj misję, wartości i codzienne życie naszej społeczności." },
+    { href: "/statut", title: "statut", description: "Pełny tekst statutu szkoły — zasady organizacji i działania placówki." },
+    { href: "/patron", title: "patron", description: "Poznaj sylwetkę patrona i jego znaczenie dla naszej szkoły." },
+    { href: "/hymn", title: "hymn", description: "Posłuchaj hymnu szkolnego i odkryj jego symbolikę." },
+    { href: "/kadra-archiwalne", title: "kadra / archiwalne", description: "Informacje o aktualnym zespole nauczycieli oraz materiały archiwalne." },
+    { href: "/archiwalia", title: "archiwalia", description: "Zbiory historyczne i dokumenty ilustrujące historię szkoły." },
+    { href: "/akademia-zamojska", title: "akademia zamojska", description: "Opis projektu Akademia Zamojska oraz działań edukacyjnych z nim związanych." },
+    { href: "/laboratorium-chemiczne", title: "laboratorium chemiczne", description: "Wyposażenie, zasady korzystania i projekty realizowane w pracowni." },
+    { href: "/informatyka", title: "informatyka", description: "Informacje o pracowniach, programie nauczania i osiągnięciach uczniów w informatyce." },
+    { href: "/certyfikaty", title: "certyfikaty", description: "Lista zdobytych certyfikatów i potwierdzeń jakości edukacji." },
+    { href: "/wspolpraca", title: "współpraca", description: "Partnerstwa lokalne i międzynarodowe oraz formy współpracy z instytucjami." },
+    { href: "/erasmus-plus", title: "Erasmus+", description: "Opisy projektów Erasmus+, raporty i informacje o możliwościach dla uczniów i nauczycieli." },
+    { href: "/wymiana-z-freiburgiem", title: "wymiana z Freiburgiem", description: "Szczegóły programu wymiany, relacje oraz harmonogramy wizyt." },
 ];
+
+// Zakładka: Aktualności
+const aktualnosciLinks = [
+    { href: "/aktualnosci", title: "aktualności", description: "Bądź na bieżąco z wydarzeniami i informacjami z życia szkoły." },
+    { href: "/kalendarium", title: "kalendarium", description: "Kalendarz najważniejszych wydarzeń szkolnych i terminów." },
+    { href: "/blog", title: "blog", description: "Artykuły, relacje i felietony tworzone przez uczniów i nauczycieli." },
+    { href: "/fotoblog", title: "fotoblog", description: "Galerie zdjęć z wydarzeń szkolnych i projektów." },
+    { href: "/podswiatlo", title: "podświatło", description: "Szkolne czasopismo/projekt multimedialny z artykułami i wywiadami." },
+    { href: "/laureaci", title: "laureaci", description: "Lista uczniów nagrodzonych w konkursach i olimpiadach." },
+    { href: "/prymusi", title: "prymusi", description: "Wyróżnieni uczniowie z najwyższymi wynikami w nauce." },
+    { href: "/konkursy", title: "konkursy", description: "Informacje o aktualnych i archiwalnych konkursach szkolnych i pozaszkolnych." },
+    { href: "/osiagniecia-sportowe", title: "osiagniecia sportowe", description: "Sukcesy drużyn i pojedynczych uczniów w sporcie." },
+    { href: "/chor-szkolny", title: "chór szkolny", description: "Działalność chóru szkolnego, repertuar i koncerty." },
+    { href: "/wolontariat", title: "wolontariat", description: "Informacje o akcjach wolontariackich i możliwościach zaangażowania." },
+];
+
+// Zakładka: Uczniowie
+const uczniowieLinks = [
+    { href: "/plan-lekcji", title: "plan lekcji", description: "Aktualny rozkład zajęć dla wszystkich klas." },
+    { href: "/dziennik-elektroniczny", title: "dziennik elektroniczny", description: "Dostęp do ocen, frekwencji i komunikacji z nauczycielami." },
+    { href: "/zdalna-szkola", title: "zdalna szkoła", description: "Materiały i zasoby do nauki zdalnej oraz instrukcje logowania." },
+    { href: "/podreczniki", title: "podręczniki", description: "Lista podręczników oraz informacje o zakupie i dofinansowaniu." },
+    { href: "/biblioteka", title: "biblioteka", description: "Zasoby biblioteczne, katalog i zasady wypożyczeń." },
+    { href: "/zajecia-pozalekcyjne", title: "zajecia pozalekcyjne", description: "Oferta kółek zainteresowań i pozalekcyjnych zajęć sportowych." },
+    { href: "/samorzad", title: "samorząd", description: "Działania samorządu uczniowskiego i możliwości zaangażowania." },
+    { href: "/klasy", title: "klasy", description: "Informacje o klasach, wychowawcach i aktualnych ogłoszeniach." },
+    { href: "/maturzysta", title: "maturzysta", description: "Zasoby i terminy dla uczniów przygotowujących się do matury." },
+    { href: "/pomoc-psychologiczno-pedagogiczna", title: "pomoc psychologiczno-pedagogiczna", description: "Wsparcie psychologiczne, pedagogiczne i porady dla uczniów." },
+    { href: "/stypendia", title: "stypendia", description: "Informacje o dostępnych stypendiach i kryteriach przyznawania." },
+    { href: "/rada-rodzicow", title: "rada rodziców", description: "Kontakt i informacje dla rady rodziców oraz ich inicjatywy." },
+];
+
+// Zakładka: Dokumenty
+const dokumentyLinks = [
+    { href: "/rekrutacja", title: "rekrutacja", description: "Informacje o zasadach i terminach rekrutacji do szkoły." },
+    { href: "/procedury-wnioski", title: "procedury i wnioski", description: "Wzory wniosków, procedury administracyjne i instrukcje." },
+    { href: "/rodo", title: "RODO", description: "Polityka prywatności i informacje o ochronie danych osobowych." },
+    { href: "/deklaracja-dostepnosci", title: "deklaracja dostępności", description: "Informacje o dostępności serwisu i sposobach kontaktu." },
+    { href: "/program-wychowawczo-profilaktyczny", title: "program wychowawczo-profilaktyczny", description: "Założenia programowe dotyczące wychowania i profilaktyki." },
+];
+
