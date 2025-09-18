@@ -38,7 +38,7 @@ export default function DropdownNew() {
                     </NavigationMenu.Trigger>
 
                     <NavigationMenu.Content className={contentClassName}>
-                        <ul className="grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]">
+                        <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {uczniowieLinks.map((item) => (
                                 <li key={item.href}>
                                     <Link href={item.href} className={linkCardClassName}>
