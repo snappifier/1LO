@@ -44,7 +44,7 @@ const dyrektorzy = () => {
                         </div>
                         <div className="p-4">
                             <h4 className="text-slate-900 text-md font-[poppins] font-medium">{profile["ImieNazwisko"]}</h4>
-                            <p className="text-slate-600 text-sm mt-1 font-[poppins]">{profile["Poczatek"].substring(0,4)}-{profile?.["Koniec"] ? profile["Koniec"].substring(0,4) : ""}</p>
+                            <p className="text-slate-600 text-sm mt-1 font-[poppins]">{ profile?.["Koniec"] ? `${profile?.["Poczatek"].substring(0,4)}-${profile["Koniec"].substring(0,4)}` : "Aktualne" }</p>
                         </div>
 
                     </motion.div>
