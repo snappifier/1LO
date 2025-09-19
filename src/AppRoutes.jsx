@@ -8,6 +8,7 @@ import { Maintenance } from "./components/Maintenance.jsx";
 import { Navigate } from "react-router-dom";
 import { Loader } from "./components/animations/Loader.jsx";
 import Kadra from "./sections/Szkoła/Kadra.jsx";
+import Dyrektorzy from "./sections/Szkoła/Dyrektorzy.jsx";
 
 const Aktualnosci = lazy(() => import("./sections/Aktualności/Aktualnosci.jsx"));
 const Post = lazy(() => import("./components/Post.jsx"));
@@ -30,6 +31,7 @@ export const AppRoutes = () => {
                     <Route path="/aktualnosci" element={<Aktualnosci />} />
                     <Route path="/post/:id" element={<Post />} />
                     <Route path="/kadra" element={<Kadra />} />
+                    <Route path="/dyrektorzy" element={<Dyrektorzy />} />
                     <Route path="*" element={<Maintenance />} />
                 </Routes>
                 <Footer />
