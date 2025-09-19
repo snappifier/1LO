@@ -2,11 +2,25 @@ import { motion, AnimatePresence } from "motion/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { get, getStrapiMedia } from "../../features/fetcher.jsx";
 import {images} from "../../features/strapiImages.jsx";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Post } from "../../components/Post.jsx";
 
 export const AktualnosciHome = () => {
     const [selectedPost, setSelectedPost] = useState(null);
+
+    useEffect(() => {
+        const handleEsc = (event) => {
+            if (event.key === "Escape" && selectedPost === null) {
+                setSelectedPost(null);
+            }
+        };
+
+        window.addEventListener("keydown", handleEsc);
+
+        return () => {
+            window.removeEventListener("keydown", handleEsc);
+        };
+    }, []);
 
     const { data } = useSuspenseQuery({
         queryKey: ["posts"],
