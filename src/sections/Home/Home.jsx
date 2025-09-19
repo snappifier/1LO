@@ -3,9 +3,7 @@ import Wstep from "./Wstep.jsx";
 import {AktualnosciHome} from "./AktualnosciHome.jsx";
 import Shields from "../../components/footer/shields.jsx"
 
-
 export default function Home(){
-
     return (
         <div className="relative w-full min-h-screen">
             {/* Zawartość strony - z przezroczystym tłem */}

@@ -22,7 +22,6 @@ const RedirectHome = () => {
 export const AppRoutes = () => {
     return (
         <>
-
             <Suspense fallback={<Loader />}>
                 <BannerNew />
                 <ScrollToTop />
