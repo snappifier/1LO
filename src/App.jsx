@@ -1,4 +1,4 @@
-import {BrowserRouter} from "react-router";
+import {BrowserRouter} from "react-router-dom";
 import {AppRoutes} from "./AppRoutes";
 import {Suspense, useEffect} from "react";
 import {Loader} from "./components/animations/Loader.jsx";
