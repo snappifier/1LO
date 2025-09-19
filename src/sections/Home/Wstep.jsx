@@ -1,4 +1,7 @@
+import { motion } from "motion/react";
+import {Link} from "react-router";
 import images from "../../features/strapiImages.jsx";
+
 
 export default function Wstep() {
     return <div className="relative w-full h-max mt-15">
@@ -18,9 +21,13 @@ export default function Wstep() {
                         <img className="block lg:hidden w-3/5 mr-5" src={images["zamoyski"]} alt="Zamoyski" />
                     </div>
                     <div className="flex w-full justify-center lg:justify-start">
-                        <div className="flex justify-center items-center w-50 h-14 bg-[#3077BA] rounded-xl drop-shadow-md/20">
-                            <p className="font-normal text-white">Dowiedz się więcej</p>
-                        </div>
+                        <Link to="/o-szkole" >
+                        <motion.div
+                            whileHover={{scale: 1.05}}
+                            className="flex justify-center items-center w-50 h-14 bg-[#3077BA] rounded-xl drop-shadow-md/20">
+                            <p className="font-normal text-white select-none cursor-pointer">Dowiedz się więcej</p>
+                        </motion.div>
+                        </Link>
                     </div>
                 </div>
                 <img className="hidden lg:block mr-5 z-10" src={images["zamoyski"]} alt="Zamoyski" />
