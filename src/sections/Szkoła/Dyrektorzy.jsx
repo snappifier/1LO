@@ -1,6 +1,5 @@
 import {motion} from "motion/react";
 import images from "../../features/strapiImages.jsx";
-import zamoyski from "../../assets/zdj1.webp";
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {get, getStrapiMedia} from "../../features/fetcher.jsx";
 
@@ -39,7 +38,7 @@ const dyrektorzy = () => {
                             <img src={profile?.["ZdjecieProfile"]
                                 ? getStrapiMedia(profile["ZdjecieProfile"].url)
                                 : images["zamoyski"]
-                            } alt="profile"
+                            } alt={`Zdjecie-${profile["ImieNazwisko"]}`}
                                  className="w-full h-full object-cover object-top"/>
                         </div>
                         <div className="p-4">
