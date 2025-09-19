@@ -7,8 +7,9 @@ import { BannerNew } from "./components/navbar/BannerNew.jsx";
 import { Maintenance } from "./components/Maintenance.jsx";
 import { Navigate } from "react-router-dom";
 import { Loader } from "./components/animations/Loader.jsx";
+import Kadra from "./sections/Szkoła/Kadra.jsx";
 
-const Aktualnosci = lazy(() => import("./sections/Informacje/Aktualnosci.jsx"));
+const Aktualnosci = lazy(() => import("./sections/Aktualności/Aktualnosci.jsx"));
 const Post = lazy(() => import("./components/Post.jsx"));
 
 const RedirectHome = () => {
@@ -29,6 +30,7 @@ export const AppRoutes = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/aktualnosci" element={<Aktualnosci />} />
                     <Route path="/post/:id" element={<Post />} />
+                    <Route path="/kadra" element={<Kadra />} />
                     <Route path="*" element={<Maintenance />} />
                 </Routes>
                 <Footer />
