@@ -1,4 +1,5 @@
 import {motion} from "motion/react";
+import zamoyski from "../../assets/zdj1.webp";
 
 const Kadra = () => {
 
@@ -15,16 +16,59 @@ const Kadra = () => {
 
                 <div
                     className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 max-md:justify-center max-sm:max-w-xs mx-auto mt-12">
-                    <div className="border border-gray-300 rounded-lg overflow-hidden">
-                        <div className="w-full aspect-square bg-gray-50">
-                            <img src=""
+                    <motion.div className="bg-white drop-shadow-xl rounded-lg overflow-hidden"
+                    whileHover={{y: -10}}>
+                        <div className="w-full aspect-square ">
+                            <img src={zamoyski} alt="profile"
                                  className="w-full h-full object-cover object-top"/>
                         </div>
                         <div className="p-4">
-                            <h4 className="text-slate-900 text-[15px] font-semibold">John Doe</h4>
-                            <p className="text-slate-600 text-xs mt-1">Software Engineer</p>
+                            <h4 className="text-slate-900 text-[15px] font-[poppins] font-medium">John Doe</h4>
+                            <p className="text-slate-600 text-xs mt-1 font-[poppins]">Software Engineer</p>
                         </div>
-                    </div>
+
+                    </motion.div>
+
+                    <motion.div className="bg-white drop-shadow-xl rounded-lg overflow-hidden"
+                                whileHover={{y: -10}}>
+                        <div className="w-full aspect-square ">
+                            <img src={zamoyski} alt="profile"
+                                 className="w-full h-full object-cover object-top"/>
+                        </div>
+                        <div className="p-4">
+                            <h4 className="text-slate-900 text-[15px] font-[poppins] font-medium">John Doe</h4>
+                            <p className="text-slate-600 text-xs mt-1 font-[poppins]">Software Engineer</p>
+                        </div>
+
+                    </motion.div>
+
+                    <motion.div className="bg-white drop-shadow-xl rounded-lg overflow-hidden"
+                                whileHover={{y: -10}}>
+                        <div className="w-full aspect-square ">
+                            <img src={zamoyski} alt="profile"
+                                 className="w-full h-full object-cover object-top"/>
+                        </div>
+                        <div className="p-4">
+                            <h4 className="text-slate-900 text-[15px] font-[poppins] font-medium">John Doe</h4>
+                            <p className="text-slate-600 text-xs mt-1 font-[poppins]">Software Engineer</p>
+                        </div>
+
+                    </motion.div>
+
+                    <motion.div className="bg-white drop-shadow-xl rounded-lg overflow-hidden"
+                                whileHover={{y: -10}}>
+                        <div className="w-full aspect-square ">
+                            <img src={zamoyski} alt="profile"
+                                 className="w-full h-full object-cover object-top"/>
+                        </div>
+                        <div className="p-4">
+                            <h4 className="text-slate-900 text-[15px] font-[poppins] font-medium">John Doe</h4>
+                            <p className="text-slate-600 text-xs mt-1 font-[poppins]">Software Engineer</p>
+                        </div>
+
+                    </motion.div>
+
+
 
                 </div>
             </div>
