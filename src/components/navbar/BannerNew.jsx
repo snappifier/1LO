@@ -55,12 +55,12 @@ export const BannerNew = () => {
             <div className="flex items-center ">
                 <DropdownNew />
             </div>
-            <motion.div
-            whileHover={{scale: 1.15}}
+            <div
+                className="group hover:bg-[#3077BA] h-10 w-10 flex justify-center items-center rounded-md cursor-pointer"
             onClick={handleClick}
             >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#fdfdfd" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="m21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/></g></svg>
-            </motion.div>
+                <motion.svg className="transform transition-transform duration-150 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#fdfdfd" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="m21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/></g></motion.svg>
+            </div>
         </div>
     </header>
     </>)
