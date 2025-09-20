@@ -23,6 +23,9 @@ const Kadra = () => {
                         <div className="p-4">
                             <h4 className="text-slate-900 text-[15px] font-[poppins] font-medium">John Doe</h4>
                             <p className="text-slate-600 text-xs mt-1 font-[poppins]">Software Engineer</p>
+                            <span className="-translate-x-0.5 mt-2 inline-flex items-center rounded-md bg-red-400/10 px-2 py-1 text-xs font-medium text-red-400">
+                            Dyrektor
+                        </span>
                         </div>
 
                     </motion.div>

@@ -53,17 +53,17 @@ export const AktualnosciHome = () => {
             <div className="relative w-full h-max mt-30">
                 <div className="absolute lg:left-[65%] lg:h-[100%] lg:w-[35%] left-[25%] md:h-[50%] h-[100%] w-[75%] bg-[#F3F3F3] z-10 drop-shadow-md/20"></div>
                 <div className="relative z-20 font-[poppins] flex w-full h-max gap-5 px-[10vw] py-10 md:px-[15vw] md:gap-20">
-                    <div className="flex flex-col gap-5 items-end w-full h-max">
-                        <div className="flex items-center gap-5">
+                    <div className="flex flex-col gap-2 items-end w-full h-max">
+                        <div className="flex items-center gap-4">
                             <div className="flex flex-col items-end">
                                 <p className="text-xl font-medium">AKTUALNOŚCI</p>
-                                <p className="text-lg font-light">BĄDŹ NA BIEŻĄCO</p>
+                                <p className="text-lg font-light">Bądź na bieżąco</p>
                             </div>
-                            <div className="w-3 h-16 bg-[#3077BA] rounded-2xl drop-shadow-md/20"></div>
+                            <div className="w-2 h-14 bg-[#3077BA] rounded-2xl drop-shadow-md/20"></div>
                         </div>
 
                         <div className="w-full flex h-max items-center gap-2">
-                            <div className="md:px-0 md:py-5 max-w-8xl mx-auto">
+                            <div className="md:px-0 md:py-2 max-w-8xl mx-auto">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 max-lg:max-w-3xl max-md:max-w-md mx-auto">
                                     {posts.map((news) => (
                                         <motion.div
