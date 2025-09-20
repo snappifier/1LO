@@ -14,7 +14,7 @@ export default function Banner() {
                 style={{ maxInlineSize: '100%' }}
                 fetchPriority="high"
                 loading="eager"
-                decoding="sync"
+                decoding="async"
 
             />
 
@@ -26,7 +26,7 @@ export default function Banner() {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w Pierwszym”
             </p>
         </div>
-            <div className="flex md:relative md:flex justify-between md:-bottom-[calc(0vh-45px)] left-1/2 translate-x-[-50%] min-w-80 max-w-280 gap-8 h-[90px] px-10">
+            <div className="mt-5 w-full h-[30vh] grid grid-cols-2 grid-rows-2 gap-4 md:w-full md:flex-nowrap md:relative md:flex justify-between md:bottom-[60px] md:left-1/2 md:translate-x-[-50%] md:min-w-80 md:max-w-280 md:gap-8 md:h-[90px] px-10">
                 <motion.div
                     whileHover={{scale: 1.05}}
                     transition={{ duration: 0.2, ease: "easeOut" }}

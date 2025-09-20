@@ -7,7 +7,7 @@ export default function Wstep() {
     const zamoyskiSrc = images["2048px-jan_zamoyski_11"] || images["2048px-Jan_Zamoyski_11"];
 
     return (
-        <div className="relative w-full h-max mt-15">
+        <div className="relative w-full h-max md:mt-15">
             {/* szary prostokąt (tło) */}
             <div className="absolute left-0 top-0 h-[50%] w-[100%] md:h-[50%] lg:h-[95%] md:w-[100%] lg:w-[58vw] bg-[#F3F3F3] z-10 drop-shadow-md/20" />
 
