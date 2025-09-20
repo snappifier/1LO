@@ -63,7 +63,7 @@ export const NavbarNew = () => {
                 />
             )}
         </AnimatePresence>
-    <header className={`fixed pt-4 sm:pt-5 lg:pt-8 w-full flex flex-col items-center justify-start z-100 gap-1 ${isOpen ? "h-screen bg-black/40 transition-colors duration-500" : ""}`}>
+    <header className={`fixed top-0 pt-4 sm:pt-5 lg:pt-8 w-full flex flex-col items-center justify-start z-100 gap-1 ${isOpen ? "h-screen bg-black/40 transition-colors duration-500" : ""}`}>
         <div className="w-[94%] sm:w-[90%] lg:w-[80%] h-15 bg-[#3077BA] md:bg-[#3077BA]/80 backdrop-blur-xs backdrop-saturate-300 rounded-lg flex items-center justify-between px-5 sm:px-10 shadow-lg">
             <Link to={'/'} className="z-[60]">
             <motion.img src={images["logo_thumbnail"]} width={64} height={64}  alt="logo" className="h-11 w-11 min-w-11" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
