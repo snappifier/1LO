@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export function Search({ onClose }) {
     const stopPropagation = (e) => e.stopPropagation();
-    useScrollBlock();
+    useScrollBlock()
 
     const [value, setValue] = useState("");
     const [debouncedValue, setDebouncedValue] = useState("");
@@ -39,7 +39,7 @@ export function Search({ onClose }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             onClick={onClose}
-            className="w-screen h-screen overflow-hidden fixed inset-0 z-[1000] flex justify-center items-center bg-black/70
+            className="w-full h-screen overflow-hidden fixed inset-0 z-[1000] flex justify-center items-center bg-black/70
         [background-image:radial-gradient(transparent_1px,#000_1px)]
         [background-size:4px_4px]
         backdrop-blur-[10px]
