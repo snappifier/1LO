@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-export const ExitIcon = ({ isOpen }) => (
+export const HamburgerMenu = ({ isOpen }) => (
     <motion.svg
         width="30"
         height="30"

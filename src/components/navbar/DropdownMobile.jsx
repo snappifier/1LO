@@ -1,208 +1,42 @@
-import {AnimatePresence, motion} from "motion/react"
-import {useState, useEffect} from "react";
-import {AccordionSection} from "./AccordionSection.jsx";
-import {Link} from "react-router-dom";
+import {motion} from "motion/react";
 
-export const DropdownMobile = ({isOpen, setNavOpen}) => {
-    const [activeTopLevel, setActiveTopLevel] = useState(null);
-    const [activeNested, setActiveNested] = useState(null);
+const DropdownMobile = () => {
 
-    const szkolaSections = [
-        {
-            title: "Informacje ogólne",
-            links: [
-                { name: "Aktualności", path: "/aktualnosci" },
-                { name: "O szkole", path: "/o-szkole" },
-                { name: "Historia szkoły", path: "/historia-szkoly" },
-                { name: "Patron", path: "/patron" },
-                { name: "Hymn", path: "/hymn" },
-                { name: "Osiągnięcia", path: "/osiagniecia" },
-                { name: "Akademia Zamojska", path: "/akademia-zamojska" },
-                { name: "Kalendarium", path: "/kalendarium" },
-                { name: "Lokalizacja", path: "/lokalizacja" },
-            ]
-        },
-        {
-            title: "Społeczność szkolna",
-            links: [
-                { name: "Dyrekcja", path: "/dyrekcja" },
-                { name: "Nauczyciele", path: "/nauczyciele" },
-                { name: "Rada Rodziców", path: "/rada-rodzicow" },
-                { name: "Laureaci", path: "/laureaci" },
-            ]
-        },
-        {
-            title: "Dokumenty i organizacja",
-            links: [
-                { name: "Statut", path: "/statut" },
-                { name: "Program wychowawczo-profilaktyczny", path: "/program-wychowawczo-profilaktyczny" },
-                { name: "RODO", path: "/rodo" },
-                { name: "Deklaracja dostępności", path: "/deklaracja-dostepnosci" },
-                { name: "Standardy ochrony małoletnich", path: "/standardy-ochrony-maloletnich" },
-                { name: "Procedury w I LO", path: "/procedury" },
-            ]
-        }
-    ];
+    return (<>
 
-    const uczenSections = [
-        {
-            title: "Nauka i organizacja",
-            links: [
-                { name: "Klasy", path: "/klasy" },
-                { name: "Plan lekcji", path: "/plan-lekcji" },
-                { name: "Harmonogram dostępności nauczycieli", path: "/harmonogram-nauczycieli" },
-                { name: "Dzwonki", path: "/dzwonki" },
-                { name: "Podręczniki 2024/2025", path: "/podreczniki" },
-                { name: "Biblioteka", path: "/biblioteka" },
-                { name: "Zajęcia pozalekcyjne", path: "/zajecia-pozalekcyjne" },
-                { name: "Stypendia", path: "/stypendia" },
-            ]
-        },
-        {
-            title: "Certyfikaty i osiągnięcia",
-            links: [
-                { name: "Certyfikaty", path: "/certyfikaty" },
-            ]
-        },
-        {
-            title: "Działalność i rozwój",
-            links: [
-                { name: "Erasmus+", path: "/erasmus" },
-                { name: "Wymiana z Freiburgiem", path: "/wymiana-freiburg" },
-            ]
-        }
-    ];
 
-    const otherLinks = [
-        {name: "Rekrutacja", path: "/rekrutacja"},
-        {name: "E-Dziennik", path: "/e-dziennik"},
-        {name: "Panel nauczyciela", path: "/panel-nauczyciela"},
-    ]
+        <motion.div
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{duration: 0.1, ease: "easeOut"}}
+            exit={{opacity: 0, transition: {duration: 0.2, delay: 0.05, ease: "easeOut"}}}
+            className="relative w-[97%] sm:w-[90%] lg:w-[80%]  h-max bg-[#3077BA] backdrop-blur-xs backdrop-saturate-300 rounded-xl flex flex-col items-center justify-top gap-5 pt-15 shadow-lg pb-15" >
 
-    const handleTopLevelToggle = (value) => {
-        setActiveTopLevel(prev => (prev === value ? null : value));
-        if (activeTopLevel !== value) {
-            setActiveNested(null);
-        }
-    };
-
-    const handleNestedToggle = (value) => {
-        setActiveNested(prev => (prev === value ? null : value));
-    };
-
-    useEffect(() => {
-        if (!isOpen) {
-            setActiveTopLevel(null);
-            setActiveNested(null);
-        }
-    }, [isOpen]);
-
-    return (
-        <AnimatePresence>
-            {isOpen &&
+            { glownaLista.map((item, index) => (
                 <motion.div
-                    key="dropdown"
-                    className="left-0 w-full bg-[#3077BA] z-60 flex flex-col items-center justify-start gap-8 h-screen"
-                    initial={{opacity: 0, height: 0}}
-                    animate={{opacity: 1, height: "100vh"}}
-                    exit={{opacity: 0, height: 0, overflow: "hidden"}}
-                    transition={{duration: 0.5}}
+                key={index}
+                initial={{opacity: 0, y: 20, scale: 0.85}}
+                animate={{opacity: 1, y: 0, scale: 1}}
+                exit={{opacity: 0, y: 20, scale: 0.85, transition: {duration: 0.3, delay: index * -0.05, ease: "easeOut"}}}
+                transition={{duration: 0.2, ease: "easeOut", delay: index * 0.05}}
+                className="flex items-center w-[92%] h-17 bg-white rounded-md font-[poppins] text-2xl font-regular text-slate-900 px-5 gap-5"
                 >
-
-                    <motion.nav className="w-full flex flex-col items-start justify-start z-60">
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.4, delay: 0, ease: "easeOut" }}
-                            className="w-full"
-                        >
-                            <AccordionSection
-                                value="szkola"
-                                activeValue={activeTopLevel}
-                                onToggle={handleTopLevelToggle}
-                                title="Szkoła"
-                                onLinkClick={() => setNavOpen(false)}
-                            >
-                                {szkolaSections.map((section, index) => (
-                                    <AccordionSection
-                                        key={`szkola-${index}`}
-                                        value={`szkola-${index}`}
-                                        activeValue={activeNested}
-                                        onToggle={handleNestedToggle}
-                                        title={section.title}
-                                        sections={section.links}
-                                        onLinkClick={() => setNavOpen(false)}
-                                        isNested={true}
-                                    />
-                                ))}
-                            </AccordionSection>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-                            className="w-full"
-                        >
-                            <AccordionSection
-                                value="uczen"
-                                activeValue={activeTopLevel}
-                                onToggle={handleTopLevelToggle}
-                                title="Uczeń"
-                                onLinkClick={() => setNavOpen(false)}
-                            >
-                                {uczenSections.map((section, index) => (
-                                    <AccordionSection
-                                        key={`uczen-${index}`}
-                                        value={`uczen-${index}`}
-                                        activeValue={activeNested}
-                                        onToggle={handleNestedToggle}
-                                        title={section.title}
-                                        sections={section.links}
-                                        onLinkClick={() => setNavOpen(false)}
-                                        isNested={true}
-                                    />
-                                ))}
-                            </AccordionSection>
-                            {otherLinks.map((link, index) => (
-                                <motion.div
-                                    key={link.name}
-                                    initial={{ opacity: 0, y: -20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -20 }}
-                                    transition={{
-                                        duration: 0.4,
-                                        delay: 0.2 + (index * 0.05),
-                                        ease: "easeOut"
-                                    }}
-                                    className="w-full"
-                                >
-                                    <Link
-                                        to={link.path}
-                                        onClick={() => setNavOpen(false)}
-                                        className="w-full flex items-center justify-between px-6 py-4 text-left text-xl font-[Montserrat] text-white border-b border-white pl-10"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </motion.nav>
-
-                    <motion.div
-                        key="greeting"
-                        className="relative pb-10 text-3xl font-[meow_script] text-white mt-15"
-                        initial={{opacity: 0, y: -20}}
-                        animate={{opacity: 1, y: 0}}
-                        exit={{opacity: 0, y: -20}}
-                        transition={{duration: 0.4, delay: 0.3}}
-                    >
-                        <p>Miłego dnia!</p>
-                    </motion.div>
+                <div>{item.icon}</div>
+                <div>{item.title}</div>
                 </motion.div>
-            }
-        </AnimatePresence>
-    )
+            ))}
+        </motion.div>
+
+
+        </>)
 }
+
+
+const glownaLista = [
+    { title: "Szkoła", icon: (<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M14 21v-3a2 2 0 0 0-4 0v3m8-16v16M4 6l7.106-3.79a2 2 0 0 1 1.788 0L20 6"/><path d="m6 11l-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11M6 5v16"/><circle cx="12" cy="9" r="2"/></g></svg>) },
+    { title: "Uczeń", icon: (<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="currentColor" d="m12 21l-7-3.8v-6L1 9l11-6l11 6v8h-2v-6.9l-2 1.1v6zm0-8.3L18.85 9L12 5.3L5.15 9zm0 6.025l5-2.7V12.25L12 15l-5-2.75v3.775zm0-3.775"/></svg>) },
+    { title: "Aktualności", icon: (<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h11l5 5v11q0 .825-.587 1.413T19 21zm0-2h14V9h-4V5H5zm2-2h10v-2H7zm0-8h5V7H7zm0 4h10v-2H7zM5 5v4zv14z"/></svg>) },
+    { title: "Dokumenty", icon: (<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24"><path fill="currentColor" d="M5 4v6.025V10v10zv5zm0 18q-.825 0-1.412-.587T3 20V4q0-.825.588-1.412T5 2h8l6 6v2.5q-.475-.2-.975-.312T17 10.025V9h-5V4H5v16h6.025q.4.6.9 1.113t1.1.887zm11.5-3q1.05 0 1.775-.725T19 16.5t-.725-1.775T16.5 14t-1.775.725T14 16.5t.725 1.775T16.5 19m5.1 4l-2.7-2.7q-.525.35-1.137.525T16.5 21q-1.875 0-3.187-1.312T12 16.5t1.313-3.187T16.5 12t3.188 1.313T21 16.5q0 .65-.175 1.263T20.3 18.9l2.7 2.7z"/></svg>) },
+]
+
+export default DropdownMobile;
