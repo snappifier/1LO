@@ -3,7 +3,7 @@ import {motion} from "motion/react"
 
 export default function Banner() {
     return (<>
-        <div className="relative w-full h-[70vh] md:h-[65vh] flex items-center justify-center drop-shadow-lg/60">
+        <div className="relative w-full h-[50vh] md:h-[65vh] flex items-center justify-center drop-shadow-lg/60">
 
             <img
                 src={images["zdj1"]}
