@@ -4,6 +4,7 @@ import images from "../../features/strapiImages.jsx";
 
 
 export default function Wstep() {
+    console.log(images);
     return <div className="relative w-full h-max mt-15">
         <div className="absolute md:h-[50%] lg:h-[100%] md:w-[100%] lg:w-[58%] bg-[#F3F3F3] z-20 drop-shadow-md/20"></div>
         <div className="relative z-20 font-[poppins] flex flex-col w-full h-max gap-5 py-15 md:px-[15vw] px-[10vw] md:gap-15">
@@ -18,7 +19,7 @@ export default function Wstep() {
                         I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu – szkoła ponadpodstawowa, mieszcząca się od 1916 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. 6 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej.
                     </p>
                     <div className="w-full flex justify-center z-0">
-                        <img className="block lg:hidden w-3/5 mr-5" src={images["zamoyski"]} alt="Zamoyski" />
+                        <img className="block lg:hidden w-3/5 mr-5" src={images["2048px-Jan_Zamoyski_11"]} alt="Zamoyski" />
                     </div>
                     <div className="flex w-full justify-center lg:justify-start">
                         <Link to="/o-szkole" >
@@ -30,7 +31,7 @@ export default function Wstep() {
                         </Link>
                     </div>
                 </div>
-                <img className="hidden lg:block mr-5 z-10" src={images["zamoyski"]} alt="Zamoyski" />
+                <img className="hidden w-1/2 rounded-2xl lg:block -translate-y-1/8 -translate-x-1/4 mr-5 z-10 drop-shadow-xl/20" src={images["2048px-jan_zamoyski_11"]} alt="Zamoyski" />
             </div>
         </div>
     </div>

@@ -3,8 +3,6 @@ import zamoyski from "../../assets/zdj1.webp";
 
 const Kadra = () => {
 
-
-
     return(<>
         <div className="p-4 pt-40 pb-20">
             <div className="lg:max-w-5xl md:max-w-3xl max-w-xl mx-auto">
