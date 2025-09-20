@@ -10,8 +10,14 @@ const DropdownMobile = () => {
             animate={{opacity: 1}}
             transition={{duration: 0.1, ease: "easeOut"}}
             exit={{opacity: 0, transition: {duration: 0.2, delay: 0.05, ease: "easeOut"}}}
-            className="relative w-[97%] sm:w-[90%] lg:w-[80%]  h-max bg-[#3077BA] backdrop-blur-xs backdrop-saturate-300 rounded-xl flex flex-col items-center justify-top gap-5 pt-15 shadow-lg pb-15" >
+            className="relative w-[97%] sm:w-[90%] lg:w-[80%]  h-max bg-[#3077BA] backdrop-blur-xs backdrop-saturate-300 rounded-xl flex flex-col items-center justify-top gap-5 pt-8 shadow-lg pb-15" >
 
+            <motion.div className=" w-[88%] "
+            initial={{opacity: 0, y: 20, scale: 0.85}}
+                        animate={{opacity: 1, y: 0, scale: 1}}
+                        exit={{opacity: 0, y: 20, scale: 0.85, transition: {duration: 0.1, delay: 0.05, ease: "easeOut"}}}
+                        transition={{duration: 0.2, ease: "easeOut", delay: -0.05}}
+            ><div className="font-[poppins] font-light text-2xl text-white">Menu</div></motion.div>
             { glownaLista.map((item, index) => (
                 <motion.div
                 key={index}
@@ -19,7 +25,7 @@ const DropdownMobile = () => {
                 animate={{opacity: 1, y: 0, scale: 1}}
                 exit={{opacity: 0, y: 20, scale: 0.85, transition: {duration: 0.3, delay: index * -0.05, ease: "easeOut"}}}
                 transition={{duration: 0.2, ease: "easeOut", delay: index * 0.05}}
-                className="flex items-center w-[92%] h-17 bg-white rounded-md font-[poppins] text-2xl font-regular text-slate-900 px-5 gap-5"
+                className="flex items-center w-[88%] h-17 bg-white rounded-md font-[poppins] text-2xl font-regular text-slate-900 px-5 gap-5"
                 >
                 <div>{item.icon}</div>
                 <div>{item.title}</div>
