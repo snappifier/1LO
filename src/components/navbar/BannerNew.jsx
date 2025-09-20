@@ -48,11 +48,11 @@ export const BannerNew = () => {
             )}
         </AnimatePresence>
     <header className="fixed top-0 w-full h-30 flex flex-col items-center justify-center z-100">
-        <div className="w-[80%] h-15 bg-[#3077BA]/80 backdrop-blur-xs backdrop-saturate-300 rounded-xl flex items-center justify-between px-10 shadow-lg">
+        <div className="w-[90%] lg:w-[80%] h-15 bg-[#3077BA]/80 backdrop-blur-xs backdrop-saturate-300 rounded-xl flex items-center justify-between px-10 shadow-lg">
             <Link to={'/'} className="z-[60]">
-            <motion.img src={images["logo_thumbnail"]} width={64} height={64}  alt="logo" className="h-11 w-11" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
+            <motion.img src={images["logo_thumbnail"]} width={64} height={64}  alt="logo" className="h-11 w-11 min-w-11" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
             </Link>
-            <div className="flex items-center ">
+            <div className="hidden md:flex items-center ">
                 <DropdownNew />
             </div>
             <div
