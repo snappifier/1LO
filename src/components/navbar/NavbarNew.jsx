@@ -46,6 +46,17 @@ export const NavbarNew = () => {
         setIsOpen(false)
     }
 
+    //idk czy to dziala
+    useEffect(() => {
+        const mql = window.matchMedia('(min-width:1024px)');
+        mql.onchange = (e) => e.matches && setIsOpen(false);
+        if (mql.matches) setIsOpen(false);
+
+        return () => { mql.onchange = null; };
+    }, []);
+
+
+
     useEffect(() => {
         window.addEventListener("scroll", handleMenu);
 
@@ -64,11 +75,11 @@ export const NavbarNew = () => {
             )}
         </AnimatePresence>
     <header className={`fixed top-0 pt-4 sm:pt-5 lg:pt-8 w-full flex flex-col items-center justify-start z-100 gap-1 ${isOpen ? "h-screen bg-black/40 transition-colors duration-500" : ""}`}>
-        <div className="w-[94%] sm:w-[90%] lg:w-[80%] h-15 bg-[#3077BA] md:bg-[#3077BA]/80 backdrop-blur-xs backdrop-saturate-300 rounded-lg flex items-center justify-between px-5 sm:px-10 shadow-lg">
+        <div className="w-[94%] sm:w-[90%] lg:w-[80%] h-15 bg-[#3077BA] lg:bg-[#3077BA]/80 backdrop-blur-xs backdrop-saturate-300 rounded-lg flex items-center justify-between px-5 sm:px-10 shadow-lg">
             <Link to={'/'} className="z-[60]">
             <motion.img src={images["logo_thumbnail"]} width={64} height={64}  alt="logo" className="h-11 w-11 min-w-11" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
             </Link>
-            <div className="hidden md:flex items-center ">
+            <div className="hidden lg:flex items-center ">
                 <DropdownNew />
             </div>
             <div className="flex items-center  ">
@@ -78,7 +89,7 @@ export const NavbarNew = () => {
             >
                 <motion.svg className="transform transition-transform duration-150 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#fdfdfd" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="m21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/></g></motion.svg>
             </div>
-            <div className="group hover:bg-[#3077BA] h-10 w-10 flex justify-center items-center rounded-md cursor-pointer text-white md:hidden" onClick={() => setIsOpen(!isOpen)} >
+            <div className="group hover:bg-[#3077BA] h-10 w-10 flex justify-center items-center rounded-md cursor-pointer text-white lg:hidden" onClick={() => setIsOpen(!isOpen)} >
                 <HamburgerMenu isOpen={isOpen} />
             </div>
             </div>
