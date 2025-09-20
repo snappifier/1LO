@@ -3,7 +3,7 @@ import { useEffect, lazy, Suspense } from "react";
 import { ScrollToTop } from "./features/ScrollToTop.jsx";
 import Home from "./sections/Home/Home.jsx";
 import Footer from "./components/footer/Footer.jsx";
-import { BannerNew } from "./components/navbar/BannerNew.jsx";
+import { NavbarNew } from "./components/navbar/NavbarNew.jsx";
 import { Maintenance } from "./components/Maintenance.jsx";
 import { Loader } from "./components/animations/Loader.jsx";
 import Kadra from "./sections/Szkoła/Kadra.jsx";
@@ -23,7 +23,7 @@ export const AppRoutes = () => {
     return (
         <>
             <Suspense fallback={<Loader />}>
-                <BannerNew />
+                <NavbarNew />
                 <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<Home />} />
