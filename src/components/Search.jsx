@@ -15,7 +15,7 @@ export function Search({ onClose }) {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedValue(value);
-        }, 300);
+        }, 100);
         return () => clearTimeout(handler);
     }, [value]);
 
@@ -23,14 +23,15 @@ export function Search({ onClose }) {
         queryKey: ["posts", debouncedValue],
         queryFn: () =>
             get(
-                `posts?filters[Tytul][$startsWithi]=${encodeURIComponent(
+                `posts?search=${encodeURIComponent(
                     debouncedValue
                 )}`
             ),
-        enabled: debouncedValue.length >= 3,
+        enabled: debouncedValue.length >= 1,
     });
 
-    const searchResults = debouncedValue.length >= 3 ? (data?.data || []) : [];
+    const searchResults = (data?.data?.results || []);
+    console.log(data);
 
     return (
         <motion.div
@@ -51,7 +52,7 @@ export function Search({ onClose }) {
                 exit={{ scale: 0.95, opacity: 0 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 onClick={stopPropagation}
-                className="relative flex flex-col lg:max-w-[50vw] md:min-w-[60vw] max-h-[80vh] drop-shadow-2xl -translate-y-30 py-2 rounded-xl bg-white"
+                className="absolute lg:max-w-[50vw] md:min-w-[60vw] max-h-[80vh] drop-shadow-2xl -translate-y-50 py-2 rounded-xl bg-white"
             >
                 {/* Searchbar */}
                 <div className="flex w-full h-15 items-center gap-2 mx-5">
@@ -75,28 +76,30 @@ export function Search({ onClose }) {
                     />
                 </div>
                 <AnimatePresence>
-                    {value.length > 1 && (
+                    {searchResults.length > 0 && (
                         <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: "easeInOut" }}
-                            className="overflow-hidden flex h-10 flex-col w-full"
+                            layout
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            className="overflow-hidden absolute flex h-max flex-col w-full bg-white rounded-b-xl"
                         >
-                            <div className="overflow-y-auto mt-2 border-t" style={{ maxHeight: "50vh" }}>
+                            <div className="overflow-y-auto mt-2 border-t overflow-hidden" style={{ maxHeight: "50vh" }}>
                                 <AnimatePresence>
                                     {searchResults.map((item, index) => (
                                         <motion.div
                                             key={item.id}
-                                            initial={{ opacity: 0, y: 10 }}
+                                            initial={{ opacity: 0, y: -10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -10 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            layout
                                             transition={{
-                                                duration: 0.2,
-                                                ease: "easeOut",
+                                                duration: 0.15,
+                                                ease: "easeInOut",
                                                 delay: index * 0.05,
                                             }}
-                                            className="w-full px-4 py-4 hover:bg-gray-50 cursor-pointer"
+                                            className="w-full px-4 py-5 hover:bg-gray-50 cursor-pointer"
                                         >
                                             <p>{item.attributes?.Tytul || item.Tytul}</p>
                                         </motion.div>
@@ -110,3 +113,14 @@ export function Search({ onClose }) {
         </motion.div>
     );
 }
+// <motion.div
+//     initial={{ height: 0, opacity: 0 }}
+//     animate={{ height: "auto", opacity: 1 }}
+//     exit={{ height: 0, opacity: 0 }}
+//     transition={{ duration: 0.05, ease: "easeInOut" }}
+//     className="overflow-hidden flex h-10 flex-col w-full"
+// >
+    <div className="overflow-y-auto mt-2 border-t" style={{ maxHeight: "50vh" }}>
+
+    </div>
+// </motion.div>
