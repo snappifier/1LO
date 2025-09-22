@@ -120,7 +120,7 @@ export function Search({ onClose }) {
 //     transition={{ duration: 0.05, ease: "easeInOut" }}
 //     className="overflow-hidden flex h-10 flex-col w-full"
 // >
-    <div className="overflow-y-auto mt-2 border-t" style={{ maxHeight: "50vh" }}>
-
-    </div>
+//     <div className="overflow-y-auto mt-2 border-t" style={{ maxHeight: "50vh" }}>
+//
+//     </div>
 // </motion.div>
