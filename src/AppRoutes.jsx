@@ -31,6 +31,7 @@ export const AppRoutes = () => {
                     <Route path="/post/:id" element={<Post />} />
                     <Route path="/kadra" element={<Kadra />} />
                     <Route path="/dyrektorzy" element={<Dyrektorzy />} />
+                    <Route path="/nav" element={<NavbarNew />} />
                     <Route path="*" element={<Maintenance />} />
                 </Routes>
                 <Footer />
