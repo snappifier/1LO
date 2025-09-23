@@ -1,8 +1,45 @@
 import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
 import { Link as RouterLink } from 'react-router';
+import {useSuspenseQuery} from "@tanstack/react-query";
+import {get} from "../../features/fetcher.jsx";
 
 
 export default function DropdownNew() {
+
+    const uczen = useSuspenseQuery({
+        queryKey: ["uczen"],
+        queryFn: () =>
+            get(
+                "menu-uczens?populate=*&sort=rank:asc"
+            ),
+    });
+    const szkola = useSuspenseQuery({
+        queryKey: ["szkola"],
+        queryFn: () =>
+            get(
+                "menu-szkolas?populate=*&sort=rank:asc"
+            ),
+    });
+    const aktualnosci = useSuspenseQuery({
+        queryKey: ["aktualnosci"],
+        queryFn: () =>
+            get(
+                "menu-aktualnoscis?populate=*&sort=rank:asc"
+            ),
+    });
+    const dokumenty = useSuspenseQuery({
+        queryKey: ["dokumenty"],
+        queryFn: () =>
+            get(
+                "menu-dokumenties?populate=*&sort=rank:asc"
+            ),
+    });
+    const uczniowieLinks = uczen.data?.data || [];
+    console.log(uczniowieLinks);
+    const oSzkoleLinks = szkola.data?.data ;
+    const aktualnosciLinks = aktualnosci.data?.data ;
+    const dokumentyLinks = dokumenty.data?.data ;
+
     return (
         <NavigationMenu.Root className="font-[poppins] min-w-max rounded-lg bg-transparent p-1 text-white">
             <NavigationMenu.List className="relative flex">
@@ -18,10 +55,10 @@ export default function DropdownNew() {
                     <NavigationMenu.Content className={contentClassName}>
                         <ul className="grid list-none grid-cols-5 gap-0">
                             {oSzkoleLinks.map((item) => (
-                                <li key={item.href}>
-                                    <Link href={item.href} className={linkCardClassName}>
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item.description}</p>
+                                <li key={item["Link"]}>
+                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
+                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
                                 </li>
                             ))}
@@ -40,10 +77,10 @@ export default function DropdownNew() {
                     <NavigationMenu.Content className={contentClassName}>
                         <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {uczniowieLinks.map((item) => (
-                                <li key={item.href}>
-                                    <Link href={item.href} className={linkCardClassName}>
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item.description}</p>
+                                <li key={item["Link"]}>
+                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
+                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
                                 </li>
                             ))}
@@ -62,10 +99,10 @@ export default function DropdownNew() {
                     <NavigationMenu.Content className={contentClassName}>
                         <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {aktualnosciLinks.map((item) => (
-                                <li key={item.href}>
-                                    <Link href={item.href} className={linkCardClassName}>
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item.description}</p>
+                                <li key={item["Link"]}>
+                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
+                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
                                 </li>
                             ))}
@@ -84,10 +121,10 @@ export default function DropdownNew() {
                     <NavigationMenu.Content className={contentClassName}>
                         <ul className="grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]">
                             {dokumentyLinks.map((item) => (
-                                <li key={item.href}>
-                                    <Link href={item.href} className={linkCardClassName}>
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-medium">{item.title}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item.description}</p>
+                                <li key={item["Link"]}>
+                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
+                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
                                 </li>
                             ))}
@@ -182,7 +219,7 @@ function ArrowSvg(props) {
 
 const triggerClassName =
     'box-border flex items-center justify-center gap-1.5 h-10 ' +
-    'px-5 xs:px-3.5 m-0 rounded-md bg-transparent text-gray-50 font-medium ' +
+    'px-5 xs:px-3.5 m-0 rounded-md bg-transparent text-gray-50 font-normal ' +
     'text-[0.925rem] xs:text-base leading-6 select-none no-underline ' +
     'hover:bg-[#3077BA] active:bg-[#3077BA] data-[popup-open]:bg-[#3077BA] ' +
     'focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 focus-visible:relative';
@@ -197,65 +234,7 @@ const contentClassName =
     'data-[ending-style]:data-[activation-direction=right]:translate-x-[-50%]';
 
 const linkCardClassName =
-    'block rounded-md p-2 xs:p-3 no-underline text-inherit ' +
+    'block rounded-md p-2 xs:p-3 no-underline text-inherit' +
     'hover:bg-gray-100 focus-visible:relative focus-visible:outline focus-visible:outline-2 ' +
     'focus-visible:-outline-offset-1 focus-visible:outline-blue-800';
-
-// Zakładka: O szkole
-const oSzkoleLinks = [
-    { href: "/o-szkole", title: "O szkole", description: "Poznaj misję, wartości i codzienne życie naszej społeczności." },
-    { href: "/statut", title: "statut", description: "Pełny tekst statutu szkoły — zasady organizacji i działania placówki." },
-    { href: "/patron", title: "patron", description: "Poznaj sylwetkę patrona i jego znaczenie dla naszej szkoły." },
-    { href: "/hymn", title: "hymn", description: "Posłuchaj hymnu szkolnego i odkryj jego symbolikę." },
-    { href: "/kadra", title: "kadra", description: "Informacje o aktualnym zespole szkoły oraz ich funkcjach." },
-    { href: "/dyrektorzy", title: "dyrektorzy", description: "Informacje o dyrekcji z poprzednich lat." },
-    { href: "/archiwalia", title: "archiwalia", description: "Zbiory historyczne i dokumenty ilustrujące historię szkoły." },
-    { href: "/akademia-zamojska", title: "akademia zamojska", description: "Opis projektu Akademia Zamojska oraz działań edukacyjnych z nim związanych." },
-    { href: "/laboratorium-chemiczne", title: "laboratorium chemiczne", description: "Wyposażenie, zasady korzystania i projekty realizowane w pracowni." },
-    { href: "/informatyka", title: "informatyka", description: "Informacje o pracowniach, programie nauczania i osiągnięciach uczniów w informatyce." },
-    { href: "/certyfikaty", title: "certyfikaty", description: "Lista zdobytych certyfikatów i potwierdzeń jakości edukacji." },
-    { href: "/wspolpraca", title: "współpraca", description: "Partnerstwa lokalne i międzynarodowe oraz formy współpracy z instytucjami." },
-    { href: "/erasmus-plus", title: "Erasmus+", description: "Opisy projektów Erasmus+, raporty i informacje o możliwościach dla uczniów i nauczycieli." },
-    { href: "/wymiana-z-freiburgiem", title: "wymiana z Freiburgiem", description: "Szczegóły programu wymiany, relacje oraz harmonogramy wizyt." },
-];
-
-// Zakładka: Aktualności
-const aktualnosciLinks = [
-    { href: "/aktualnosci", title: "aktualności", description: "Bądź na bieżąco z wydarzeniami i informacjami z życia szkoły." },
-    { href: "/kalendarium", title: "kalendarium", description: "Kalendarz najważniejszych wydarzeń szkolnych i terminów." },
-    { href: "/blog", title: "blog", description: "Artykuły, relacje i felietony tworzone przez uczniów i nauczycieli." },
-    { href: "/fotoblog", title: "fotoblog", description: "Galerie zdjęć z wydarzeń szkolnych i projektów." },
-    { href: "/podswiatlo", title: "podświatło", description: "Szkolne czasopismo/projekt multimedialny z artykułami i wywiadami." },
-    { href: "/laureaci", title: "laureaci", description: "Lista uczniów nagrodzonych w konkursach i olimpiadach." },
-    { href: "/prymusi", title: "prymusi", description: "Wyróżnieni uczniowie z najwyższymi wynikami w nauce." },
-    { href: "/konkursy", title: "konkursy", description: "Informacje o aktualnych i archiwalnych konkursach szkolnych i pozaszkolnych." },
-    { href: "/osiagniecia-sportowe", title: "osiagniecia sportowe", description: "Sukcesy drużyn i pojedynczych uczniów w sporcie." },
-    { href: "/chor-szkolny", title: "chór szkolny", description: "Działalność chóru szkolnego, repertuar i koncerty." },
-    { href: "/wolontariat", title: "wolontariat", description: "Informacje o akcjach wolontariackich i możliwościach zaangażowania." },
-];
-
-// Zakładka: Uczniowie
-const uczniowieLinks = [
-    { href: "/plan-lekcji", title: "plan lekcji", description: "Aktualny rozkład zajęć dla wszystkich klas." },
-    { href: "/dziennik-elektroniczny", title: "dziennik elektroniczny", description: "Dostęp do ocen, frekwencji i komunikacji z nauczycielami." },
-    { href: "/zdalna-szkola", title: "zdalna szkoła", description: "Materiały i zasoby do nauki zdalnej oraz instrukcje logowania." },
-    { href: "/podreczniki", title: "podręczniki", description: "Lista podręczników oraz informacje o zakupie i dofinansowaniu." },
-    { href: "/biblioteka", title: "biblioteka", description: "Zasoby biblioteczne, katalog i zasady wypożyczeń." },
-    { href: "/zajecia-pozalekcyjne", title: "zajecia pozalekcyjne", description: "Oferta kółek zainteresowań i pozalekcyjnych zajęć sportowych." },
-    { href: "/samorzad", title: "samorząd", description: "Działania samorządu uczniowskiego i możliwości zaangażowania." },
-    { href: "/klasy", title: "klasy", description: "Informacje o klasach, wychowawcach i aktualnych ogłoszeniach." },
-    { href: "/maturzysta", title: "maturzysta", description: "Zasoby i terminy dla uczniów przygotowujących się do matury." },
-    { href: "/pomoc-psychologiczno-pedagogiczna", title: "pomoc psychologiczno-pedagogiczna", description: "Wsparcie psychologiczne, pedagogiczne i porady dla uczniów." },
-    { href: "/stypendia", title: "stypendia", description: "Informacje o dostępnych stypendiach i kryteriach przyznawania." },
-    { href: "/rada-rodzicow", title: "rada rodziców", description: "Kontakt i informacje dla rady rodziców oraz ich inicjatywy." },
-];
-
-// Zakładka: Dokumenty
-const dokumentyLinks = [
-    { href: "/rekrutacja", title: "rekrutacja", description: "Informacje o zasadach i terminach rekrutacji do szkoły." },
-    { href: "/procedury-wnioski", title: "procedury i wnioski", description: "Wzory wniosków, procedury administracyjne i instrukcje." },
-    { href: "/rodo", title: "RODO", description: "Polityka prywatności i informacje o ochronie danych osobowych." },
-    { href: "/deklaracja-dostepnosci", title: "deklaracja dostępności", description: "Informacje o dostępności serwisu i sposobach kontaktu." },
-    { href: "/program-wychowawczo-profilaktyczny", title: "program wychowawczo-profilaktyczny", description: "Założenia programowe dotyczące wychowania i profilaktyki." },
-];
 
