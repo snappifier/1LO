@@ -4,17 +4,17 @@ import godlo from "../../assets/512px-Herb_Polski.svg.png"
 
 export default function Banner() {
     return (<>
-        <div className="relative w-full h-max md:h-max flex flex-col pt-30 items-center">
-            <div className="relative w-[80%] h-max flex items-center justify-between">
+        <div className="relative w-full h-max md:h-max flex flex-col pt-[6rem] lg:pt-[8rem] items-center">
+            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] h-max flex items-center justify-between">
                 <div className="w-max h-max flex items-center gap-5 py-2">
-                    <motion.img src={images["logo_thumbnail"]}  alt="logo" className="max-h-30 min-w-11 drop-shadow-lg/20" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
-                    <p className="text-4xl/12 font-light select-none">I Liceum Ogólnokształcące im. Jana <br/>Zamoyskiego w Zamościu </p>
+                    <motion.img src={images["logo_thumbnail"]}  alt="logo" className="max-h-20 md:max-h-25 lg:max-h-30 min-w-11 drop-shadow-lg/20" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
+                    <p className="text-xl/7 sm:text-2xl/9 lg:text-4xl/12 max-w-2/3 font-light select-none">I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu </p>
                 </div>
                 <div className="max-h-30">
-                    <img src={godlo} className="max-h-30" />
+                    <img src={godlo} className="max-h-20 md:max-h-25 lg:max-h-30" />
                 </div>
             </div>
-            <div className="relative w-[80%] h-[40vh] drop-shadow-md/20 mt-5">
+            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[40vh] drop-shadow-md/20 mt-5 aspect-auto">
                 <img
                     src={images["zdj1"]}
                     alt="Widok na budynek liceum"
@@ -28,8 +28,8 @@ export default function Banner() {
 
                 />
             </div>
-            <div className="flex w-[80%] h-full justify-center items-center py-10 rounded-b-2xl">
-                <div className="relative flex w-[100%] gap-5 h-max drop-shadow-lg/10">
+            <div className="flex w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-center items-center py-10 rounded-b-2xl">
+                <div className="relative grid grid-cols-2 grid-rows-2 gap-4 md:flex w-[100%] gap-5 h-max drop-shadow-lg/10">
                     <motion.div
                         whileHover={{scale: 1.05}}
                         transition={{ duration: 0.2, ease: "easeOut" }}
@@ -61,7 +61,7 @@ export default function Banner() {
                     <motion.div
                         whileHover={{scale: 1.05}}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="bg-[#3077BA]/85 h-20 w-full drop-shadow-lg/30 rounded-xl flex flex-col justify-center items-center text-white cursor-pointer">
+                        className="hidden bg-[#3077BA]/85 h-20 w-full drop-shadow-lg/30 rounded-xl lg:flex flex-col justify-center items-center text-white cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M21 17v-6.9L12 15L1 9l11-6l11 6v8zm-9 4l-7-3.8v-5l7 3.8l7-3.8v5z"/></svg>
                         <p className="text-xl font-light select-none">Aktualności</p>
                     </motion.div>
