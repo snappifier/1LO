@@ -1,119 +1,328 @@
-import {motion} from "motion/react";
-import zamoyski from "../../assets/zdj1.webp";
-import {useSuspenseQuery} from "@tanstack/react-query";
-import {get, getStrapiMedia} from "../../features/fetcher.jsx";
+import { motion } from "motion/react";
+import { useMemo, useEffect, useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { get, getStrapiMedia } from "../../features/fetcher.jsx";
+
+
+const badges = {
+    Dyrektor: "bg-red-100 text-red-700",
+    Wicedyrektor: "bg-yellow-100 text-yellow-800",
+    Nauczyciel: "bg-green-100 text-green-700",
+    PedagogSpecjalny: "bg-blue-100 text-blue-700",
+    PedagogSzkolny: "bg-blue-100 text-blue-700",
+    PsychologSzkolny: "bg-blue-100 text-blue-700",
+    Biblioteka: "bg-green-100 text-green-700",
+};
+
+
+const przedmioty = [
+    "Język polski",
+    "Język angielski",
+    "Język francuski",
+    "Język hiszpański",
+    "Język niemiecki",
+    "Język rosyjski",
+    "Język łaciński",
+    "Historia",
+    "Edukacja obywatelska",
+    "Wiedza o społeczeństwie",
+    "Geografia",
+    "Biologia",
+    "Matematyka",
+    "Fizyka",
+    "Chemia",
+    "Edukacja dla bezpieczeństwa",
+    "Biznes i zarządzanie",
+    "Informatyka",
+    "Doradztwo zawodowe",
+    "Wychowanie fizyczne",
+    "Religia",
+    "Muzyka",
+    "Pedagog specjalny",
+    "Pedagog szkolny",
+    "Psycholog szkolny",
+    "Edukacja zdrowotna",
+    "Biblioteka",
+];
+
+
+const FALLBACK_IMG =
+    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYTdhN2E3IiBkPSJNMTIgMTJxLTEuNjUgMC0yLjgyNS0xLjE3NVQ4IDh0MS4xNzUtMi44MjVUMTIgNHQyLjgyNSAxLjE3NVQxNiA4dC0xLjE3NSAyLjgyNVQxMiAxMm0tOCA4di0yLjhxMC0uODUuNDM4LTEuNTYyVDUuNiAxNC41NXExLjU1LS43NzUgMy4xNS0xLjE2MlQxMiAxM3QzLjI1LjM4OHQzLjE1IDEuMTYycS43MjUuMzc1IDEuMTYzIDEuMDg4VDIwIDE3LjJWMjB6Ii8+PC9zdmc+";
+
+const ORDER_EXTRA_FIRST = ["Dyrekcja"];
+const ORDER_EXTRA_LAST = ["Inne"];
+
+const slug = (s) =>
+    String(s)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+
+const getGroupKey = (p) => {
+    const subj = p["Przedmiot"];
+    if (subj && String(subj).trim()) return String(subj).trim();
+    if (p["Funkcja"] === "Dyrektor" || p["Funkcja"] === "Wicedyrektor") return "Dyrekcja";
+    return "Inne";
+};
+
+const sortPL = (a, b) => a.localeCompare(b, "pl", { sensitivity: "base" });
+
+
+const Card = ({ profil }) => (
+    <motion.div
+        key={profil.id}
+        className="bg-white w-full rounded-lg overflow-hidden shadow-sm ring-1 ring-black/5"
+        whileHover={{ y: -4 }}
+        transition={{ type: "spring", stiffness: 260, damping: 24 }}
+    >
+        <div className="w-full aspect-square">
+            <img
+                src={profil?.["Zdjecie"] ? getStrapiMedia(profil["Zdjecie"].url) : FALLBACK_IMG}
+                alt={profil["ImieNazwisko"] ?? "Profil"}
+                className="w-full h-full object-cover object-top"
+                loading="lazy"
+            />
+        </div>
+        <div className="p-3 sm:p-4">
+            <h4 className="text-slate-900 text-base sm:text-[15px] font-[poppins] font-medium leading-tight">
+                {profil["ImieNazwisko"]}
+            </h4>
+            {profil["Przedmiot"] && (
+                <p className="text-slate-600 text-xs mt-1 font-[poppins]">{profil["Przedmiot"]}</p>
+            )}
+            {profil["Funkcja"] && (
+                <span
+                    className={`mt-2 inline-flex items-center rounded-md px-2 py-1 text-[11px] sm:text-xs font-medium ${
+                        badges[profil["Funkcja"]] ?? "bg-slate-100 text-slate-700"
+                    }`}
+                >
+          {profil["Funkcja"]}
+        </span>
+            )}
+        </div>
+    </motion.div>
+);
+
+const Section = ({ title, items }) => (
+    <section id={slug(title)} className="mb-10 sm:mb-12 scroll-mt-32 md:scroll-mt-36">
+        <h2 className="text-xl sm:text-2xl font-medium mb-4 sm:mb-6">{title}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            {items.map((p) => (
+                <Card key={p.id} profil={p} />
+            ))}
+        </div>
+    </section>
+);
+
+
+const RightRail = ({ items, activeId, onJump }) => (
+    <aside className="hidden xl:block sticky top-28 self-start ml-6 w-56">
+        <nav className="space-y-1" aria-label="Lista przedmiotów">
+            {items.map(({ title, id }) => {
+                const isActive = activeId === id;
+                return (
+                    <motion.button
+                        key={id}
+                        type="button"
+                        onClick={() => onJump(id)}
+                        aria-current={isActive ? "true" : "false"}
+                        whileHover={{ scale: 1.03, x: 2 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="group relative block w-full text-left px-2 py-1.5 rounded-md outline-none"
+                    >
+            <span
+                className={`absolute left-0 top-1/2 -translate-y-1/2 h-[2px] transition-all ${
+                    isActive
+                        ? "w-6 bg-[#3077BA]"
+                        : "w-3 bg-slate-300 group-hover:w-6 group-hover:bg-slate-400"
+                }`}
+            />
+                        <span
+                            className={`ml-4 text-sm font-[poppins] transition-colors ${
+                                isActive ? "text-slate-900 font-medium" : "text-slate-600 group-hover:text-slate-800"
+                            }`}
+                        >
+              {title}
+            </span>
+                    </motion.button>
+                );
+            })}
+        </nav>
+    </aside>
+);
+
+
+const TopChips = ({ items, activeId, onJump }) => (
+    <div id="top-chips" className="xl:hidden sticky top-20 md:top-20 lg:top-25 z-30 -mt-2 mb-4 sm:mb-6">
+        <div className="flex gap-2 overflow-x-auto px-1 py-1.5 scrollbar-none">
+            {items.map(({ title, id }) => {
+                const isActive = activeId === id;
+                return (
+                    <motion.button
+                        key={id}
+                        type="button"
+                        onClick={() => onJump(id)}
+                        aria-current={isActive ? "true" : "false"}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-[poppins] transition bg-[#f7f7f7] ${
+                            isActive
+                                ? "border-[#3077BA] text-[#3077BA]"
+                                : "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800"
+                        }`}
+                    >
+                        {title}
+                    </motion.button>
+                );
+            })}
+        </div>
+    </div>
+);
+
 
 const Kadra = () => {
-
-    const {data} = useSuspenseQuery({
+    const { data } = useSuspenseQuery({
         queryKey: ["kadra"],
-        queryFn: () =>
-            get(
-                "kadras?populate=*"
-            ),
+        queryFn: () => get("kadras?populate=*&sort=ImieNazwisko&order=asc"),
     });
-    const kadra = data?.data || [];
 
-    return (<>
-        <div className="p-4 pt-40 pb-20">
-            <div className="lg:max-w-5xl md:max-w-3xl max-w-xl mx-auto">
-                <div className="w-full flex gap-3 md:gap-10 mb-12 bg-transparent">
-                    <div className="flex mt-3 w-full h-1 rounded-md bg-[#3077BA]"></div>
-                    <p className="text-2xl font-semibold w-max">Kadra</p>
-                    <div className="flex mt-3 w-full h-1 rounded-md bg-[#3077BA]"></div>
-                </div>
+    const kadra = data?.data ?? [];
 
-                {/*<div*/}
-                {/*    className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 max-md:justify-center max-sm:max-w-xs mx-auto mt-12">*/}
-                    {/*<motion.div className="bg-white drop-shadow-xl rounded-lg overflow-hidden"*/}
-                    {/*            whileHover={{y: -10}}>*/}
-                    {/*    <div className="w-full aspect-square ">*/}
-                    {/*        <img src={zamoyski} alt="profile"*/}
-                    {/*             className="w-full h-full object-cover object-top"/>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="p-4">*/}
-                    {/*        <h4 className="text-slate-900 text-[15px] font-[poppins] font-medium">John Doe</h4>*/}
-                    {/*        <p className="text-slate-600 text-xs mt-1 font-[poppins]">Software Engineer</p>*/}
-                    {/*        <span*/}
-                    {/*            className="-translate-x-0.5 mt-2 inline-flex items-center rounded-md bg-red-400/10 px-2 py-1 text-xs font-medium text-red-400">*/}
-                    {/*        Dyrektor*/}
-                    {/*    </span>*/}
-                    {/*    </div>*/}
+    // 1) grupowanie profili
+    const groups = useMemo(() => {
+        const acc = {};
+        for (const p of kadra) {
+            const key = getGroupKey(p);
+            (acc[key] ??= []).push(p);
+        }
+        for (const k of Object.keys(acc)) {
+            acc[k].sort((a, b) => sortPL(a["ImieNazwisko"] ?? "", b["ImieNazwisko"] ?? ""));
+        }
+        return acc;
+    }, [kadra]);
 
-                    {/*</motion.div>*/}
-                    <div className="grid lg:grid-cols-3 lg:max-w-3xl md:grid-cols-3 md:max-w-2xl sm:grid-cols-2 sm:max-w-md gap-6 max-md:justify-center max-sm:max-w-xs mx-auto">
-                        {kadra.map((profil) => {
-                            console.log(profil["Funkcja"])
-                            if (profil["Funkcja"] === "Wicedyrektor" || profil["Funkcja"] === "Dyrektor") {
-                                return (<>
-                                    <motion.div className="bg-white max-w-xs drop-shadow-xl rounded-lg overflow-hidden"
-                                                whileHover={{y: -10}}>
-                                        <div className="w-full aspect-square ">
-                                            <img src={profil?.["Zdjecie"] ? getStrapiMedia(profil["Zdjecie"].url)    : "https://i1.memy.pl/obrazki/5066708508_jestem_twoja_.jpg"} alt="profil"
-                                                 className="w-full h-full object-cover object-top"/>
-                                        </div>
-                                        <div className="p-4">
-                                            <h4 className="text-slate-900 text-[15px] font-[poppins] font-medium">{profil["ImieNazwisko"]}</h4>
-                                            {/*<p className="text-slate-600 text-xs mt-1 font-[poppins]">{profil["funkcja"]}</p>*/}
-                                            <span className={`-translate-x-0.5 mt-2 inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ${badges[profil["Funkcja"]]} `}>{profil["Funkcja"]}</span>
-                                        </div>
-                                    </motion.div>
-                                </>)
-                            }
+    // 2) kolejność sekcji
+    const sectionOrder = useMemo(() => {
+        const existing = Object.keys(groups);
+        const preferred = [...ORDER_EXTRA_FIRST, ...przedmioty, ...ORDER_EXTRA_LAST].filter((k) =>
+            existing.includes(k)
+        );
+        const leftovers = existing.filter((k) => !preferred.includes(k)).sort(sortPL);
+        return [
+            ...ORDER_EXTRA_FIRST.filter((k) => preferred.includes(k)),
+            ...przedmioty.filter((k) => preferred.includes(k)),
+            ...leftovers,
+            ...ORDER_EXTRA_LAST.filter((k) => preferred.includes(k)),
+        ];
+    }, [groups]);
 
-                        })}
+    // 3) lista sekcji z id (do pasków i scroll-spya)
+    const sectionIds = useMemo(
+        () => sectionOrder.map((title) => ({ title, id: slug(title) })),
+        [sectionOrder]
+    );
+
+    // 4) scrollspy: wykrywanie aktywnej sekcji
+    const [active, setActive] = useState(null);
+
+    useEffect(() => {
+        if (!sectionIds.length) return;
+
+        const getTopOffset = () => {
+            let offset = 0;
+            const header = document.querySelector("header.fixed");
+            if (header) offset += header.getBoundingClientRect().height;
+            const chips = document.getElementById("top-chips");
+            // tylko jeśli sticky (widoczne na < xl)
+            if (chips && getComputedStyle(chips).position === "sticky") {
+                offset += chips.getBoundingClientRect().height;
+            }
+            // mały margines bezpieczeństwa
+            return Math.round(offset + 8);
+        };
+
+        const sections = sectionIds
+            .map(({ id }) => document.getElementById(id))
+            .filter(Boolean);
+
+        let frame = 0;
+
+        const updateActive = () => {
+            const offset = getTopOffset();
+            const vh = window.innerHeight || 0;
+
+            // wybierz sekcję z topem najbliżej (<=) offsetu; jeśli żadna, to pierwszą
+            let currentId = sections[0]?.id ?? null;
+            let bestTop = -Infinity;
+
+            for (const el of sections) {
+                const r = el.getBoundingClientRect();
+                // ignoruj, jeśli całkiem poza oknem
+                if (r.bottom <= 0 || r.top >= vh) continue;
+
+                if (r.top <= offset + 1 && r.top > bestTop) {
+                    bestTop = r.top;
+                    currentId = el.id;
+                }
+            }
+
+            // jeżeli wciąż jesteśmy przed pierwszą sekcją (na samej górze)
+            if (bestTop === -Infinity && sections[0]) {
+                currentId = sections[0].id;
+            }
+
+            setActive((prev) => (prev === currentId ? prev : currentId));
+        };
+
+        const onScroll = () => {
+            if (frame) cancelAnimationFrame(frame);
+            frame = requestAnimationFrame(updateActive);
+        };
+
+        // start + nasłuchy
+        updateActive();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+
+        return () => {
+            if (frame) cancelAnimationFrame(frame);
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onScroll);
+        };
+    }, [sectionIds]);
+
+    // 5) skok do sekcji
+    const handleJump = (id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    return (
+        <div className="w-full pt-36 md:pt-40 pb-16 md:pb-20 flex flex-col items-center">
+            <div className="w-[92%] sm:w-[90%] lg:w-[80%] grid grid-cols-1 xl:grid-cols-[1fr_18rem] gap-6 md:gap-8">
+                <main>
+                    <div className="w-full flex flex-col mb-4 sm:mb-6">
+                        <p className="text-3xl sm:text-4xl lg:text-5xl font-extralight w-max">
+                            Kadra nauczycielska
+                        </p>
                     </div>
 
-                    {/*</div>*/}
-                </div>
+                    {/* mobilny/topowy scrollspy */}
+                    <TopChips items={sectionIds} activeId={active} onJump={handleJump} />
+
+                    {sectionOrder.map((section) => (
+                        <Section key={section} title={section} items={groups[section] ?? []} />
+                    ))}
+                </main>
+
+                <RightRail items={sectionIds} activeId={active} onJump={handleJump} />
             </div>
+        </div>
+    );
+};
 
-        </>
-        )
-        }
-
-        // -translate-x-0.5 mt-2 inline-flex items-center rounded-md bg-red-400/10 px-2 py-1 text-xs font-medium
-        // text-red-400
-
-        const badges = {
-        "Dyrektor": "bg-red-100 text-red-700",
-        "Wicedyrektor": "bg-yellow-100 text-yellow-800",
-        "Nauczyciel": "bg-green-100 text-green-700",
-        "PedagogSpecjalny": "bg-blue-100 text-blue-700",
-        "PedagogSzkolny": "bg-blue-100 text-blue-700",
-        "PsychologSzkolny": "bg-blue-100 text-blue-700",
-        "Biblioteka": "bg-green-100 text-green-700",
-    }
-
-        // export default function Example() {
-//     return (
-//         <>
-//       <span className="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
-//         Badge
-//       </span>
-//             <span className="inline-flex items-center rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
-//         Badge
-//       </span>
-//             <span className="inline-flex items-center rounded-md bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
-//         Badge
-//       </span>
-//             <span className="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
-//         Badge
-//       </span>
-//             <span className="inline-flex items-center rounded-md bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
-//         Badge
-//       </span>
-//             <span className="inline-flex items-center rounded-md bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-700">
-//         Badge
-//       </span>
-//             <span className="inline-flex items-center rounded-md bg-purple-100 px-2 py-1 text-xs font-medium text-purple-700">
-//         Badge
-//       </span>
-//             <span className="inline-flex items-center rounded-md bg-pink-100 px-2 py-1 text-xs font-medium text-pink-700">
-//         Badge
-//       </span>
-//         </>
-//     )
-// }
-
-        export default Kadra;
+export default Kadra;
