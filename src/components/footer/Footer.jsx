@@ -12,7 +12,7 @@ export default function Footer(){
     }, [location.pathname]);
 
     return <>
-        <footer className="flex flex-col z-40  md:items-center text-white pt-4 overflow-hidden whitespace-nowrap w-full h-full bg-[#3077BA]">
+        <footer className="flex flex-col z-40 md:items-center text-white pt-4 overflow-hidden whitespace-nowrap w-full h-full bg-[#3077BA]">
             <Slider />
             <Menu />
         </footer>

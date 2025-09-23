@@ -50,8 +50,8 @@ export const AktualnosciHome = () => {
                     />
                 )}
             </AnimatePresence>
-            <div className="relative w-full h-max mt-30">
-                <div className="absolute lg:left-[65%] lg:h-[100%] lg:w-[35%] left-[25%] md:h-[50%] h-[100%] w-[75%] bg-[#F3F3F3] z-10 drop-shadow-md/20"></div>
+            <div className="relative w-full h-max mt-35">
+                <div className="absolute lg:left-[65%] lg:h-[100%] lg:w-[35%] left-[25%] md:h-[50%] h-[100%] w-[75%] bg-[#FFFF] z-10 drop-shadow-md/20 rounded-2xl"></div>
                 <div className="relative z-20 font-[poppins] flex w-full h-max gap-5 px-[10vw] py-10 md:px-[15vw] md:gap-20">
                     <div className="flex flex-col gap-2 items-end w-full h-max">
                         <div className="flex items-center gap-4">
