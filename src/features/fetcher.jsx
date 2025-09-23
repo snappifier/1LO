@@ -6,8 +6,6 @@ export function get(endpoint){
 
 export function getStrapiMedia(url) {
     if (url !== undefined) {
-
         return `${API_URL}${url}`;
     }
-    return blank_photo;
 }

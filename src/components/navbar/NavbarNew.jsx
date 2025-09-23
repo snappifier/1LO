@@ -17,6 +17,7 @@ export const NavbarNew = () => {
 
     useEffect(() => {
         fetchAndOrganizeStrapiImages();
+
     }, [location.pathname]);
 
     useEffect(() => {
@@ -97,7 +98,7 @@ export const NavbarNew = () => {
 
         <AnimatePresence mode="wait">
             {isOpen && (
-                <DropdownMobile isOpen={isOpen} />
+                <DropdownMobile isOpen={isOpen} setIsOpen={setIsOpen} />
             )}
         </AnimatePresence>
     </header>
