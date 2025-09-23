@@ -3,7 +3,7 @@ import { useMemo, useEffect, useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { get, getStrapiMedia } from "../../features/fetcher.jsx";
 
-// === KONFIG ===
+
 const badges = {
     Dyrektor: "bg-red-100 text-red-700",
     Wicedyrektor: "bg-yellow-100 text-yellow-800",
@@ -14,7 +14,6 @@ const badges = {
     Biblioteka: "bg-green-100 text-green-700",
 };
 
-// Możesz to wynieść do osobnego pliku i zaimportować
 const przedmioty = [
     "Język polski",
     "Język angielski",
@@ -45,7 +44,7 @@ const przedmioty = [
     "Biblioteka",
 ];
 
-// === POMOCNICZE ===
+
 const FALLBACK_IMG =
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYTdhN2E3IiBkPSJNMTIgMTJxLTEuNjUgMC0yLjgyNS0xLjE3NVQ4IDh0MS4xNzUtMi44MjVUMTIgNHQyLjgyNSAxLjE3NVQxNiA4dC0xLjE3NSAyLjgyNVQxMiAxMm0tOCA4di0yLjhxMC0uODUuNDM4LTEuNTYyVDUuNiAxNC41NXExLjU1LS43NzUgMy4xNS0xLjE2MlQxMiAxM3QzLjI1LjM4OHQzLjE1IDEuMTYycS43MjUuMzc1IDEuMTYzIDEuMDg4VDIwIDE3LjJWMjB6Ii8+PC9zdmc+";
 
@@ -70,10 +69,10 @@ const getGroupKey = (p) => {
 
 const sortPL = (a, b) => a.localeCompare(b, "pl", { sensitivity: "base" });
 
-// === UI KARTY/SEKCJI ===
+
 const Card = ({ profil }) => (
     <motion.div
-        key={profil.documentId || profil.id}
+        key={profil.id}
         className="bg-white w-full rounded-lg overflow-hidden shadow-sm ring-1 ring-black/5"
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 260, damping: 24 }}
@@ -111,17 +110,17 @@ const Section = ({ title, items }) => (
         id={slug(title)}
         className="mb-10 sm:mb-12 scroll-mt-32 md:scroll-mt-36"
     >
-        {/* scroll-mt kompensuje fixed navbar; dopasuj do realnej wysokości headera */}
+
         <h2 className="text-xl sm:text-2xl font-medium mb-4 sm:mb-6">{title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {items.map((p) => (
-                <Card key={p.documentId || p.id} profil={p} />
+                <Card key={p.id} profil={p} />
             ))}
         </div>
     </section>
 );
 
-// === PASEK PO PRAWEJ (SCROLLSPY) — MINIMAL DLA XL+ ===
+
 const RightRail = ({ items, activeId, onJump }) => (
     <aside className="hidden xl:block sticky top-28 self-start ml-6 w-56">
         <nav className="space-y-1" aria-label="Lista przedmiotów">
@@ -154,9 +153,9 @@ const RightRail = ({ items, activeId, onJump }) => (
     </aside>
 );
 
-// === TOP (MOBILE/TABLET) SCROLLSPY — MINIMAL DLA < XL ===
+
 const TopChips = ({ items, activeId, onJump }) => (
-    <div className="xl:hidden top-24 md:top-28 z-30 -mt-2 mb-4 sm:mb-6">
+    <div className="xl:hidden sticky top-20 md:top-28 z-30 -mt-2 mb-4 sm:mb-6">
         <div className="flex gap-2 overflow-x-auto px-1 py-1.5 scrollbar-none">
             {items.map(({ title, id }) => {
                 const isActive = activeId === id;
@@ -168,7 +167,7 @@ const TopChips = ({ items, activeId, onJump }) => (
                         aria-current={isActive ? "true" : "false"}
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
-                        className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-[poppins] transition
+                        className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-[poppins] transition bg-[#f7f7f7]
               ${isActive
                             ? "border-[#3077BA] text-[#3077BA]"
                             : "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800"}`}
@@ -181,7 +180,7 @@ const TopChips = ({ items, activeId, onJump }) => (
     </div>
 );
 
-// === GŁÓWNY KOMPONENT ===
+
 const Kadra = () => {
     const { data } = useSuspenseQuery({
         queryKey: ["kadra"],
@@ -190,7 +189,7 @@ const Kadra = () => {
 
     const kadra = data?.data ?? [];
 
-    // 1) grupowanie profili
+
     const groups = useMemo(() => {
         const acc = {};
         for (const p of kadra) {
@@ -203,7 +202,7 @@ const Kadra = () => {
         return acc;
     }, [kadra]);
 
-    // 2) kolejność sekcji
+
     const sectionOrder = useMemo(() => {
         const existing = Object.keys(groups);
         const preferred = [...ORDER_EXTRA_FIRST, ...przedmioty, ...ORDER_EXTRA_LAST].filter((k) =>
@@ -218,13 +217,13 @@ const Kadra = () => {
         ];
     }, [groups]);
 
-    // 3) lista sekcji z id (do paska i observera)
+
     const sectionIds = useMemo(
         () => sectionOrder.map((title) => ({ title, id: slug(title) })),
         [sectionOrder]
     );
 
-    // 4) scrollspy: wykrywanie aktywnej sekcji
+
     const [active, setActive] = useState(sectionIds[0]?.id ?? null);
 
     useEffect(() => {
@@ -251,7 +250,7 @@ const Kadra = () => {
         return () => obs.disconnect();
     }, [sectionIds]);
 
-    // 5) skok do sekcji
+
     const handleJump = (id) => {
         const el = document.getElementById(id);
         if (!el) return;
@@ -260,7 +259,7 @@ const Kadra = () => {
 
     return (
         <div className="w-full pt-36 md:pt-40 pb-16 md:pb-20 flex flex-col items-center">
-            {/* layout: main + right rail */}
+
             <div className="w-[92%] sm:w-[90%] lg:w-[80%] grid grid-cols-1 xl:grid-cols-[1fr_18rem] gap-6 md:gap-8">
                 <main>
                     <div className="w-full flex flex-col mb-4 sm:mb-6">
@@ -269,7 +268,7 @@ const Kadra = () => {
                         </p>
                     </div>
 
-                    {/* mobilny/topowy scrollspy */}
+
                     <TopChips items={sectionIds} activeId={active} onJump={handleJump} />
 
                     {sectionOrder.map((section) => (
