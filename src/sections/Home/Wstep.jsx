@@ -7,7 +7,7 @@ export default function Wstep() {
     const zamoyskiSrc = images["2048px-jan_zamoyski_11"] || images["2048px-Jan_Zamoyski_11"];
 
     return (
-        <div className="flex relative w-full h-120 mt-5 justify-center">
+        <div className="flex relative w-full h-120 mt-2 justify-center">
             <div className="absolute w-2/3 h-full bg-white left-0 rounded-r-2xl drop-shadow-lg/20"></div>
             <div className="relative flex w-[80%] h-full gap-20">
                 <div className="flex flex-col w-[50%] justify-center gap-5 pb-5">
