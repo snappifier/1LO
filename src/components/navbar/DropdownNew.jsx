@@ -35,10 +35,9 @@ export default function DropdownNew() {
             ),
     });
     const uczniowieLinks = uczen.data?.data || [];
-    console.log(uczniowieLinks);
-    const oSzkoleLinks = szkola.data?.data ;
-    const aktualnosciLinks = aktualnosci.data?.data ;
-    const dokumentyLinks = dokumenty.data?.data ;
+    const oSzkoleLinks = szkola.data?.data || [];
+    const aktualnosciLinks = aktualnosci.data?.data || [];
+    const dokumentyLinks = dokumenty.data?.data || [];
 
     return (
         <NavigationMenu.Root className="font-[poppins] min-w-max rounded-lg bg-transparent p-1 text-white">
