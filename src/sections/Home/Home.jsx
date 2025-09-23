@@ -5,7 +5,7 @@ import Shields from "../../components/footer/shields.jsx"
 
 export default function Home(){
     return (
-        <div className="relative w-full min-h-screen bg-[#EEEEEE]">
+        <div className="relative w-full min-h-screen bg-[#f7f7f7]">
             {/* Zawartość strony - z przezroczystym tłem */}
             <div className="w-full h-max flex flex-col items-center z-10">
                 <div className="w-full bg-transparent">
