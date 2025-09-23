@@ -79,7 +79,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { Link  } from "react-router-dom";
 
-const DropdownMobile = () => {
+const DropdownMobile = ({isOpen, setIsOpen}) => {
     const [activeIndex, setActiveIndex] = useState(null); // null = lista główna
 
 
@@ -104,7 +104,7 @@ const DropdownMobile = () => {
                 exit={{ opacity: 0, transition: { duration: 0.2, delay: 0.05, ease: "easeOut" } }}
                 className="relative w-[94%] sm:w-[90%] lg:w-[80%] min-h-[70vh] h-max bg-[#3077BA] backdrop-blur-xs backdrop-saturate-300 rounded-lg flex flex-col items-center justify-start gap-5 pt-8 shadow-lg pb-15"
             >
-                <div className="flex items-center justify-between w-[88%]">
+                <div className="flex items-center justify-between w-[80%]">
                     <div className="font-[poppins] font-light text-2xl text-white select-none ">
                         {showMain ? "Menu" : glownaLista[activeIndex]?.title}
                     </div>
@@ -137,7 +137,7 @@ const DropdownMobile = () => {
                                 },
                                 exit: { opacity: 0, transition: { staggerDirection: -1, staggerChildren: 0.05 } }
                             }}
-                            className="w-full flex flex-col items-center gap-4 pb-6"
+                            className="w-full flex flex-col items-center gap-4 pb-6 pt-10"
                         >
                             {glownaLista.map((item, index) => (
                                 <motion.button
@@ -164,6 +164,7 @@ const DropdownMobile = () => {
                         <CategoryGrid
                             key={`grid-${activeIndex}`}
                             items={categoryData[activeIndex] ?? []}
+                            onNavigate={() => setIsOpen(false)}
                         />
                     )}
                 </AnimatePresence>
@@ -172,7 +173,7 @@ const DropdownMobile = () => {
     );
 };
 
-const CategoryGrid = ({ items }) => {
+const CategoryGrid = ({ items, onNavigate }) => {
 
     const MotionLink = motion.create(Link);
 
@@ -189,12 +190,14 @@ const CategoryGrid = ({ items }) => {
                     <MotionLink
                         key={el.href + i}
                         to={el.href}
+                        onClick={onNavigate}
                         className="group rounded-xl bg-white/95 hover:bg-white p-4 shadow-md ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-[#ffffff]"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.18, ease: "easeOut", delay: i * 0.02 }}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
+
                     >
                         <div className="font-[poppins] text-base text-slate-800 capitalize">
                             {el.title}
@@ -248,11 +251,11 @@ const szkola = [
         { href: "/archiwalia", title: "archiwalia", icon: "" },
         { href: "/akademia-zamojska", title: "akademia zamojska", icon: "" },
         { href: "/laboratorium-chemiczne", title: "laboratorium chemiczne", icon: "" },
+        { href: "/wymiana-z-freiburgiem", title: "wymiana z Freiburgiem", icon: "" },
         { href: "/informatyka", title: "informatyka", icon: "" },
         { href: "/certyfikaty", title: "certyfikaty", icon: "" },
         { href: "/wspolpraca", title: "współpraca", icon: "" },
         { href: "/erasmus-plus", title: "Erasmus+", icon: "" },
-        { href: "/wymiana-z-freiburgiem", title: "wymiana z Freiburgiem", icon: "" },
     ],
 ];
 
@@ -288,9 +291,9 @@ const aktualnosci = [
 const dokumenty = [
     { href: "/rekrutacja", title: "rekrutacja"},
     { href: "/procedury-wnioski", title: "procedury i wnioski" },
-    { href: "/rodo", title: "RODO"},
     { href: "/deklaracja-dostepnosci", title: "deklaracja dostępności" },
     { href: "/program-wychowawczo-profilaktyczny", title: "program wychowawczo-profilaktyczny" },
+    { href: "/rodo", title: "RODO"},
 ];
 
 export default DropdownMobile;
