@@ -14,6 +14,7 @@ const badges = {
     Biblioteka: "bg-green-100 text-green-700",
 };
 
+
 const przedmioty = [
     "Język polski",
     "Język angielski",
@@ -106,11 +107,7 @@ const Card = ({ profil }) => (
 );
 
 const Section = ({ title, items }) => (
-    <section
-        id={slug(title)}
-        className="mb-10 sm:mb-12 scroll-mt-32 md:scroll-mt-36"
-    >
-
+    <section id={slug(title)} className="mb-10 sm:mb-12 scroll-mt-32 md:scroll-mt-36">
         <h2 className="text-xl sm:text-2xl font-medium mb-4 sm:mb-6">{title}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {items.map((p) => (
@@ -137,12 +134,16 @@ const RightRail = ({ items, activeId, onJump }) => (
                         className="group relative block w-full text-left px-2 py-1.5 rounded-md outline-none"
                     >
             <span
-                className={`absolute left-0 top-1/2 -translate-y-1/2 h-[2px] transition-all
-                ${isActive ? "w-6 bg-[#3077BA]" : "w-3 bg-slate-300 group-hover:w-6 group-hover:bg-slate-400"}`}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 h-[2px] transition-all ${
+                    isActive
+                        ? "w-6 bg-[#3077BA]"
+                        : "w-3 bg-slate-300 group-hover:w-6 group-hover:bg-slate-400"
+                }`}
             />
                         <span
-                            className={`ml-4 text-sm font-[poppins] transition-colors
-                ${isActive ? "text-slate-900 font-medium" : "text-slate-600 group-hover:text-slate-800"}`}
+                            className={`ml-4 text-sm font-[poppins] transition-colors ${
+                                isActive ? "text-slate-900 font-medium" : "text-slate-600 group-hover:text-slate-800"
+                            }`}
                         >
               {title}
             </span>
@@ -155,7 +156,7 @@ const RightRail = ({ items, activeId, onJump }) => (
 
 
 const TopChips = ({ items, activeId, onJump }) => (
-    <div className="xl:hidden sticky top-20 md:top-28 z-30 -mt-2 mb-4 sm:mb-6">
+    <div id="top-chips" className="xl:hidden sticky top-20 md:top-20 lg:top-25 z-30 -mt-2 mb-4 sm:mb-6">
         <div className="flex gap-2 overflow-x-auto px-1 py-1.5 scrollbar-none">
             {items.map(({ title, id }) => {
                 const isActive = activeId === id;
@@ -167,10 +168,11 @@ const TopChips = ({ items, activeId, onJump }) => (
                         aria-current={isActive ? "true" : "false"}
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
-                        className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-[poppins] transition bg-[#f7f7f7]
-              ${isActive
-                            ? "border-[#3077BA] text-[#3077BA]"
-                            : "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800"}`}
+                        className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-sm font-[poppins] transition bg-[#f7f7f7] ${
+                            isActive
+                                ? "border-[#3077BA] text-[#3077BA]"
+                                : "border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-800"
+                        }`}
                     >
                         {title}
                     </motion.button>
@@ -189,7 +191,7 @@ const Kadra = () => {
 
     const kadra = data?.data ?? [];
 
-
+    // 1) grupowanie profili
     const groups = useMemo(() => {
         const acc = {};
         for (const p of kadra) {
@@ -202,7 +204,7 @@ const Kadra = () => {
         return acc;
     }, [kadra]);
 
-
+    // 2) kolejność sekcji
     const sectionOrder = useMemo(() => {
         const existing = Object.keys(groups);
         const preferred = [...ORDER_EXTRA_FIRST, ...przedmioty, ...ORDER_EXTRA_LAST].filter((k) =>
@@ -217,40 +219,82 @@ const Kadra = () => {
         ];
     }, [groups]);
 
-
+    // 3) lista sekcji z id (do pasków i scroll-spya)
     const sectionIds = useMemo(
         () => sectionOrder.map((title) => ({ title, id: slug(title) })),
         [sectionOrder]
     );
 
-
-    const [active, setActive] = useState(sectionIds[0]?.id ?? null);
+    // 4) scrollspy: wykrywanie aktywnej sekcji
+    const [active, setActive] = useState(null);
 
     useEffect(() => {
         if (!sectionIds.length) return;
-        const obs = new IntersectionObserver(
-            (entries) => {
-                const visible = entries
-                    .filter((e) => e.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-                if (visible?.target?.id) setActive(visible.target.id);
-            },
-            {
-                root: null,
-                threshold: [0.15, 0.33, 0.5],
-                rootMargin: "0px 0px -40% 0px",
+
+        const getTopOffset = () => {
+            let offset = 0;
+            const header = document.querySelector("header.fixed");
+            if (header) offset += header.getBoundingClientRect().height;
+            const chips = document.getElementById("top-chips");
+            // tylko jeśli sticky (widoczne na < xl)
+            if (chips && getComputedStyle(chips).position === "sticky") {
+                offset += chips.getBoundingClientRect().height;
             }
-        );
+            // mały margines bezpieczeństwa
+            return Math.round(offset + 8);
+        };
 
-        sectionIds.forEach(({ id }) => {
-            const el = document.getElementById(id);
-            if (el) obs.observe(el);
-        });
+        const sections = sectionIds
+            .map(({ id }) => document.getElementById(id))
+            .filter(Boolean);
 
-        return () => obs.disconnect();
+        let frame = 0;
+
+        const updateActive = () => {
+            const offset = getTopOffset();
+            const vh = window.innerHeight || 0;
+
+            // wybierz sekcję z topem najbliżej (<=) offsetu; jeśli żadna, to pierwszą
+            let currentId = sections[0]?.id ?? null;
+            let bestTop = -Infinity;
+
+            for (const el of sections) {
+                const r = el.getBoundingClientRect();
+                // ignoruj, jeśli całkiem poza oknem
+                if (r.bottom <= 0 || r.top >= vh) continue;
+
+                if (r.top <= offset + 1 && r.top > bestTop) {
+                    bestTop = r.top;
+                    currentId = el.id;
+                }
+            }
+
+            // jeżeli wciąż jesteśmy przed pierwszą sekcją (na samej górze)
+            if (bestTop === -Infinity && sections[0]) {
+                currentId = sections[0].id;
+            }
+
+            setActive((prev) => (prev === currentId ? prev : currentId));
+        };
+
+        const onScroll = () => {
+            if (frame) cancelAnimationFrame(frame);
+            frame = requestAnimationFrame(updateActive);
+        };
+
+        // start + nasłuchy
+        updateActive();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+
+        return () => {
+            if (frame) cancelAnimationFrame(frame);
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onScroll);
+        };
     }, [sectionIds]);
 
-
+    // 5) skok do sekcji
     const handleJump = (id) => {
         const el = document.getElementById(id);
         if (!el) return;
@@ -259,7 +303,6 @@ const Kadra = () => {
 
     return (
         <div className="w-full pt-36 md:pt-40 pb-16 md:pb-20 flex flex-col items-center">
-
             <div className="w-[92%] sm:w-[90%] lg:w-[80%] grid grid-cols-1 xl:grid-cols-[1fr_18rem] gap-6 md:gap-8">
                 <main>
                     <div className="w-full flex flex-col mb-4 sm:mb-6">
@@ -268,7 +311,7 @@ const Kadra = () => {
                         </p>
                     </div>
 
-
+                    {/* mobilny/topowy scrollspy */}
                     <TopChips items={sectionIds} activeId={active} onJump={handleJump} />
 
                     {sectionOrder.map((section) => (
