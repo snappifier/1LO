@@ -6,7 +6,7 @@ export default function Banner() {
     return (<>
         <div className="relative w-full h-max md:h-max flex flex-col pt-30 items-center">
             <div className="relative w-[80%] h-max flex items-center justify-between">
-                <div className="w-max h-max flex items-center gap-10 py-2">
+                <div className="w-max h-max flex items-center gap-5 py-2">
                     <motion.img src={images["logo_thumbnail"]}  alt="logo" className="max-h-30 min-w-11 drop-shadow-lg/20" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
                     <p className="text-4xl/12 font-light select-none">I Liceum Ogólnokształcące im. Jana <br/>Zamoyskiego w Zamościu </p>
                 </div>
