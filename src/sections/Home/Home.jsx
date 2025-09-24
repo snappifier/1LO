@@ -5,7 +5,7 @@ import Shields from "../../components/footer/shields.jsx"
 
 export default function Home(){
     return (
-        <div className="relative w-full min-h-screen bg-[#f7f7f7]">
+        <div className="relative w-full min-h-screen">
             <div className="w-full h-max flex flex-col items-center z-10">
                 <div className="w-full bg-transparent">
                     <Banner />

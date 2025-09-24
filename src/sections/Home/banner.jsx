@@ -1,6 +1,7 @@
 import {images} from "../../features/strapiImages.jsx";
 import {motion} from "motion/react"
 import godlo from "../../assets/512px-Herb_Polski.svg.png"
+import {Link} from "react-router-dom";
 
 export default function Banner() {
     return (<>
@@ -58,13 +59,15 @@ export default function Banner() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M21 17v-6.9L12 15L1 9l11-6l11 6v8zm-9 4l-7-3.8v-5l7 3.8l7-3.8v5z"/></svg>
                         <p className="text-xl font-light select-none">Rekrutacja</p>
                     </motion.div>
-                    <motion.div
-                        whileHover={{scale: 1.05}}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="hidden bg-[#3077BA]/85 h-20 w-full drop-shadow-lg/30 rounded-xl lg:flex flex-col justify-center items-center text-white cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M21 17v-6.9L12 15L1 9l11-6l11 6v8zm-9 4l-7-3.8v-5l7 3.8l7-3.8v5z"/></svg>
-                        <p className="text-xl font-light select-none">Aktualności</p>
-                    </motion.div>
+                    <Link to={"/aktualnosci"} className="w-full">
+                        <motion.div
+                            whileHover={{scale: 1.05}}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            className="hidden bg-[#3077BA]/85 h-20 w-full drop-shadow-lg/30 rounded-xl lg:flex flex-col justify-center items-center text-white cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M21 17v-6.9L12 15L1 9l11-6l11 6v8zm-9 4l-7-3.8v-5l7 3.8l7-3.8v5z"/></svg>
+                            <p className="text-xl font-light select-none">Aktualności</p>
+                        </motion.div>
+                    </Link>
 
                 </div>
             </div>
