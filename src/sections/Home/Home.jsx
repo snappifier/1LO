@@ -1,6 +1,6 @@
 import Banner from "./banner.jsx";
 import Wstep from "./Wstep.jsx";
-import {AktualnosciHome} from "./AktualnosciHome.jsx";
+import {AktualnosciNew} from "./AktualnosciNew.jsx";
 import Shields from "../../components/footer/shields.jsx"
 
 export default function Home(){
@@ -14,7 +14,7 @@ export default function Home(){
                     <Wstep />
                 </div>
                 <div className="w-full bg-transparent">
-                    <AktualnosciHome />
+                    <AktualnosciNew />
                 </div>
                 <div className="w-full bg-transparent">
                     <Shields />
