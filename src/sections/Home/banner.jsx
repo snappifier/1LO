@@ -11,7 +11,7 @@ export default function Banner() {
                     <p className="text-xl/7 sm:text-2xl/9 lg:text-4xl/12 max-w-2/3 font-light select-none">I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu </p>
                 </div>
                 <div className="max-h-30">
-                    <img src={godlo} className="max-h-20 md:max-h-25 lg:max-h-30" />
+                    <img src={godlo} alt="Godło" className="max-h-20 md:max-h-25 lg:max-h-30" />
                 </div>
             </div>
             <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[40vh] drop-shadow-md/20 mt-5 aspect-auto">
