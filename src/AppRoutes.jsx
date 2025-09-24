@@ -8,18 +8,23 @@ import { Maintenance } from "./components/Maintenance.jsx";
 import { Loader } from "./components/animations/Loader.jsx";
 import Kadra from "./sections/Szkoła/Kadra.jsx";
 import Dyrektorzy from "./sections/Szkoła/Dyrektorzy.jsx";
+import {Template} from "./components/template-1.jsx";
+import {get} from "./features/fetcher.jsx";
+import {useSuspenseQuery} from "@tanstack/react-query";
 
 const Aktualnosci = lazy(() => import("./sections/Aktualności/Aktualnosci.jsx"));
 const Post = lazy(() => import("./components/Post.jsx"));
 
-const RedirectHome = () => {
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, []);
-    return <Navigate to="/" replace />;
-};
-
 export const AppRoutes = () => {
+    const uczen = useSuspenseQuery({
+        queryKey: ["uczen"],
+        queryFn: () =>
+            get(
+                "menu-uczens?populate=*&sort=rank:asc"
+            ),
+    });
+    const uczniowieLinks = uczen.data?.data || [];
+
     return (
         <>
             <Suspense fallback={<Loader />}>
@@ -32,6 +37,12 @@ export const AppRoutes = () => {
                     <Route path="/kadra" element={<Kadra />} />
                     <Route path="/dyrektorzy" element={<Dyrektorzy />} />
                     <Route path="/nav" element={<NavbarNew />} />
+                    {uczniowieLinks.map((item) => {
+                        if(item["Template"] === "Main"){
+                            return <Route path={item["Link"]} element={<Template />} />;
+                        }
+                        return null
+                    })}
                     <Route path="*" element={<Maintenance />} />
                 </Routes>
                 <Footer />
