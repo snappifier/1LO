@@ -82,14 +82,14 @@ const Card = ({ profil }) => (
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 260, damping: 24 }}
     >
-        <div className="w-full aspect-square">
-            <img
-                src={profil?.["Zdjecie"] ? getStrapiMedia(profil["Zdjecie"].url) : FALLBACK_IMG}
-                alt={profil["ImieNazwisko"] ?? "Profil"}
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-            />
-        </div>
+        {/*<div className="w-full aspect-square">*/}
+        {/*    <img*/}
+        {/*        src={profil?.["Zdjecie"] ? getStrapiMedia(profil["Zdjecie"].url) : FALLBACK_IMG}*/}
+        {/*        alt={profil["ImieNazwisko"] ?? "Profil"}*/}
+        {/*        className="w-full h-full object-cover object-top"*/}
+        {/*        loading="lazy"*/}
+        {/*    />*/}
+        {/*</div>*/}
         <div className="p-3 sm:p-4">
             <h4 className="text-slate-900 text-base sm:text-[15px] font-[poppins] font-medium leading-tight">
                 {profil["Tytul"]} {profil["ImieNazwisko"]}
