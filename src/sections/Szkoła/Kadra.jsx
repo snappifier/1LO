@@ -3,7 +3,6 @@ import { useMemo, useEffect, useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { get, getStrapiMedia } from "../../features/fetcher.jsx";
 
-
 const badges = {
     Dyrektor: "bg-red-100 text-red-700",
     Wicedyrektor: "bg-yellow-100 text-yellow-800",
@@ -13,7 +12,6 @@ const badges = {
     PsychologSzkolny: "bg-blue-100 text-blue-700",
     Biblioteka: "bg-green-100 text-green-700",
 };
-
 
 const przedmioty = [
     "Język polski",
@@ -45,7 +43,6 @@ const przedmioty = [
     "Biblioteka",
 ];
 
-
 const FALLBACK_IMG =
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYTdhN2E3IiBkPSJNMTIgMTJxLTEuNjUgMC0yLjgyNS0xLjE3NVQ4IDh0MS4xNzUtMi44MjVUMTIgNHQyLjgyNSAxLjE3NVQxNiA4dC0xLjE3NSAyLjgyNVQxMiAxMm0tOCA4di0yLjhxMC0uODUuNDM4LTEuNTYyVDUuNiAxNC41NXExLjU1LS43NzUgMy4xNS0xLjE2MlQxMiAxM3QzLjI1LjM4OHQzLjE1IDEuMTYycS43MjUuMzc1IDEuMTYzIDEuMDg4VDIwIDE3LjJWMjB6Ii8+PC9zdmc+";
 
@@ -61,15 +58,22 @@ const slug = (s) =>
         .trim()
         .replace(/\s+/g, "-");
 
-const getGroupKey = (p) => {
-    const subj = p["Przedmiot"];
-    if (subj && String(subj).trim()) return String(subj).trim();
-    if (p["Funkcja"] === "Dyrektor" || p["Funkcja"] === "Wicedyrektor") return "Dyrekcja";
-    return "Inne";
+// >>> ZMIANA: wielokrotne klucze grup
+const getGroupKeys = (p) => {
+    const keys = [];
+    const raw = (p["Przedmiot"] ?? "").trim();
+    const subjects = raw ? raw.split(/[;,/]/).map((s) => s.trim()).filter(Boolean) : [];
+
+    if (p["Funkcja"] === "Dyrektor" || p["Funkcja"] === "Wicedyrektor") {
+        keys.push("Dyrekcja");
+    }
+    keys.push(...subjects);
+
+    if (keys.length === 0) keys.push("Inne");
+    return Array.from(new Set(keys));
 };
 
 const sortPL = (a, b) => a.localeCompare(b, "pl", { sensitivity: "base" });
-
 
 const Card = ({ profil }) => (
     <motion.div
@@ -88,7 +92,7 @@ const Card = ({ profil }) => (
         </div>
         <div className="p-3 sm:p-4">
             <h4 className="text-slate-900 text-base sm:text-[15px] font-[poppins] font-medium leading-tight">
-                {profil["ImieNazwisko"]}
+                {profil["Tytul"]} {profil["ImieNazwisko"]}
             </h4>
             {profil["Przedmiot"] && (
                 <p className="text-slate-600 text-xs mt-1 font-[poppins]">{profil["Przedmiot"]}</p>
@@ -117,10 +121,9 @@ const Section = ({ title, items }) => (
     </section>
 );
 
-
 const RightRail = ({ items, activeId, onJump }) => (
-    <aside className="hidden xl:block sticky top-28 self-start ml-6 w-56">
-        <nav className="space-y-1" aria-label="Lista przedmiotów">
+    <aside className="hidden xl:block sticky top-28 self-start ml-20 w-60">
+        <nav className="space-y-[0.5]" aria-label="Lista przedmiotów">
             {items.map(({ title, id }) => {
                 const isActive = activeId === id;
                 return (
@@ -131,7 +134,7 @@ const RightRail = ({ items, activeId, onJump }) => (
                         aria-current={isActive ? "true" : "false"}
                         whileHover={{ scale: 1.03, x: 2 }}
                         whileTap={{ scale: 0.98 }}
-                        className="group relative block w-full text-left px-2 py-1.5 rounded-md outline-none"
+                        className="group relative block w-full text-left px-2 py-[0.5] rounded-md outline-none"
                     >
             <span
                 className={`absolute left-0 top-1/2 -translate-y-1/2 h-[2px] transition-all ${
@@ -153,7 +156,6 @@ const RightRail = ({ items, activeId, onJump }) => (
         </nav>
     </aside>
 );
-
 
 const TopChips = ({ items, activeId, onJump }) => (
     <div id="top-chips" className="xl:hidden sticky top-20 md:top-20 lg:top-25 z-30 -mt-2 mb-4 sm:mb-6">
@@ -182,7 +184,6 @@ const TopChips = ({ items, activeId, onJump }) => (
     </div>
 );
 
-
 const Kadra = () => {
     const { data } = useSuspenseQuery({
         queryKey: ["kadra"],
@@ -191,12 +192,14 @@ const Kadra = () => {
 
     const kadra = data?.data ?? [];
 
-    // 1) grupowanie profili
+    // >>> ZMIANA: rozdzielanie do wielu grup
     const groups = useMemo(() => {
         const acc = {};
         for (const p of kadra) {
-            const key = getGroupKey(p);
-            (acc[key] ??= []).push(p);
+            const keys = getGroupKeys(p);
+            for (const k of keys) {
+                (acc[k] ??= []).push(p);
+            }
         }
         for (const k of Object.keys(acc)) {
             acc[k].sort((a, b) => sortPL(a["ImieNazwisko"] ?? "", b["ImieNazwisko"] ?? ""));
@@ -204,7 +207,6 @@ const Kadra = () => {
         return acc;
     }, [kadra]);
 
-    // 2) kolejność sekcji
     const sectionOrder = useMemo(() => {
         const existing = Object.keys(groups);
         const preferred = [...ORDER_EXTRA_FIRST, ...przedmioty, ...ORDER_EXTRA_LAST].filter((k) =>
@@ -219,13 +221,11 @@ const Kadra = () => {
         ];
     }, [groups]);
 
-    // 3) lista sekcji z id (do pasków i scroll-spya)
     const sectionIds = useMemo(
         () => sectionOrder.map((title) => ({ title, id: slug(title) })),
         [sectionOrder]
     );
 
-    // 4) scrollspy: wykrywanie aktywnej sekcji
     const [active, setActive] = useState(null);
 
     useEffect(() => {
@@ -236,11 +236,9 @@ const Kadra = () => {
             const header = document.querySelector("header.fixed");
             if (header) offset += header.getBoundingClientRect().height;
             const chips = document.getElementById("top-chips");
-            // tylko jeśli sticky (widoczne na < xl)
             if (chips && getComputedStyle(chips).position === "sticky") {
                 offset += chips.getBoundingClientRect().height;
             }
-            // mały margines bezpieczeństwa
             return Math.round(offset + 8);
         };
 
@@ -254,13 +252,11 @@ const Kadra = () => {
             const offset = getTopOffset();
             const vh = window.innerHeight || 0;
 
-            // wybierz sekcję z topem najbliżej (<=) offsetu; jeśli żadna, to pierwszą
             let currentId = sections[0]?.id ?? null;
             let bestTop = -Infinity;
 
             for (const el of sections) {
                 const r = el.getBoundingClientRect();
-                // ignoruj, jeśli całkiem poza oknem
                 if (r.bottom <= 0 || r.top >= vh) continue;
 
                 if (r.top <= offset + 1 && r.top > bestTop) {
@@ -269,7 +265,6 @@ const Kadra = () => {
                 }
             }
 
-            // jeżeli wciąż jesteśmy przed pierwszą sekcją (na samej górze)
             if (bestTop === -Infinity && sections[0]) {
                 currentId = sections[0].id;
             }
@@ -282,7 +277,6 @@ const Kadra = () => {
             frame = requestAnimationFrame(updateActive);
         };
 
-        // start + nasłuchy
         updateActive();
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll);
@@ -294,7 +288,6 @@ const Kadra = () => {
         };
     }, [sectionIds]);
 
-    // 5) skok do sekcji
     const handleJump = (id) => {
         const el = document.getElementById(id);
         if (!el) return;
