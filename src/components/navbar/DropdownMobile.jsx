@@ -427,7 +427,6 @@ const glownaLista = [
 
 const szkola = [[
     {href: "/o-szkole", title: "O szkole", icon: ""},
-    {href: "/statut", title: "statut", icon: ""},
     {href: "/patron", title: "patron", icon: ""},
     {href: "/hymn", title: "hymn", icon: ""},
     {href: "/kadra", title: "kadra", icon: ""},
@@ -477,6 +476,7 @@ const dokumenty = [
     { href: "/deklaracja-dostepnosci", title: "deklaracja dostępności" },
     { href: "/program-wychowawczo-profilaktyczny", title: "program wychowawczo-profilaktyczny" },
     { href: "/rodo", title: "RODO"},
+    {href: "/statut", title: "statut", icon: ""},
 ];
 
 export default DropdownMobile;
