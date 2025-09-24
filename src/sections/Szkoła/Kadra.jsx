@@ -122,8 +122,8 @@ const Section = ({ title, items }) => (
 );
 
 const RightRail = ({ items, activeId, onJump }) => (
-    <aside className="hidden xl:block sticky top-28 self-start ml-30 w-56">
-        <nav className="space-y-[0.1]" aria-label="Lista przedmiotów">
+    <aside className="hidden xl:block sticky top-28 self-start ml-20 w-60">
+        <nav className="space-y-[0.5]" aria-label="Lista przedmiotów">
             {items.map(({ title, id }) => {
                 const isActive = activeId === id;
                 return (
@@ -134,7 +134,7 @@ const RightRail = ({ items, activeId, onJump }) => (
                         aria-current={isActive ? "true" : "false"}
                         whileHover={{ scale: 1.03, x: 2 }}
                         whileTap={{ scale: 0.98 }}
-                        className="group relative block w-full text-left px-2 py-1.5 rounded-md outline-none"
+                        className="group relative block w-full text-left px-2 py-[0.5] rounded-md outline-none"
                     >
             <span
                 className={`absolute left-0 top-1/2 -translate-y-1/2 h-[2px] transition-all ${

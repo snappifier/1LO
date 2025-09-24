@@ -227,7 +227,7 @@ import {AnimatePresence, motion, useReducedMotion} from "motion/react";
 import {useMemo, useState} from "react";
 import {Link} from "react-router-dom";
 
-const DropdownMobile = ({isOpen, setIsOpen}) => {
+const DropdownMobile = ({setIsOpen}) => {
     const [activeIndex, setActiveIndex] = useState(null); // null = lista główna
     const prefersReducedMotion = useReducedMotion();
 
