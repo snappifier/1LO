@@ -29,7 +29,7 @@ export default function Banner() {
                 />
             </div>
             <div className="flex w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-center items-center py-10 rounded-b-2xl">
-                <div className="relative grid grid-cols-2 grid-rows-2 gap-4 md:flex w-[100%] gap-5 h-max drop-shadow-lg/10">
+                <div className="relative grid grid-cols-2 grid-rows-2 md:flex w-[100%] gap-5 h-max drop-shadow-lg/10">
                     <motion.div
                         whileHover={{scale: 1.05}}
                         transition={{ duration: 0.2, ease: "easeOut" }}
