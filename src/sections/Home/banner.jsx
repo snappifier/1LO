@@ -15,7 +15,7 @@ export default function Banner() {
                     <img src={godlo} alt="Godło" className="max-h-20 md:max-h-25 lg:max-h-30" />
                 </div>
             </div>
-            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[40vh] lg:h-[60vh] drop-shadow-md/20 mt-5 aspect-auto">
+            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[40vh] lg:h-[60vh]  drop-shadow-md/20 mt-5 aspect-auto">
                 <img
                     src={images["zdj1"]}
                     alt="Widok na budynek liceum"
