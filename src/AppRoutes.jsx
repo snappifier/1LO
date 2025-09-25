@@ -20,11 +20,12 @@ const Post = lazy(() => import("./components/Post.jsx"));
 export const AppRoutes = () => {
     const menu_dokumenty = useSuspenseQuery({
         queryKey: ["dokumenty"],
-        queryFn: () => get("documenties?populate=*&sort=rank:asc"),
+        queryFn: () => get("menu-dokumenties?populate=*&sort=rank:asc"),
     });
 
-    const dokumentyLinks = menu_dokumenty.data?.data || [];
 
+    const dokumentyLinks = menu_dokumenty.data?.data || [];
+console.log(dokumentyLinks)
     const singleTypeApi = (uid) => `${uid}?populate=*`;
 
     return (
