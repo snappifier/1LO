@@ -1,11 +1,28 @@
-const API_URL = import.meta.env.VITE_API_URL;
+// features/fetcher.jsx
+const RAW = import.meta.env.VITE_API_URL || "";
+export const API_URL = RAW.replace(/\/+$/, "");
 
-export function get(endpoint){
-    return fetch(API_URL + "/api/" + endpoint).then(response => response.json());
+export async function get(endpoint, opts = {}) {
+    if (typeof endpoint !== "string") {
+        throw new Error(`get(endpoint) wymaga stringa, dostał: ${Object.prototype.toString.call(endpoint)}`);
+    }
+    const clean = endpoint.replace(/^\/+/, "");
+    const [path, qs] = clean.split("?", 2);
+    const url = new URL(`${API_URL}/api/${path}`);
+
+    // query z endpointu
+    if (qs) new URLSearchParams(qs).forEach((v, k) => url.searchParams.append(k, v));
+    // domyślnie publikowane (możesz nadpisać w opts.params)
+    if (!url.searchParams.has("status")) url.searchParams.set("status", "published");
+    // dodatkowe params
+    if (opts.params) Object.entries(opts.params).forEach(([k, v]) => v != null && url.searchParams.set(k, String(v)));
+
+    const res = await fetch(url.toString(), { headers: { "Content-Type": "application/json" } });
+    if (!res.ok) throw new Error(`GET ${url.pathname}${url.search} failed: ${res.status}`);
+    return res.json();
 }
 
 export function getStrapiMedia(url) {
-    if (url !== undefined) {
-        return `${API_URL}${url}`;
-    }
+    if (!url) return null;
+    return /^https?:\/\//i.test(url) ? url : `${API_URL}${url}`;
 }

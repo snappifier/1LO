@@ -5,17 +5,18 @@ import {getStrapiMedia} from "../../features/fetcher.jsx";
 import {useSuspenseQuery} from "@tanstack/react-query";
 
 
-const Statut = ({api}) => {
+const TemplateSameLinki = ({api}) => {
 
-    const {data} = useSuspenseQuery({
-        queryKey: ["uczen"],
-        queryFn: () =>
-            get(
-                api
-            ),
+    const { data } = useSuspenseQuery({
+        queryKey: ["page", api],
+        queryFn: () => get(api),
     });
     const page = data?.data || [];
-    console.log(page)
+
+    const plik = page?.["Plik"]
+        ? getStrapiMedia(page["Plik"].url)
+        : null
+
     return (
         <>
             <div className="w-full pt-36 md:pt-40 pb-16 md:pb-20 flex flex-col items-center  min-h-[80vh]">
@@ -26,7 +27,7 @@ const Statut = ({api}) => {
                         </p>
                     </div>
                     <div className="w-max h-max flex flex-col gap-4 sm:gap-6">
-                        <Link to={"http://1lo.com.pl/pdf/2025_Statut_ILO.pdf"} target={"_blank"} className="w-max h-max">
+                        <Link to={plik} target={"_blank"} className="w-max h-max">
                             <motion.div
                                 className="w-max cursor-pointer flex items-center justify-between gap-3"
                                 whileHover={{scale: 1.02}}
@@ -47,4 +48,4 @@ const Statut = ({api}) => {
     )
 }
 
-export default Statut;
+export default TemplateSameLinki;

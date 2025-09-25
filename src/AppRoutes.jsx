@@ -12,7 +12,7 @@ import { Maintenance } from "./components/Maintenance.jsx";
 import { Loader } from "./components/animations/Loader.jsx";
 import Kadra from "./sections/Szkoła/Kadra.jsx";
 import Dyrektorzy from "./sections/Szkoła/Dyrektorzy.jsx";
-import Statut from "./sections/Dokumenty/Statut.jsx";
+import TemplateSameLinki from "./sections/Templates/TemplateSameLinki.jsx";
 
 const Aktualnosci = lazy(() => import("./sections/Aktualności/Aktualnosci.jsx"));
 const Post = lazy(() => import("./components/Post.jsx"));
@@ -25,7 +25,7 @@ export const AppRoutes = () => {
 
 
     const dokumentyLinks = menu_dokumenty.data?.data || [];
-console.log(dokumentyLinks)
+    console.log(dokumentyLinks)
     const singleTypeApi = (uid) => `${uid}?populate=*`;
 
     return (
@@ -39,12 +39,10 @@ console.log(dokumentyLinks)
                 <Route path="/post/:id" element={<Post />} />
                 <Route path="/kadra" element={<Kadra />} />
                 <Route path="/dyrektorzy" element={<Dyrektorzy />} />
-                <Route path="/statut" element={<Statut />} />
 
                 {dokumentyLinks
-                    .filter((item) => item["Template"] === "Same Linki" && item["Link"])
+                    .filter((item) => item["Template"] === "Same linki" && item["Link"])
                     .map((item) => {
-                        const path = item["Link"].startsWith("/") ? item["Link"] : `/${item["Link"]}`;
 
                         const api =
                             item["apiPath"]
@@ -54,12 +52,11 @@ console.log(dokumentyLinks)
                                     : null;
 
                         if (!api) return null;
-
                         return (
                             <Route
-                                key={item.id || path}
-                                path={path}
-                                element={<Template api={api} />}
+                                key={item.id}
+                                path={item["Link"]}
+                                element={<TemplateSameLinki api={api} />}
                             />
                         );
                     })}
