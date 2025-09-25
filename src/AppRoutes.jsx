@@ -1,8 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { Routes, Route} from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { ScrollToTop } from "./features/ScrollToTop.jsx";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Template } from "./components/template-1.jsx";
 import { get } from "./features/fetcher.jsx";
 
 import Home from "./sections/Home/Home.jsx";
@@ -18,19 +17,44 @@ const Aktualnosci = lazy(() => import("./sections/Aktualności/Aktualnosci.jsx")
 const Post = lazy(() => import("./components/Post.jsx"));
 
 export const AppRoutes = () => {
+    const menu_uczen = useSuspenseQuery({
+        queryKey: ["uczen"],
+        queryFn: () =>
+            get(
+                "menu-uczens?populate=*&sort=rank:asc"
+            ),
+    });
+    const menu_szkola = useSuspenseQuery({
+        queryKey: ["szkola"],
+        queryFn: () =>
+            get(
+                "menu-szkolas?populate=*&sort=rank:asc"
+            ),
+    });
+    const menu_aktualnosci = useSuspenseQuery({
+        queryKey: ["aktualnosci"],
+        queryFn: () =>
+            get(
+                "menu-aktualnoscis?populate=*&sort=rank:asc"
+            ),
+    });
     const menu_dokumenty = useSuspenseQuery({
         queryKey: ["dokumenty"],
-        queryFn: () => get("menu-dokumenties?populate=*&sort=rank:asc"),
+        queryFn: () =>
+            get(
+                "menu-dokumenties?populate=*&sort=rank:asc"
+            ),
     });
-
-
+    const uczniowieLinks = menu_uczen.data?.data || [];
+    const oSzkoleLinks = menu_szkola.data?.data || [];
+    const aktualnosciLinks = menu_aktualnosci.data?.data || [];
     const dokumentyLinks = menu_dokumenty.data?.data || [];
-    console.log(dokumentyLinks)
+    const allLinks = [...uczniowieLinks, ...oSzkoleLinks, ...aktualnosciLinks, ...dokumentyLinks];
     const singleTypeApi = (uid) => `${uid}`;
 
     return (
         <Suspense fallback={<Loader />}>
-            <NavbarNew />
+            <NavbarNew menu={{uczniowieLinks, oSzkoleLinks, aktualnosciLinks, dokumentyLinks}}/>
             <ScrollToTop />
 
             <Routes>
@@ -40,16 +64,14 @@ export const AppRoutes = () => {
                 <Route path="/kadra" element={<Kadra />} />
                 <Route path="/dyrektorzy" element={<Dyrektorzy />} />
 
-                {dokumentyLinks
+                {allLinks
                     .filter((item) => item["Template"] === "Same linki" && item["Link"])
                     .map((item) => {
 
                         const api =
-                            item["apiPath"]
-                                ? item["apiPath"]
-                                : item["singleTypeUid"]
-                                    ? singleTypeApi(item["singleTypeUid"])
-                                    : null;
+                            item["singleTypeUid"]
+                                ? singleTypeApi(item["singleTypeUid"])
+                                : null;
 
                         if (!api) return null;
                         return (

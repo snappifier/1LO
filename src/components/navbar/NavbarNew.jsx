@@ -8,7 +8,7 @@ import {Search} from "../Search.jsx";
 import {HamburgerMenu} from "../animations/HamburgerMenu.jsx";
 import DropdownMobile from "./DropdownMobile.jsx";
 
-export const NavbarNew = () => {
+export const NavbarNew = ({menu}) => {
     const [searchOn, setSearchOn] = useState(false);
 
     const location = useLocation();
@@ -81,7 +81,7 @@ export const NavbarNew = () => {
             <motion.img src={images["logo_thumbnail"]} width={64} height={64}  alt="logo" className="h-11 w-11 min-w-11 " whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
             </Link>
             <div className="hidden lg:flex items-center ">
-                <DropdownNew />
+                <DropdownNew menu={menu}/>
             </div>
             <div className="flex items-center  ">
             <div
@@ -98,7 +98,7 @@ export const NavbarNew = () => {
 
         <AnimatePresence mode="wait">
             {isOpen && (
-                <DropdownMobile isOpen={isOpen} setIsOpen={setIsOpen} />
+                <DropdownMobile menu={menu} isOpen={isOpen} setIsOpen={setIsOpen} />
             )}
         </AnimatePresence>
     </header>

@@ -1,43 +1,12 @@
 import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
 import { Link as RouterLink } from 'react-router';
-import {useSuspenseQuery} from "@tanstack/react-query";
-import {get} from "../../features/fetcher.jsx";
 
 
-export default function DropdownNew() {
-
-    const uczen = useSuspenseQuery({
-        queryKey: ["uczen"],
-        queryFn: () =>
-            get(
-                "menu-uczens?populate=*&sort=rank:asc"
-            ),
-    });
-    const szkola = useSuspenseQuery({
-        queryKey: ["szkola"],
-        queryFn: () =>
-            get(
-                "menu-szkolas?populate=*&sort=rank:asc"
-            ),
-    });
-    const aktualnosci = useSuspenseQuery({
-        queryKey: ["aktualnosci"],
-        queryFn: () =>
-            get(
-                "menu-aktualnoscis?populate=*&sort=rank:asc"
-            ),
-    });
-    const dokumenty = useSuspenseQuery({
-        queryKey: ["dokumenty"],
-        queryFn: () =>
-            get(
-                "menu-dokumenties?populate=*&sort=rank:asc"
-            ),
-    });
-    const uczniowieLinks = uczen.data?.data || [];
-    const oSzkoleLinks = szkola.data?.data || [];
-    const aktualnosciLinks = aktualnosci.data?.data || [];
-    const dokumentyLinks = dokumenty.data?.data || [];
+export default function DropdownNew({menu}) {
+    const oSzkoleLinks = menu.oSzkoleLinks;
+    const dokumentyLinks = menu.dokumentyLinks;
+    const uczniowieLinks = menu.uczniowieLinks;
+    const aktualnosciLinks = menu.aktualnosciLinks;
 
     return (
         <NavigationMenu.Root className="font-[poppins] min-w-max rounded-lg bg-transparent p-1 text-white">

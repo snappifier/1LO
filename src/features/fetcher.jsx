@@ -10,11 +10,8 @@ export async function get(endpoint, opts = {}) {
     const [path, qs] = clean.split("?", 2);
     const url = new URL(`${API_URL}/api/${path}`);
 
-    // query z endpointu
     if (qs) new URLSearchParams(qs).forEach((v, k) => url.searchParams.append(k, v));
-    // domyślnie publikowane (możesz nadpisać w opts.params)
     if (!url.searchParams.has("status")) url.searchParams.set("status", "published");
-    // dodatkowe params
     if (opts.params) Object.entries(opts.params).forEach(([k, v]) => v != null && url.searchParams.set(k, String(v)));
 
     const res = await fetch(url.toString(), { headers: { "Content-Type": "application/json" } });

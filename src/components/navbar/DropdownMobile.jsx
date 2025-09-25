@@ -227,7 +227,12 @@ import {AnimatePresence, motion, useReducedMotion} from "motion/react";
 import {useMemo, useState} from "react";
 import {Link} from "react-router-dom";
 
-const DropdownMobile = ({setIsOpen}) => {
+const DropdownMobile = ({menu, setIsOpen}) => {
+    const szkola = menu.oSzkoleLinks;
+    const uczen = menu.dokumentyLinks;
+    const aktualnosci = menu.uczniowieLinks;
+    const dokumenty = menu.aktualnosciLinks;
+
     const [activeIndex, setActiveIndex] = useState(null); // null = lista główna
     const prefersReducedMotion = useReducedMotion();
 
@@ -235,7 +240,7 @@ const DropdownMobile = ({setIsOpen}) => {
     const handleBack = () => setActiveIndex(null);
 
     const categoryData = useMemo(() => ({
-        0: szkola?.[0] ?? [],
+        0: szkola ?? [],
         1: uczen ?? [],
         2: aktualnosci ?? [],
         3: dokumenty ?? [],
@@ -369,7 +374,7 @@ const CategoryGrid = ({items, onNavigate}) => {
                         whileTap={{scale: 0.98}}
                     >
                         <div className="font-[poppins] text-base text-slate-800 capitalize">
-                            {el.title}
+                            {el["Tytul"]}
                         </div>
                         {el.icon ? (
                             <div className="mt-2 opacity-70 group-hover:opacity-90">{el.icon}</div>
@@ -425,58 +430,5 @@ const glownaLista = [
     },
 ];
 
-const szkola = [[
-    {href: "/o-szkole", title: "O szkole", icon: ""},
-    {href: "/patron", title: "patron", icon: ""},
-    {href: "/hymn", title: "hymn", icon: ""},
-    {href: "/kadra", title: "kadra", icon: ""},
-    {href: "/dyrektorzy", title: "dyrektorzy", icon: ""},
-    {href: "/archiwalia", title: "archiwalia", icon: ""},
-    {href: "/akademia-zamojska", title: "akademia zamojska", icon: ""},
-    {href: "/laboratorium-chemiczne", title: "laboratorium chemiczne", icon: ""},
-    {href: "/wymiana-z-freiburgiem", title: "wymiana z Freiburgiem", icon: ""},
-    {href: "/informatyka", title: "informatyka", icon: ""},
-    {href: "/certyfikaty", title: "certyfikaty", icon: ""},
-    {href: "/wspolpraca", title: "współpraca", icon: ""},
-    {href: "/erasmus-plus", title: "Erasmus+", icon: ""},
-]];
-
-const uczen = [
-    {href: "/plan-lekcji", title: "plan lekcji"},
-    {href: "/dziennik-elektroniczny", title: "dziennik elektroniczny"},
-    {href: "/zdalna-szkola", title: "zdalna szkoła"},
-    {href: "/podreczniki", title: "podręczniki"},
-    {href: "/biblioteka", title: "biblioteka"},
-    {href: "/zajecia-pozalekcyjne", title: "zajecia pozalekcyjne"},
-    {href: "/samorzad", title: "samorząd"},
-    {href: "/klasy", title: "klasy"},
-    {href: "/maturzysta", title: "maturzysta"},
-    {href: "/pomoc-psychologiczno-pedagogiczna", title: "pomoc psychologiczno-pedagogiczna"},
-    {href: "/stypendia", title: "stypendia"},
-    {href: "/rada-rodzicow", title: "rada rodziców"},
-];
-
-const aktualnosci = [
-    {href: "/aktualnosci", title: "aktualności"},
-    {href: "/kalendarium", title: "kalendarium" },
-    { href: "/blog", title: "blog" },
-    { href: "/fotoblog", title: "fotoblog"},
-    { href: "/podswiatlo", title: "podświatło" },
-    { href: "/laureaci", title: "laureaci" },
-    { href: "/prymusi", title: "prymusi" },
-    { href: "/konkursy", title: "konkursy" },
-    { href: "/osiagniecia-sportowe", title: "osiagniecia sportowe"},
-    { href: "/chor-szkolny", title: "chór szkolny" },
-    { href: "/wolontariat", title: "wolontariat" },
-];
-
-const dokumenty = [
-    { href: "/rekrutacja", title: "rekrutacja"},
-    { href: "/procedury-wnioski", title: "procedury i wnioski" },
-    { href: "/deklaracja-dostepnosci", title: "deklaracja dostępności" },
-    { href: "/program-wychowawczo-profilaktyczny", title: "program wychowawczo-profilaktyczny" },
-    { href: "/rodo", title: "RODO"},
-    {href: "/statut", title: "statut", icon: ""},
-];
 
 export default DropdownMobile;
