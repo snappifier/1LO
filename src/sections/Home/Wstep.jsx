@@ -1,16 +1,13 @@
-import { motion } from "motion/react";
-import { Link } from "react-router";
 import images from "../../features/strapiImages.jsx";
 
 export default function Wstep() {
-    // upewnij się, że używasz poprawnego klucza (case-sensitive)
     const zamoyskiSrc = images["2048px-jan_zamoyski_11"] || images["2048px-Jan_Zamoyski_11"];
 
     return (
         <div className="flex relative w-full sm:h-max md:h-120 mt-2 justify-center">
-            <div className="absolute w-full md:w-2/3 h-5/6 md:h-full bg-white left-0 rounded-r-2xl drop-shadow-lg/20"></div>
+            <div className="absolute w-full md:w-[50%] h-5/6 md:h-full bg-white left-[10%] rounded-2xl drop-shadow-lg/20"></div>
             <div className="relative flex flex-col md:flex-row w-[94%] sm:w-[90%] lg:w-[80%] h-full md:gap-20">
-                <div className="flex flex-col w-full md:w-[50%] pt-8 md:pt-5 justify-center gap-5 pb-5">
+                <div className="flex flex-col w-full md:w-[50%] gap-8 px-8 py-8">
                     <div className="flex flex-col w-max">
                         <p className="md:text-lg lg:text-xl font-medium">KRÓTKO O SZKOLE</p>
                         <p className="text-lg font-light">Dowiedz się troszkę więcej o nas</p>
