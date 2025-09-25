@@ -363,8 +363,8 @@ const CategoryGrid = ({items, onNavigate}) => {
             {items?.length ? (
                 items.map((el, i) => (
                     <MotionLink
-                        key={el.href + i}
-                        to={el.href}
+                        key={el["Link"] + i}
+                        to={el["Link"]}
                         onClick={onNavigate}
                         className="group rounded-xl bg-white/95 hover:bg-white p-4 shadow-md ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-[#ffffff]"
                         initial={{opacity: 0, y: 10}}
