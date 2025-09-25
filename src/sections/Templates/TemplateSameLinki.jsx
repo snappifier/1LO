@@ -13,9 +13,9 @@ const Header = ({text}) =>{
 }
 
 const Content = ({text}) =>{
-    return (<div className="w-full flex text-wrap">
+    return (<div className="w-[90%] flex text-wrap">
         {text.map((item) =>{
-            return (<div className="font-[poppins]" dangerouslySetInnerHTML={{__html: item["Paragraf"]}}></div>)
+            return (<div className="font-[poppins] text-justify text-lin" dangerouslySetInnerHTML={{__html: item["Paragraf"]}}></div>)
         })}
     </div>)
 }
@@ -47,10 +47,11 @@ const LinkComponent = ({linkArray}) => {
     </div>);
 }
 
-const MediaComponent = ({media}) => {
-    return <div className="w-full h-max flex gap-5">
+const MediaComponent = ({media, col}) => {
+    console.log(media);
+    return <div className={`w-max h-max grid auto-rows-auto grid-cols-1 md:grid-cols-${col} gap-5 flex-wrap`}>
         {media.map((item) => (
-            <img src={getStrapiMedia(item.url)} alt={"Zdjecie-"+item.id}/>
+            <img className="h-full" src={getStrapiMedia(item.url)} alt={"Zdjecie-"+item.id}/>
         ))}
     </div>
 }
@@ -80,6 +81,7 @@ const TemplateSameLinki = ({api}) => {
                     <Header text={page["Naglowek"]} />
                     <div className="w-full h-max flex flex-col gap-4 sm:gap-6 text-wrap">
                         {sections.map((section) => {
+                            console.log(section)
                             const links = Array.isArray(section["Linki"]) ? section["Linki"] : [];
                             const media = Array.isArray(section["Media"]) ? section["Media"] : [];
                             const content = Array.isArray(section["Paragraf"]) ? section["Paragraf"] : [];
@@ -88,7 +90,7 @@ const TemplateSameLinki = ({api}) => {
                                 <>
                                     <Content text={content} />
                                     <LinkComponent linkArray={links} />
-                                    <MediaComponent media={media} />
+                                    <MediaComponent media={media} col={section?.["IloscKolumn"] ? section["IloscKolumn"] : 1}/>
                                 </>
                             )
                         })}
