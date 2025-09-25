@@ -2,7 +2,7 @@ import {motion} from "motion/react";
 import {Link} from "react-router-dom";
 
 
-const Statut = () => {
+const Statut = (link, opis, tytul) => {
 
 
     return (

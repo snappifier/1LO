@@ -5,7 +5,7 @@ export default function Wstep() {
 
     return (
         <div className="flex relative w-full sm:h-max md:h-120 mt-2 justify-center">
-            <div className="absolute w-full md:w-[50%] h-5/6 md:h-full bg-white left-[10%] rounded-2xl drop-shadow-lg/20"></div>
+            <div className="absolute w-[60%] sm:w-[60%] lg:w-[45%] h-5/6 md:h-full bg-white left-[3%] sm:left-[5%] lg:left-[10%] rounded-2xl drop-shadow-lg/20"></div>
             <div className="relative flex flex-col md:flex-row w-[94%] sm:w-[90%] lg:w-[80%] h-full md:gap-20">
                 <div className="flex flex-col w-full md:w-[50%] gap-8 px-8 py-8">
                     <div className="flex flex-col w-max">
@@ -19,7 +19,7 @@ export default function Wstep() {
                             I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu – szkoła ponadpodstawowa, mieszcząca się od 1916 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. 6 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. </p>
                     </div>
                 </div>
-                <div className="relative flex h-full md:translate-y-20">
+                <div className="relative flex h-full md:translate-y-20 md:-translate-x-20">
                     <img
                         src={zamoyskiSrc}
                         alt="Zamoyski"
