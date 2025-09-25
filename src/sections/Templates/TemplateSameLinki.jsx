@@ -21,7 +21,7 @@ const TemplateSameLinki = ({api, Type}) => {
         <>
             <div className="w-full pt-36 md:pt-40 pb-16 md:pb-20 flex flex-col items-center  min-h-[80vh]">
                 <div className="w-[92%] sm:w-[90%] lg:w-[80%]">
-                    <div className="w-full flex flex-col mb-4 sm:mb-6">
+                    <div className="w-full flex flex-col mb-4 sm:mb-6 text-wrap">
                         <p className="text-3xl sm:text-4xl lg:text-5xl font-extralight w-max text-wrap">
                             {page["Naglowek"]}
                         </p>
