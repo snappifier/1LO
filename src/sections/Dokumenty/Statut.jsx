@@ -15,7 +15,7 @@ const Statut = (link, opis, tytul) => {
                             </p>
                         </div>
                     <div className="w-max h-max">
-                        <Link to={""} target={"_blank"} className="w-max h-max">
+                        <Link to={"http://1lo.com.pl/pdf/2025_Statut_ILO.pdf"} target={"_blank"} className="w-max h-max">
                             <motion.div
                                 className="w-max cursor-pointer flex items-center justify-between gap-3"
                                 whileHover={{scale: 1.02}}
