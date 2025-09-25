@@ -26,7 +26,7 @@ export const AppRoutes = () => {
 
     const dokumentyLinks = menu_dokumenty.data?.data || [];
     console.log(dokumentyLinks)
-    const singleTypeApi = (uid) => `${uid}?populate=*`;
+    const singleTypeApi = (uid) => `${uid}?`;
 
     return (
         <Suspense fallback={<Loader />}>
