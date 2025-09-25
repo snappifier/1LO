@@ -15,7 +15,7 @@ export default function Banner() {
                     <img src={godlo} alt="Godło" className="max-h-20 md:max-h-25 lg:max-h-30" />
                 </div>
             </div>
-            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[40vh] lg:h-[60vh]  drop-shadow-md/20 mt-5 aspect-auto">
+            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[60vh]  drop-shadow-md/20 mt-5 aspect-auto">
                 <img
                     src={images["zdj1"]}
                     alt="Widok na budynek liceum"
@@ -59,7 +59,7 @@ export default function Banner() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="currentColor" d="M21 17v-6.9L12 15L1 9l11-6l11 6v8zm-9 4l-7-3.8v-5l7 3.8l7-3.8v5z"/></svg>
                         <p className="text-xl font-light select-none">Rekrutacja</p>
                     </motion.div>
-                    <Link to={"/aktualnosci"} className="w-full">
+                    <Link to={"/aktualnosci"} className="w-full hidden lg:block">
                         <motion.div
                             whileHover={{scale: 1.05}}
                             transition={{ duration: 0.2, ease: "easeOut" }}
