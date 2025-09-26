@@ -115,7 +115,7 @@ const FooterNew = () => {
 
     return (
         <footer className="bg-[#3077BA]  w-full h-max font-[poppins] overflow-x-clip">
-            <div className="mx-auto max-w-[98%] overflow-visible px-6 py-6 sm:py-6 lg:px-8 flex flex-col">
+            <div className="mx-auto max-w-[98%] overflow-visible  py-6 sm:py-6 lg:px-8 flex flex-col">
 
                 <div className="w-full h-max flex items-center justify-center py-2">
                     <div className="max-w-[80%] w-full h-max flex items-center justify-center gap-5 py-2">
@@ -129,7 +129,7 @@ const FooterNew = () => {
 
                 <nav
                     aria-label="Footer"
-                    className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-1 pt-6 text-sm/6"
+                    className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-1 pt-6 text-sm/6 px-6"
                 >
                     {navigation.main.map((item) => (
                         <Link
