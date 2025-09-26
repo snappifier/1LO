@@ -17,13 +17,6 @@ const Aktualnosci = lazy(() => import("./sections/Aktualności/Aktualnosci.jsx")
 const Post = lazy(() => import("./components/Post.jsx"));
 
 export const AppRoutes = () => {
-    const menu_uczen = useSuspenseQuery({
-        queryKey: ["uczen"],
-        queryFn: () =>
-            get(
-                "menu-uczens?populate=*&sort=rank:asc"
-            ),
-    });
     const menu = useSuspenseQuery({
         queryKey: ["menu"],
         queryFn: () =>
@@ -34,35 +27,7 @@ export const AppRoutes = () => {
                 },
             }),
     });
-    const menu_szkola = useSuspenseQuery({
-        queryKey: ["szkola"],
-        queryFn: () =>
-            get(
-                "menu-szkolas?populate=*&sort=rank:asc"
-            ),
-    });
-    const menu_aktualnosci = useSuspenseQuery({
-        queryKey: ["aktualnosci"],
-        queryFn: () =>
-            get(
-                "menu-aktualnoscis?populate=*&sort=rank:asc"
-            ),
-    });
-    const menu_dokumenty = useSuspenseQuery({
-        queryKey: ["dokumenty"],
-        queryFn: () =>
-            get(
-                "menu-dokumenties?populate=*&sort=rank:asc"
-            ),
-    });
-    console.log(menu.data)
     const kategorie = menu?.data?.data?.["Kategoria"]
-
-    const uczniowieLinks = menu_uczen.data?.data || [];
-    const oSzkoleLinks = menu_szkola.data?.data || [];
-    const aktualnosciLinks = menu_aktualnosci.data?.data || [];
-    const dokumentyLinks = menu_dokumenty.data?.data || [];
-    const allLinks = [...uczniowieLinks, ...oSzkoleLinks, ...aktualnosciLinks, ...dokumentyLinks];
     const singleTypeApi = (uid) => `${uid}`;
 
     return (
