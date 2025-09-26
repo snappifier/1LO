@@ -1,6 +1,6 @@
 import { getStrapiMedia } from "../features/fetcher.jsx";
-import { motion, AnimatePresence } from "motion/react";
-import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
+import { useRef } from "react";
 import {useScrollBlock} from "../features/useScrollBlock.jsx";
 import {images} from "../features/strapiImages.jsx";
 

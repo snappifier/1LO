@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useMemo, useEffect, useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { get, getStrapiMedia } from "../../features/fetcher.jsx";
+import { get } from "../../features/fetcher.jsx";
 
 const badges = {
     Dyrektor: "bg-red-100 text-red-700",
