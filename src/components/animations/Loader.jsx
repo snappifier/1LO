@@ -2,7 +2,7 @@ import {motion} from "motion/react";
 
 export const Loader = () => {
     return (<>
-        <motion.div className="fixed w-full h-full z-100 flex justify-center items-center bg-zinc-900"
+        <motion.div className="fixed w-full h-full z-[2147483647] flex justify-center items-center bg-zinc-900"
         >
 
             {[1,2,3].map((i) => (
