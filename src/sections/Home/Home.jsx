@@ -12,10 +12,10 @@ export default function Home(){
                     <Banner />
                 </div>
                 <div className="w-full bg-transparent">
-                    <Wstep data={}/>
+                    <Wstep/>
                 </div>
                 <div className="w-full bg-transparent">
-                    <Kierunki data={}/>
+                    <Kierunki/>
                 </div>
                 <div className="w-full bg-transparent">
                     <AktualnosciNew />
