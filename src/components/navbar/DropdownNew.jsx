@@ -10,11 +10,11 @@ export default function DropdownNew({menu}) {
 
     return (
         <NavigationMenu.Root className="font-[poppins] min-w-max rounded-lg bg-transparent p-1 text-white">
-            <NavigationMenu.List className="relative flex" role="menubar" aria-label="Główna nawigacja">
-                <NavigationMenu.Item>
+            <NavigationMenu.List className="relative flex" role="menubar" aria-orientation="horizontal" aria-label="Główna nawigacja">
+                <NavigationMenu.Item role="none">
                     <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Szkoła
-                        <NavigationMenu.Icon
+                        <NavigationMenu.Icon aria-hidden="true"
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
                             <ChevronDownIcon/>
                         </NavigationMenu.Icon>
@@ -23,7 +23,7 @@ export default function DropdownNew({menu}) {
                     <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-5 gap-0">
                             {oSzkoleLinks.map((item) => (
-                                <li key={item["Link"]}>
+                                <li key={item["Link"]} role="none">
                                     <Link href={item["Link"]} className={linkCardClassName}  role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
@@ -32,11 +32,11 @@ export default function DropdownNew({menu}) {
                             ))}
                         </ul>
                     </NavigationMenu.Content>
-                </NavigationMenu.Item>
-                <NavigationMenu.Item>
+                </NavigationMenu.Item >
+                <NavigationMenu.Item role="none">
                     <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Uczeń
-                        <NavigationMenu.Icon
+                        <NavigationMenu.Icon aria-hidden="true"
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
                             <ChevronDownIcon/>
                         </NavigationMenu.Icon>
@@ -45,7 +45,7 @@ export default function DropdownNew({menu}) {
                     <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {uczniowieLinks.map((item) => (
-                                <li key={item["Link"]}>
+                                <li key={item["Link"]} role="none">
                                     <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
@@ -55,10 +55,10 @@ export default function DropdownNew({menu}) {
                         </ul>
                     </NavigationMenu.Content>
                 </NavigationMenu.Item>
-                <NavigationMenu.Item>
+                <NavigationMenu.Item role="none">
                     <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Aktualności
-                        <NavigationMenu.Icon
+                        <NavigationMenu.Icon aria-hidden="true"
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
                             <ChevronDownIcon/>
                         </NavigationMenu.Icon>
@@ -67,7 +67,7 @@ export default function DropdownNew({menu}) {
                     <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {aktualnosciLinks.map((item) => (
-                                <li key={item["Link"]}>
+                                <li key={item["Link"]} role="none">
                                     <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
@@ -77,10 +77,10 @@ export default function DropdownNew({menu}) {
                         </ul>
                     </NavigationMenu.Content>
                 </NavigationMenu.Item>
-                <NavigationMenu.Item>
+                <NavigationMenu.Item role="none">
                     <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Dokumenty
-                        <NavigationMenu.Icon
+                        <NavigationMenu.Icon aria-hidden="true"
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
                             <ChevronDownIcon/>
                         </NavigationMenu.Icon>
@@ -89,7 +89,7 @@ export default function DropdownNew({menu}) {
                     <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]">
                             {dokumentyLinks.map((item) => (
-                                <li key={item["Link"]}>
+                                <li key={item["Link"]} role="none">
                                     <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
