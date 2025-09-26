@@ -8,18 +8,18 @@ export default function Banner() {
         <div className="relative w-full h-max md:h-max flex flex-col pt-[6rem] lg:pt-[8rem] items-center">
             <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] h-max flex items-center justify-between">
                 <div className="w-max h-max flex items-center gap-5 py-2">
-                    <motion.img src={images["logo_thumbnail"]}  alt="logo" className="max-h-20 md:max-h-25 lg:max-h-30 min-w-11 drop-shadow-lg/20" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
+                    <motion.img src={images["logo_thumbnail"]}  alt="logo" className="select-none max-h-20 md:max-h-25 lg:max-h-30 min-w-11 drop-shadow-lg/20" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
                     <p className="text-xl/7 sm:text-2xl/9 lg:text-4xl/12 max-w-2/3 font-light select-none">I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu </p>
                 </div>
                 <div className="max-h-30">
-                    <img src={godlo} alt="Godło" className="max-h-20 md:max-h-25 lg:max-h-30" />
+                    <img src={godlo} alt="Godło" className="select-none max-h-20 md:max-h-25 lg:max-h-30" />
                 </div>
             </div>
             <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[60vh]  drop-shadow-md/20 mt-5 aspect-auto">
                 <img
-                    src={images["zdj1"]}
+                    src={images["zdj1_large"]}
                     alt="Widok na budynek liceum"
-                    className="inset-0 w-full h-full object-cover rounded-2xl brightness-70"
+                    className="select-none inset-0 w-full h-full object-cover rounded-2xl brightness-70"
                     width={1600}
                     height={900}
                     style={{ maxInlineSize: '100%' }}

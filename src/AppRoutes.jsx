@@ -5,13 +5,13 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { get } from "./features/fetcher.jsx";
 
 import Home from "./sections/Home/Home.jsx";
-import Footer from "./components/footer/Footer.jsx";
 import { NavbarNew } from "./components/navbar/NavbarNew.jsx";
 import { Maintenance } from "./components/Maintenance.jsx";
 import { Loader } from "./components/animations/Loader.jsx";
 import Kadra from "./sections/Szkoła/Kadra.jsx";
 import Dyrektorzy from "./sections/Szkoła/Dyrektorzy.jsx";
 import TemplateSameLinki from "./sections/Templates/TemplateSameLinki.jsx";
+import FooterNew from "./components/footer/FooterNew.jsx";
 
 const Aktualnosci = lazy(() => import("./sections/Aktualności/Aktualnosci.jsx"));
 const Post = lazy(() => import("./components/Post.jsx"));
@@ -64,6 +64,7 @@ export const AppRoutes = () => {
                 <Route path="/kadra" element={<Kadra />} />
                 <Route path="/dyrektorzy" element={<Dyrektorzy />} />
 
+
                 {allLinks
                     .filter((item) => item["Template"] === "Same linki" && item["Link"])
                     .map((item) => {
@@ -86,7 +87,8 @@ export const AppRoutes = () => {
                 <Route path="*" element={<Maintenance />} />
             </Routes>
 
-            <Footer />
+            <FooterNew />
         </Suspense>
+
     );
 };
