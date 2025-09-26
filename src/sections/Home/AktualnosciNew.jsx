@@ -193,7 +193,7 @@ export const AktualnosciNew = () => {
                 )}
             </AnimatePresence>
 
-            <div className="relative flex justify-center w-full h-max mt-40">
+            <div className="relative flex justify-center w-full h-max">
                 <div
                     className="
                     relative z-20 font-[poppins] flex w-[94%] sm:w-[90%] lg:w-[80%] h-max px-8 pb-6 pt-8

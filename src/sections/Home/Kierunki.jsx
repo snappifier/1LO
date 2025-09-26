@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import DOMPurify from "dompurify";
 
 const KIERUNKI = [
     { t: "matematyczno-fizyczny", k: "Profil", d: "Rozszerzona matematyka i fizyka, przygotowanie pod kierunki techniczne." },
@@ -23,7 +24,15 @@ const PALETTE = [
 
 const easeSoft = [0.22, 1, 0.36, 1];
 
-const Kierunki = () => {
+export function extractD(pathString) {
+    if (typeof pathString !== "string") return null;
+    const m = pathString.match(/<path\b[^>]*\sd=(["'])(.*?)\1/i);
+    return m ? m[2] : null;
+}
+
+const Kierunki = ({data}) => {
+    console.log(data)
+
     return (
         <div className="font-[poppins] w-full h-max flex justify-center items-center mt-20">
             <div className="h-max w-[94%] sm:w-[90%] lg:w-[80%] flex flex-col gap-6">
@@ -31,14 +40,15 @@ const Kierunki = () => {
 
                 {/* 1 kol (mobile) → 2 kol (md) → 3 kol (xl); niższe rzędy (bardziej kompaktowo) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 auto-rows-[11rem] sm:auto-rows-[12.5rem] lg:auto-rows-[14rem]">
-                    {KIERUNKI.map((item, i) => {
+                    {data["Profile"].map((item, i) => {
                         const { tint, icon } = PALETTE[i % PALETTE.length];
-
+                        const raw = item.IconPath; // np. "<path d='M12 5.79 ... Z' fill='#000'/>"
+                        const d = extractD(raw);
                         return (
                             <motion.div
-                                key={i}
+                                key={item.id}
                                 initial="rest"
-                                animate="rest"          // pre-mount do stanu spoczynku (rozgrzewka warstwy)
+                                animate="rest"
                                 whileHover="hover"
                                 className="relative w-full h-full flex flex-col rounded-xl bg-white border border-slate-200 overflow-hidden"
                                 style={{ transform: "translateZ(0)" }} // promotuj do kompozycji (gładszy pierwszy hover)
@@ -48,14 +58,19 @@ const Kierunki = () => {
                                     <div className="relative z-0 w-full h-1/2 flex justify-between">
                                         <div className="w-max h-max flex p-3">
                       <span className="inline-flex items-center rounded-full bg-slate-900/5 border border-slate-200 px-2.5 py-0.5 text-[11px] sm:text-xs font-medium text-slate-700">
-                        {item.k}
+                        Profil
                       </span>
                                         </div>
                                         <div className="w-max h-full -translate-x-3 sm:-translate-x-4 translate-y-3 sm:translate-y-4 opacity-80">
                                             {/* Kolorowa ikonka */}
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-full" viewBox="0 0 24 24" aria-hidden>
-                                                <g fill="none" stroke={icon} strokeWidth={1.4}>
-                                                    <path strokeLinecap="round" d="M12 5.793a28 28 0 0 1 3.342 2.865A28 28 0 0 1 18.207 12M12 5.793a28 28 0 0 0-3.342 2.865A28 28 0 0 0 5.793 12M12 5.793c3.57-2.584 6.947-3.554 8.354-2.147S20.791 8.43 18.207 12m0 0c2.584 3.57 3.554 6.947 2.147 8.354c-1.043 1.043-3.17.78-5.654-.48M18.207 12a28 28 0 0 1-2.865 3.342A28 28 0 0 1 12 18.207m0 0a28 28 0 0 1-3.342-2.865A28 28 0 0 1 5.793 12M12 18.207c-3.57 2.584-6.947 3.554-8.354 2.147S3.209 15.57 5.793 12m0 0C3.21 8.43 2.24 5.053 3.646 3.646c1.043-1.043 3.17-.78 5.654.48" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-20 " viewBox="0 0 24 24" aria-hidden>
+                                                <g fill="none" stroke={item["Kolor"]} strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round">
+                                                    {d ? (
+                                                        <path d={d} />
+                                                    ) : (
+                                                        // Fallback, gdy d brak — proste koło
+                                                        <circle cx={12} cy={12} r={6} />
+                                                    )}
                                                     <circle cx={12} cy={12} r={2} />
                                                 </g>
                                             </svg>
@@ -92,7 +107,7 @@ const Kierunki = () => {
                                             transition={{ duration: 0.35, ease: easeSoft }}
                                             className="w-max text-base sm:text-lg font-normal"
                                         >
-                                            {item.k}
+                                            Profil
                                         </motion.p>
 
                                         <motion.p
@@ -100,7 +115,7 @@ const Kierunki = () => {
                                             transition={{ duration: 0.38, ease: easeSoft }}
                                             className="w-full text-balance text-lg sm:text-xl font-semibold"
                                         >
-                                            {item.t}
+                                            {item["NazwaProfilu"]}
                                         </motion.p>
 
                                         <motion.p
@@ -111,7 +126,7 @@ const Kierunki = () => {
                                             transition={{ duration: 0.4, ease: easeSoft, delay: 0.03 }}
                                             className="overflow-hidden w-full text-balance text-[13px] sm:text-sm font-medium text-slate-700 line-clamp-3"
                                         >
-                                            {item.d}
+                                            {item["Opis"]}
                                         </motion.p>
                                     </motion.div>
                                 </div>

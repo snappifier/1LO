@@ -96,7 +96,7 @@ function ArrowSvg(props) {
     );
 }
 
-const gridTable = ["grid list-none grid-cols-5 gap-0",
+const gridTable = ["grid list-none grid-cols-4 gap-0",
     "grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]",
     "grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]",
     "grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]"]

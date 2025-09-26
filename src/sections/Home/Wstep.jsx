@@ -2,7 +2,7 @@ import images from "../../features/strapiImages.jsx"; // lub { images } jeśli e
 import { useInViewOnce } from "./AktualnosciNew.jsx";
 import { motion } from "motion/react";
 
-export default function Wstep() {
+export default function Wstep({data}) {
     const zamoyskiSrc =
         images["2048px-jan_zamoyski_11"] ||
         images["2048px-Jan_Zamoyski_11"] ||
@@ -24,7 +24,7 @@ export default function Wstep() {
     };
 
     return (
-        <div className="font-[poppins] flex relative w-full justify-center mt-5">
+        <div className="font-[poppins] flex relative w-full justify-center">
             <motion.section
                 ref={ref}
                 variants={container}
