@@ -265,7 +265,7 @@ const FooterNew = () => {
                     })}
                 </div>
 
-                <div className="mt-5 w-full border-t border-gray-300 flex justify-center">
+                <div className="mt-5 w-full border-t border-gray-300 flex justify-center px-6">
                     {/*<p className="mt-5 text-center text-sm/6 text-white">*/}
                     {/*    &copy; Created by Michał Szyszło | Krystian Matwiej*/}
                     {/*</p>*/}
