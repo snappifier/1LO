@@ -65,7 +65,7 @@ export const NavbarNew = ({menu}) => {
             window.removeEventListener("scroll", handleMenu);
         };
     }, [])
-
+    console.log(images)
     return(<>
         <AnimatePresence mode="wait">
             {searchOn !== false && (

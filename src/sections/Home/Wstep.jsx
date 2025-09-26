@@ -1,67 +1,40 @@
 import images from "../../features/strapiImages.jsx";
+import {Reveal, useInViewOnce} from "./AktualnosciNew.jsx";
+import {useId} from "react";
 
 export default function Wstep() {
+    const id = useId()
     const zamoyskiSrc = images["2048px-jan_zamoyski_11"] || images["2048px-Jan_Zamoyski_11"];
 
-    return (
-        <div className="flex relative w-full sm:h-max md:h-120 mt-2 justify-center">
-            <div className="absolute w-[60%] sm:w-[60%] lg:w-[45%] h-5/6 md:h-full bg-white left-[3%] sm:left-[5%] lg:left-[10%] rounded-2xl drop-shadow-lg/20"></div>
-            <div className="relative flex flex-col md:flex-row w-[94%] sm:w-[90%] lg:w-[80%] h-full md:gap-20">
-                <div className="flex flex-col w-full md:w-[50%] gap-8 px-8 py-8">
-                    <div className="flex flex-col w-max">
-                        <p className="md:text-lg lg:text-xl font-medium">KRÓTKO O SZKOLE</p>
-                        <p className="text-lg font-light">Dowiedz się troszkę więcej o nas</p>
-                    </div>
-                    <div className="w-full h-max flex flex-col gap-5">
-                        <p className="w-max font-[meow_script] hidden md:block text-wrap md:text-5xl lg:text-7xl">Jestem w pierwszym</p>
+    const delay = 0.05 + index * 0.08;
 
-                        <p className="font-[montserrat] font-regular w-full text-wrap md:text-lg lg:text-xl">
+    return (
+        <div className="font-[poppins] flex relative w-full h-max md:h-135 lg:h-122 mt-5 justify-center">
+            <Reveal
+                key={id}
+                delay={delay}
+                className="flex flex-col md:flex-row w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-between bg-white rounded-2xl drop-shadow-xl/20"
+            >
+                <div className="flex flex-col w-full md:w-[60%] lg:w-[55%] gap-10 px-10 py-8">
+                    <div className="flex flex-col w-max">
+                        <p className="md:text-lg lg:text-xl font-normal text-slate-900">KRÓTKO O SZKOLE</p>
+                        <p className="text-lg font-extralight text-slate-800">Dowiedz się troszkę więcej o nas</p>
+                    </div>
+                    <div className="w-full h-max flex flex-col gap-8">
+                        <p className="w-max font-[meow_script] block text-wrap text-5xl md:text-5xl lg:text-5xl xl:text-6xl">Jestem w pierwszym</p>
+
+                        <p className="font-light w-full text-wrap text-lg md:text-lg lg:text-lg xl:text-xl">
                             I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu – szkoła ponadpodstawowa, mieszcząca się od 1916 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. 6 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. </p>
                     </div>
                 </div>
-                <div className="relative flex h-full md:translate-y-20 md:-translate-x-20">
+                <div className="px-8 pb-8 md:p-6 flex w-auto object-contain items-center">
                     <img
                         src={zamoyskiSrc}
                         alt="Zamoyski"
-                        className="w-3/4 md:w-max md:h-full rounded-2xl drop-shadow-lg/20"/>
+                        className="w-1/2 md:w-auto max-h-full md:h-max rounded-2xl drop-shadow-lg/20"/>
                 </div>
-            </div>
+            </Reveal>
         </div>
 
     );
 }
-
-// <div className="relative flex w-[80%]">
-//     <div className="relative z-30 font-[poppins] flex w-max h-max lg:pr-[20rem] border-2">
-//         <div className="flex flex-col h-max gap-10">
-//             <div className="flex w-max md:gap-4 gap-2 items-center">
-//                 <div className="flex flex-col">
-//                     <p className="md:text-lg lg:text-xl font-medium">KRÓTKO O SZKOLE</p>
-//                     <p className="text-lg font-light">Dowiedz się troszkę więcej o nas</p>
-//                 </div>
-//             </div>
-//
-//             <div className="w-full h-max flex flex-col gap-5">
-//                 <p className="w-max font-[meow_script] hidden md:block text-wrap md:text-5xl lg:text-7xl">Jestem w pierwszym</p>
-//
-//                 <p className="font-[montserrat] font-regular w-full text-wrap md:text-lg lg:text-xl">
-//                     I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu – szkoła ponadpodstawowa, mieszcząca się od 1916 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. 6 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. </p>
-//             </div>
-//         </div>
-//     </div>
-// </div>
-// <img
-//     src={zamoyskiSrc}
-//     alt="Zamoyski"
-//     className="
-//           hidden lg:block
-//           w-[22rem]        /* szerokość obrazka na desktop; dostosuj jeśli chcesz inny rozmiar */
-//           max-h-[70vh]     /* nie za wysoki */
-//           h-auto
-//           object-contain
-//           rounded-2xl
-//           drop-shadow-xl/20
-//           z-20
-//         "
-// />
-// </div>

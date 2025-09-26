@@ -32,7 +32,6 @@ export const fetchAndOrganizeStrapiImages = async () => {
                 });
             }
         });
-
         return images;
 
     } catch (error) {

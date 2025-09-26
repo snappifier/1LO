@@ -5,17 +5,17 @@ import {Link} from "react-router-dom";
 
 export default function Banner() {
     return (<>
-        <div className="relative w-full h-max md:h-max flex flex-col pt-[6rem] lg:pt-[8rem] items-center">
-            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] h-max flex items-center justify-between">
-                <div className="w-max h-max flex items-center gap-5 py-2">
+        <div className="relative w-full h-max md:h-max flex flex-col pt-[6rem] lg:pt-[7rem] items-center font-[poppins]">
+            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] h-max flex items-center">
+                <div className="w-full h-max flex items-center gap-5 py-1">
                     <motion.img src={images["logo_thumbnail"]}  alt="logo" className="select-none max-h-20 md:max-h-25 lg:max-h-30 min-w-11 drop-shadow-lg/20" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
-                    <p className="text-xl/7 sm:text-2xl/9 lg:text-4xl/12 max-w-2/3 font-light select-none">I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu </p>
+                    <p className="text-md/7 sm:text-lg/7 md:text-xl/9 lg:text-2xl/10 xl:text-3xl/12 max-w-2/3 font-light select-none">I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu </p>
                 </div>
                 <div className="max-h-30">
                     <img src={godlo} alt="Godło" className="select-none max-h-20 md:max-h-25 lg:max-h-30" />
                 </div>
             </div>
-            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[60vh]  drop-shadow-md/20 mt-5 aspect-auto">
+            <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[58vh] drop-shadow-md/20 mt-4 aspect-auto">
                 <img
                     src={images["zdj1_large"]}
                     alt="Widok na budynek liceum"
@@ -29,7 +29,7 @@ export default function Banner() {
 
                 />
             </div>
-            <div className="flex w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-center items-center py-10 rounded-b-2xl">
+            <div className="flex w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-center items-center py-5 rounded-b-2xl">
                 <div className="relative grid grid-cols-2 grid-rows-2 md:flex w-[100%] gap-5 h-max drop-shadow-lg/10">
                     <motion.div
                         whileHover={{scale: 1.05}}

@@ -5,7 +5,7 @@ import { images } from "../../features/strapiImages.jsx";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Post } from "../../components/Post.jsx";
 
-function useInViewOnce(options = { root: null, rootMargin: "0px", threshold: 0.2 }) {
+export function useInViewOnce(options = { root: null, rootMargin: "0px", threshold: 0.2 }) {
     const ref = useRef(null);
     const [inView, setInView] = useState(false);
 
@@ -24,7 +24,7 @@ function useInViewOnce(options = { root: null, rootMargin: "0px", threshold: 0.2
     return { ref, inView };
 }
 
-function Reveal({ delay = 0, className="", children }) {
+export function Reveal({ delay = 0, className="", children }) {
     const { ref, inView } = useInViewOnce();
 
     return (
@@ -199,12 +199,12 @@ export const AktualnosciNew = () => {
                     relative z-20 font-[poppins] flex w-[94%] sm:w-[90%] lg:w-[80%] h-max px-8 pb-6 pt-8
                     bg-white rounded-2xl
                     ring-1 ring-slate-200
-                    shadow-[0_20px_30px_-20px_rgba(14,14,14,0.3)]
+                    drop-shadow-xl/20
                 ">
                     <div className="flex flex-col gap-4 items-start w-full h-max">
                         <div className="flex items-center gap-4">
                             <div className="flex flex-col items-start">
-                                <p className="text-xl font-normal">AKTUALNOŚCI</p>
+                                <p className="text-xl font-normal text-slate-900">AKTUALNOŚCI</p>
                                 <p className="text-lg font-extralight text-slate-700">Bądź na bieżąco</p>
                             </div>
                         </div>
