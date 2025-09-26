@@ -1,20 +1,15 @@
 import images from "../../features/strapiImages.jsx";
-import {Reveal, useInViewOnce} from "./AktualnosciNew.jsx";
-import {useId} from "react";
+import {useInViewOnce} from "./AktualnosciNew.jsx";
 
 export default function Wstep() {
-    const id = useId()
     const zamoyskiSrc = images["2048px-jan_zamoyski_11"] || images["2048px-Jan_Zamoyski_11"];
+    const { ref, inView } = useInViewOnce();
 
-    const delay = 0.05 + index * 0.08;
+
 
     return (
         <div className="font-[poppins] flex relative w-full h-max md:h-135 lg:h-122 mt-5 justify-center">
-            <Reveal
-                key={id}
-                delay={delay}
-                className="flex flex-col md:flex-row w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-between bg-white rounded-2xl drop-shadow-xl/20"
-            >
+            <div className="flex flex-col md:flex-row w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-between bg-white rounded-2xl drop-shadow-xl/20">
                 <div className="flex flex-col w-full md:w-[60%] lg:w-[55%] gap-10 px-10 py-8">
                     <div className="flex flex-col w-max">
                         <p className="md:text-lg lg:text-xl font-normal text-slate-900">KRÓTKO O SZKOLE</p>
@@ -33,7 +28,7 @@ export default function Wstep() {
                         alt="Zamoyski"
                         className="w-1/2 md:w-auto max-h-full md:h-max rounded-2xl drop-shadow-lg/20"/>
                 </div>
-            </Reveal>
+            </div>
         </div>
 
     );
