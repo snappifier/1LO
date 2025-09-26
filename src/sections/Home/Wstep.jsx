@@ -24,9 +24,9 @@ export default function Wstep() {
                 </div>
                 <div className="px-8 pb-8 md:p-6 flex w-auto object-contain items-center">
                     <img
-                        src={zamoyskiSrc}
+                        src={images["2048px-jan_zamoyski_11_small"]}
                         alt="Zamoyski"
-                        className="w-1/2 md:w-auto max-h-full md:h-max rounded-2xl drop-shadow-lg/20"/>
+                        className=" md:w-auto max-h-full md:h-max rounded-2xl drop-shadow-lg/20"/>
                 </div>
             </div>
         </div>
