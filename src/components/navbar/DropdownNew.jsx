@@ -10,9 +10,9 @@ export default function DropdownNew({menu}) {
 
     return (
         <NavigationMenu.Root className="font-[poppins] min-w-max rounded-lg bg-transparent p-1 text-white">
-            <NavigationMenu.List className="relative flex">
+            <NavigationMenu.List className="relative flex" role="menubar" aria-label="Główna nawigacja">
                 <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className={triggerClassName}>
+                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Szkoła
                         <NavigationMenu.Icon
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
@@ -20,11 +20,11 @@ export default function DropdownNew({menu}) {
                         </NavigationMenu.Icon>
                     </NavigationMenu.Trigger>
 
-                    <NavigationMenu.Content className={contentClassName}>
+                    <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-5 gap-0">
                             {oSzkoleLinks.map((item) => (
                                 <li key={item["Link"]}>
-                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                    <Link href={item["Link"]} className={linkCardClassName}  role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
@@ -34,7 +34,7 @@ export default function DropdownNew({menu}) {
                     </NavigationMenu.Content>
                 </NavigationMenu.Item>
                 <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className={triggerClassName}>
+                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Uczeń
                         <NavigationMenu.Icon
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
@@ -42,11 +42,11 @@ export default function DropdownNew({menu}) {
                         </NavigationMenu.Icon>
                     </NavigationMenu.Trigger>
 
-                    <NavigationMenu.Content className={contentClassName}>
+                    <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {uczniowieLinks.map((item) => (
                                 <li key={item["Link"]}>
-                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                    <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
@@ -56,7 +56,7 @@ export default function DropdownNew({menu}) {
                     </NavigationMenu.Content>
                 </NavigationMenu.Item>
                 <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className={triggerClassName}>
+                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Aktualności
                         <NavigationMenu.Icon
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
@@ -64,11 +64,11 @@ export default function DropdownNew({menu}) {
                         </NavigationMenu.Icon>
                     </NavigationMenu.Trigger>
 
-                    <NavigationMenu.Content className={contentClassName}>
+                    <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
                             {aktualnosciLinks.map((item) => (
                                 <li key={item["Link"]}>
-                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                    <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
@@ -78,7 +78,7 @@ export default function DropdownNew({menu}) {
                     </NavigationMenu.Content>
                 </NavigationMenu.Item>
                 <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className={triggerClassName}>
+                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
                         Dokumenty
                         <NavigationMenu.Icon
                             className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
@@ -86,11 +86,11 @@ export default function DropdownNew({menu}) {
                         </NavigationMenu.Icon>
                     </NavigationMenu.Trigger>
 
-                    <NavigationMenu.Content className={contentClassName}>
+                    <NavigationMenu.Content className={contentClassName} role="menu">
                         <ul className="grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]">
                             {dokumentyLinks.map((item) => (
                                 <li key={item["Link"]}>
-                                    <Link href={item["Link"]} className={linkCardClassName}>
+                                    <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
                                         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
@@ -99,27 +99,6 @@ export default function DropdownNew({menu}) {
                         </ul>
                     </NavigationMenu.Content>
                 </NavigationMenu.Item>
-                {/*<NavigationMenu.Item>*/}
-                {/*    <RouterLink className={triggerClassName} to="/kontakt">*/}
-                {/*        Kontakt*/}
-                {/*    </RouterLink>*/}
-                {/*</NavigationMenu.Item>*/}
-                {/*<NavigationMenu.Item>*/}
-                {/*    <RouterLink className={triggerClassName} to="/rekrutacja">*/}
-                {/*        E-dziennik*/}
-                {/*    </RouterLink>*/}
-                {/*</NavigationMenu.Item>*/}
-                {/*<NavigationMenu.Item>*/}
-                {/*    <RouterLink className={triggerClassName} to="/rekrutacja">*/}
-                {/*        Panel*/}
-                {/*    </RouterLink>*/}
-                {/*</NavigationMenu.Item>*/}
-
-                {/*<NavigationMenu.Item>*/}
-                {/*    <Link className={triggerClassName} href="https://github.com/mui/base-ui">*/}
-                {/*        GitHub*/}
-                {/*    </Link>*/}
-                {/*</NavigationMenu.Item>*/}
             </NavigationMenu.List>
 
             <NavigationMenu.Portal>
