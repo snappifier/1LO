@@ -16,18 +16,21 @@ export default function Banner() {
                 </div>
             </div>
             <div className="relative w-[94%] sm:w-[90%] lg:w-[80%] md:h-[58vh] drop-shadow-md/20 mt-4 aspect-auto">
-                <img
-                    src={images["zdj1_large"]}
-                    alt="Widok na budynek liceum"
-                    className="select-none inset-0 w-full h-full object-cover rounded-2xl brightness-70"
-                    width={1600}
-                    height={900}
-                    style={{ maxInlineSize: '100%' }}
-                    fetchPriority="high"
-                    loading="eager"
-                    decoding="async"
-
-                />
+                <picture>
+                    <source media="(min-width: 1280px)" srcSet={images["zdj1_large"]} />
+                    <source media="(min-width: 768px)" srcSet={images["zdj1_medium"]} />
+                    <img
+                        src={images["zdj1_small"]}
+                        alt="Widok na budynek liceum"
+                        className="select-none inset-0 w-full h-full object-cover rounded-2xl brightness-70"
+                        width={1600}
+                        height={900}
+                        style={{ maxInlineSize: '100%' }}
+                        fetchPriority="high"
+                        loading="eager"
+                        decoding="async"
+                    />
+                </picture>
             </div>
             <div className="flex w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-center items-center py-5 rounded-b-2xl">
                 <div className="relative grid grid-cols-2 grid-rows-2 md:flex w-[100%] gap-5 h-max drop-shadow-lg/10">
