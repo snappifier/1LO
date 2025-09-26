@@ -1,5 +1,5 @@
 import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
-import { Link as RouterLink } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 export default function DropdownNew({menu}) {
@@ -95,6 +95,18 @@ export default function DropdownNew({menu}) {
                                         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
                                     </Link>
                                 </li>
+                        //         <motion.li
+                        //         key={item["Link"]}
+                        //     role="none"
+                        //     initial={{ opacity: 0, y: 8 }}
+                        //     animate={{ opacity: 1, y: 0 }}
+                        //     transition={{ delay: 0.05 * i, duration: 0.22, ease: [0.22,1,0.36,1] }}
+                        // >
+                        //     <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
+                        //         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
+                        //         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
+                        //     </Link>
+                        // </motion.li>
                             ))}
                         </ul>
                     </NavigationMenu.Content>
@@ -181,7 +193,7 @@ const contentClassName =
     'data-[ending-style]:data-[activation-direction=right]:translate-x-[-50%]';
 
 const linkCardClassName =
-    'block rounded-md p-2 xs:p-3 no-underline text-inherit' +
+    'block rounded-md p-2 xs:p-3 no-underline text-inherit ' +
     'hover:bg-gray-100 focus-visible:relative focus-visible:outline focus-visible:outline-2 ' +
     'focus-visible:-outline-offset-1 focus-visible:outline-blue-800';
 
