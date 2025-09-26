@@ -85,12 +85,12 @@ export const NavbarNew = ({menu}) => {
             </div>
             <div className="flex items-center  ">
             <div
-                className="group hover:bg-[#3077BA] h-10 w-10 flex justify-center items-center rounded-md cursor-pointer"
+                className="group hover:bg-sky-800 h-10 w-10 flex justify-center items-center rounded-md cursor-pointer"
             onClick={handleClick}
             >
                 <motion.svg className="transform transition-transform duration-150 group-hover:scale-110" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#fdfdfd" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="m21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/></g></motion.svg>
             </div>
-            <div className="group hover:bg-[#3077BA] h-10 w-10 flex justify-center items-center rounded-md cursor-pointer text-white lg:hidden" onClick={() => setIsOpen(!isOpen)} >
+            <div className="group hover:bg-sky-800 h-10 w-10 flex justify-center items-center rounded-md cursor-pointer text-white lg:hidden" onClick={() => setIsOpen(!isOpen)} >
                 <HamburgerMenu isOpen={isOpen} />
             </div>
             </div>

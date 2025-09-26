@@ -168,7 +168,7 @@ const triggerClassName =
     'box-border flex items-center justify-center gap-1.5 h-10 ' +
     'px-5 xs:px-3.5 m-0 rounded-md bg-transparent text-gray-50 font-normal ' +
     'text-[0.925rem] xs:text-base leading-6 select-none no-underline ' +
-    'hover:bg-[#3077BA] active:bg-[#3077BA] data-[popup-open]:bg-[#3077BA] ' +
+    'hover:bg-sky-800 active:bg-sky-800 data-[popup-open]:bg-sky-800 ' +
     'focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 focus-visible:relative';
 
 const contentClassName =
