@@ -121,7 +121,7 @@ const FooterNew = () => {
                     <motion.img src={images["logo_thumbnail"]}  alt="logo" className="select-none h-15 w-15   drop-shadow-lg/20" whileHover={{scale: 1.1}} whileTap={{scale: 1}}/>
                     <p className=" text-center text-gray-200 font-[poppins] text-xs sm:text-xs lg:text-md max-w-2/3 font-light whitespace-normal break-words hyphens-auto">I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu </p>
 
-                        <img src={godlo} alt="Godło" className=" select-none min-h-15 w-15" />
+                        <img src={images["godlo_thumbnail"]} alt="Godło" className=" select-none h-15 w-auto object-contain" />
                     </div>
                 </div>
 
