@@ -22,7 +22,6 @@ const navigation = {
     social: [
         {
             name: "Facebook",
-            href: "https://www.facebook.com/1lozamosc/?ref=embed_page",
             icon: (props) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <path
@@ -35,7 +34,6 @@ const navigation = {
         },
         {
             name: "TikTok",
-            href: "https://www.tiktok.com/@1lozamosc",
             icon: (props) => (
                 <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
                     <path

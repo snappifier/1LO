@@ -72,7 +72,6 @@ const TemplateSameLinki = ({api}) => {
         staleTime: 60_000,
     });
     const page = data?.data || [];
-    console.log(page)
     const sections = Array.isArray(page["Sekcja"]) ? page["Sekcja"] : [];
     return (
         <>

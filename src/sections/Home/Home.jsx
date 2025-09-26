@@ -2,6 +2,7 @@ import Banner from "./banner.jsx";
 import Wstep from "./Wstep.jsx";
 import {AktualnosciNew} from "./AktualnosciNew.jsx";
 import Shields from "../../components/footer/shields.jsx"
+import Kierunki from "./Kierunki.jsx";
 
 export default function Home(){
     return (
@@ -11,7 +12,10 @@ export default function Home(){
                     <Banner />
                 </div>
                 <div className="w-full bg-transparent">
-                    <Wstep />
+                    <Wstep data={}/>
+                </div>
+                <div className="w-full bg-transparent">
+                    <Kierunki data={}/>
                 </div>
                 <div className="w-full bg-transparent">
                     <AktualnosciNew />

@@ -5,7 +5,7 @@ import { images } from "../../features/strapiImages.jsx";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Post } from "../../components/Post.jsx";
 
-export function useInViewOnce(options = { root: null, rootMargin: "0px", threshold: 0.2 }) {
+export function useInViewOnce(options = { root: null, rootMargin: "0px", threshold: 0.09 }) {
     const ref = useRef(null);
     const [inView, setInView] = useState(false);
 

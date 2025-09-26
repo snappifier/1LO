@@ -1,35 +1,76 @@
-import images from "../../features/strapiImages.jsx";
-import {useInViewOnce} from "./AktualnosciNew.jsx";
+import images from "../../features/strapiImages.jsx"; // lub { images } jeśli eksport nazwany
+import { useInViewOnce } from "./AktualnosciNew.jsx";
+import { motion } from "motion/react";
 
 export default function Wstep() {
-    const zamoyskiSrc = images["2048px-jan_zamoyski_11"] || images["2048px-Jan_Zamoyski_11"];
+    const zamoyskiSrc =
+        images["2048px-jan_zamoyski_11"] ||
+        images["2048px-Jan_Zamoyski_11"] ||
+        images["2048px-jan_zamoyski_11_small"];
+
     const { ref, inView } = useInViewOnce();
 
-
+    const container = {
+        hidden: { opacity: 0, y: 24 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1], when: "beforeChildren", staggerChildren: 0.04 },
+        },
+    };
+    const item = {
+        hidden: { opacity: 0, y: 16 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+    };
 
     return (
-        <div className="font-[poppins] flex relative w-full h-max md:h-135 lg:h-122 mt-5 justify-center">
-            <div className="flex flex-col md:flex-row w-[94%] sm:w-[90%] lg:w-[80%] h-full justify-between bg-white rounded-2xl drop-shadow-xl/20">
-                <div className="flex flex-col w-full md:w-[60%] lg:w-[55%] gap-10 px-10 py-8">
-                    <div className="flex flex-col w-max">
-                        <p className="md:text-lg lg:text-xl font-normal text-slate-900">KRÓTKO O SZKOLE</p>
-                        <p className="text-lg font-extralight text-slate-800">Dowiedz się troszkę więcej o nas</p>
-                    </div>
-                    <div className="w-full h-max flex flex-col gap-8">
-                        <p className="w-max font-[meow_script] block text-wrap text-5xl md:text-5xl lg:text-5xl xl:text-6xl">Jestem w pierwszym</p>
+        <div className="font-[poppins] flex relative w-full justify-center mt-5">
+            <motion.section
+                ref={ref}
+                variants={container}
+                initial="hidden"
+                animate={inView ? "show" : "hidden"}
+                className="
+          w-[94%] sm:w-[90%] lg:w-[80%]
+          bg-white rounded-2xl ring-1 ring-slate-200 drop-shadow-xl/20
+          px-6 py-6 md:px-10 md:py-8
+          flex flex-col md:flex-row items-stretch gap-8 md:gap-10
+        "
+                style={{ willChange: "transform, opacity" }}
+            >
+                {/* LEWA: Tekst */}
+                <div className="flex-1 min-w-0">
+                    <motion.div variants={item} className="flex flex-col w-max">
+                        <p className="text-base md:text-lg lg:text-xl font-normal text-slate-900">KRÓTKO O SZKOLE</p>
+                        <p className="text-base md:text-lg font-extralight text-slate-700">Dowiedz się troszkę więcej o nas</p>
+                    </motion.div>
 
-                        <p className="font-light w-full text-wrap text-lg md:text-lg lg:text-lg xl:text-xl">
-                            I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu – szkoła ponadpodstawowa, mieszcząca się od 1916 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. 6 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej. </p>
+                    <div className="mt-6 md:mt-8 flex flex-col gap-6 md:gap-8">
+                        <motion.p variants={item} className="font-[meow_script] text-4xl md:text-5xl lg:text-6xl leading-tight">
+                            Jestem w pierwszym
+                        </motion.p>
+                        <motion.p variants={item} className="font-light text-balance text-base md:text-lg lg:text-xl text-slate-800">
+                            I Liceum Ogólnokształcące im. Jana Zamoyskiego w Zamościu – szkoła ponadpodstawowa, mieszcząca się od
+                            1916 roku w gmachu zabytkowej, zbudowanej w stylu wczesnobarokowym, dawnej Akademii Zamojskiej.
+                        </motion.p>
                     </div>
                 </div>
-                <div className="px-8 pb-8 md:p-6 flex w-auto object-contain items-center">
+
+                {/* PRAWA: Obraz (mobile pod tekstem naturalnie, na md+ po prawej) */}
+                <motion.div
+                    variants={item}
+                    className="h-full w-max flex items-center justify-center rounded-2xl"
+                >
                     <img
-                        src={images["2048px-jan_zamoyski_11_small"]}
-                        alt="Zamoyski"
-                        className=" md:w-auto max-h-full md:h-max rounded-2xl drop-shadow-lg/20"/>
-                </div>
-            </div>
+                        src={zamoyskiSrc}
+                        alt="Jan Zamoyski"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-auto max-h-[420px] md:max-h-[480px] object-contain rounded-2xl"
+                        sizes="(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 40vw"
+                    />
+                </motion.div>
+            </motion.section>
         </div>
-
     );
 }

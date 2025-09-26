@@ -24,6 +24,16 @@ export const AppRoutes = () => {
                 "menu-uczens?populate=*&sort=rank:asc"
             ),
     });
+    const menu = useSuspenseQuery({
+        queryKey: ["menu"],
+        queryFn: () =>
+            get("menu", {
+                params: {
+                    "populate[Kategoria][populate]": "*",
+
+                },
+            }),
+    });
     const menu_szkola = useSuspenseQuery({
         queryKey: ["szkola"],
         queryFn: () =>
@@ -45,6 +55,9 @@ export const AppRoutes = () => {
                 "menu-dokumenties?populate=*&sort=rank:asc"
             ),
     });
+    console.log(menu.data)
+    const kategorie = menu?.data?.data?.["Kategoria"]
+
     const uczniowieLinks = menu_uczen.data?.data || [];
     const oSzkoleLinks = menu_szkola.data?.data || [];
     const aktualnosciLinks = menu_aktualnosci.data?.data || [];
@@ -54,7 +67,7 @@ export const AppRoutes = () => {
 
     return (
         <Suspense fallback={<Loader />}>
-            <NavbarNew menu={{uczniowieLinks, oSzkoleLinks, aktualnosciLinks, dokumentyLinks}}/>
+            <NavbarNew menu={{kategorie}}/>
             <ScrollToTop />
 
             <Routes>
@@ -65,24 +78,18 @@ export const AppRoutes = () => {
                 <Route path="/dyrektorzy" element={<Dyrektorzy />} />
 
 
-                {allLinks
-                    .filter((item) => item["Template"] === "Same linki" && item["Link"])
-                    .map((item) => {
-
-                        const api =
-                            item["singleTypeUid"]
-                                ? singleTypeApi(item["singleTypeUid"])
-                                : null;
-
-                        if (!api) return null;
+                {kategorie.map((kategoria) => {
+                    return (kategoria["Podstrona"].filter((item) => item["Szablon"] === "Automatyczny" && item["Link"]).map((item) => {
+                        console.log(singleTypeApi(item["Link"].slice(1)));
                         return (
                             <Route
                                 key={item.id}
                                 path={item["Link"]}
-                                element={<TemplateSameLinki api={api} />}
+                                element={<TemplateSameLinki api={singleTypeApi(item["Link"])} />}
                             />
                         );
-                    })}
+                    }))
+                })}
 
                 <Route path="*" element={<Maintenance />} />
             </Routes>

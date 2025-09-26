@@ -3,114 +3,34 @@ import { Link as RouterLink } from 'react-router-dom';
 
 
 export default function DropdownNew({menu}) {
-    const oSzkoleLinks = menu.oSzkoleLinks;
-    const dokumentyLinks = menu.dokumentyLinks;
-    const uczniowieLinks = menu.uczniowieLinks;
-    const aktualnosciLinks = menu.aktualnosciLinks;
-
+    console.log(menu["kategorie"]);
     return (
         <NavigationMenu.Root className="font-[poppins] min-w-max rounded-lg bg-transparent p-1 text-white">
             <NavigationMenu.List className="relative flex" role="menubar" aria-orientation="horizontal" aria-label="Główna nawigacja">
-                <NavigationMenu.Item role="none">
-                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
-                        Szkoła
-                        <NavigationMenu.Icon aria-hidden="true"
-                            className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
-                            <ChevronDownIcon/>
-                        </NavigationMenu.Icon>
-                    </NavigationMenu.Trigger>
+                {menu["kategorie"].map((item, index) => {
+                    return <NavigationMenu.Item role="none">
+                        <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
+                            {item["NazwaKategorii"]}
+                            <NavigationMenu.Icon aria-hidden="true"
+                                                 className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
+                                <ChevronDownIcon/>
+                            </NavigationMenu.Icon>
+                        </NavigationMenu.Trigger>
 
-                    <NavigationMenu.Content className={contentClassName} role="menu">
-                        <ul className="grid list-none grid-cols-5 gap-0">
-                            {oSzkoleLinks.map((item) => (
-                                <li key={item["Link"]} role="none">
-                                    <Link href={item["Link"]} className={linkCardClassName}  role="menuitem">
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </NavigationMenu.Content>
-                </NavigationMenu.Item >
-                <NavigationMenu.Item role="none">
-                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
-                        Uczeń
-                        <NavigationMenu.Icon aria-hidden="true"
-                            className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
-                            <ChevronDownIcon/>
-                        </NavigationMenu.Icon>
-                    </NavigationMenu.Trigger>
-
-                    <NavigationMenu.Content className={contentClassName} role="menu">
-                        <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
-                            {uczniowieLinks.map((item) => (
-                                <li key={item["Link"]} role="none">
-                                    <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </NavigationMenu.Content>
-                </NavigationMenu.Item>
-                <NavigationMenu.Item role="none">
-                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
-                        Aktualności
-                        <NavigationMenu.Icon aria-hidden="true"
-                            className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
-                            <ChevronDownIcon/>
-                        </NavigationMenu.Icon>
-                    </NavigationMenu.Trigger>
-
-                    <NavigationMenu.Content className={contentClassName} role="menu">
-                        <ul className="grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]">
-                            {aktualnosciLinks.map((item) => (
-                                <li key={item["Link"]} role="none">
-                                    <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </NavigationMenu.Content>
-                </NavigationMenu.Item>
-                <NavigationMenu.Item role="none">
-                    <NavigationMenu.Trigger className={triggerClassName} role="menuitem" aria-haspopup="true">
-                        Dokumenty
-                        <NavigationMenu.Icon aria-hidden="true"
-                            className="transition-transform duration-200 ease-in-out data-[popup-open]:rotate-180">
-                            <ChevronDownIcon/>
-                        </NavigationMenu.Icon>
-                    </NavigationMenu.Trigger>
-
-                    <NavigationMenu.Content className={contentClassName} role="menu">
-                        <ul className="grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]">
-                            {dokumentyLinks.map((item) => (
-                                <li key={item["Link"]} role="none">
-                                    <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
-                                        <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
-                                        <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
-                                    </Link>
-                                </li>
-                        //         <motion.li
-                        //         key={item["Link"]}
-                        //     role="none"
-                        //     initial={{ opacity: 0, y: 8 }}
-                        //     animate={{ opacity: 1, y: 0 }}
-                        //     transition={{ delay: 0.05 * i, duration: 0.22, ease: [0.22,1,0.36,1] }}
-                        // >
-                        //     <Link href={item["Link"]} className={linkCardClassName} role="menuitem">
-                        //         <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
-                        //         <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
-                        //     </Link>
-                        // </motion.li>
-                            ))}
-                        </ul>
-                    </NavigationMenu.Content>
-                </NavigationMenu.Item>
+                        <NavigationMenu.Content className={contentClassName} role="menu">
+                            <ul className={gridTable[index]}>
+                                {item["Podstrona"].map((item) => (
+                                    <li key={item["Link"]} role="none">
+                                        <Link href={item["Link"]} className={linkCardClassName}  role="menuitem">
+                                            <h3 className="m-0 mb-1 text-base leading-5 font-normal">{item["Tytul"]}</h3>
+                                            <p className="m-0 text-sm leading-5 text-gray-500">{item["Opis"]}</p>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </NavigationMenu.Content>
+                    </NavigationMenu.Item >
+                } )}
             </NavigationMenu.List>
 
             <NavigationMenu.Portal>
@@ -175,6 +95,11 @@ function ArrowSvg(props) {
         </svg>
     );
 }
+
+const gridTable = ["grid list-none grid-cols-5 gap-0",
+    "grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]",
+    "grid list-none grid-cols-4 gap-0 xs:grid-cols-[12rem_12rem]",
+    "grid list-none grid-cols-3 gap-0 xs:grid-cols-[12rem_12rem]"]
 
 const triggerClassName =
     'box-border flex items-center justify-center gap-1.5 h-10 ' +
