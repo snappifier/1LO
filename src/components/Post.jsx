@@ -37,7 +37,7 @@ export function Post({ state: post, onClose }) {
                 exit={{ scale: 0.95, opacity: 0 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 onClick={stopPropagation}
-                className="flex flex-col max-h-[60%] gap-5 max-w-[80%] sm:max-w-[80%] lg:max-w-[80%] bg-white drop-shadow-2xl px-5 md:px-12 py-12 rounded-xl overflow-auto"
+                className="flex flex-col max-h-[60%] gap-5 max-w-[80%] sm:max-w-[60%] md:max-w-[50%] lg:max-w-[40%] bg-white drop-shadow-2xl px-5 md:px-12 py-12 rounded-xl overflow-auto"
             >
                 <div className="w-full flex flex-col justify-between">
                     <p className="font-[poppins] text-wrap font-semibold text-2xl md:text-3xl text-black">
